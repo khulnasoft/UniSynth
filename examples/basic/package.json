@@ -1,0 +1,25 @@
+{
+  "name": "@khulnasoft.com/basic-example",
+  "private": true,
+  "scripts": {
+    "unisynth": "unisynth build",
+    "build": "yarn run unisynth",
+    "start": "watch 'yarn run unisynth' ./src ./overrides"
+  },
+  "dependencies": {
+    "unisynth": "workspace:*",
+    "@khulnasoft.com/unisynth-cli": "workspace:*",
+    "node-fetch": "^2.6.1",
+    "seedrandom": "^3.0.5"
+  },
+  "devDependencies": {
+    "@khulnasoft.com/eslint-plugin-unisynth": "workspace:*",
+    "@types/node-fetch": "^2.5.12",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.17.0",
+    "prettier": "^2.5.0",
+    "typescript": "^5.3.2",
+    "watch": "^1.0.2"
+  }
+}

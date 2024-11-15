@@ -1,0 +1,69 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx-cloud",
+      "options": {
+        "cacheableOperations": [
+          "build"
+        ],
+        "cacheDirectory": ".nx-cache"
+      }
+    }
+  },
+  "namedInputs": {
+    "default": [
+      "{projectRoot}/**/*"
+    ],
+    "production": [
+      "default"
+    ]
+  },
+  "targetDefaults": {
+    "dev": {
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve": {
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "typecheck": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "build": {
+      "dependsOn": [
+        "^build",
+        "prebuild"
+      ],
+      "outputs": [
+        "{projectRoot}/dist"
+      ]
+    },
+    "test:watch": {
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "test:watch:update": {
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "test": {
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "test:update": {
+      "dependsOn": [
+        "build"
+      ]
+    }
+  },
+  "defaultBase": "main"
+}

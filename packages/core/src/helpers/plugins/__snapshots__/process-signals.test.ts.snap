@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`replaceSignalSetters > should replace signal setters 1`] = `
+"props.setKhulnasoftContextSignal(PREVIOUS_VALUE => ({ ...PREVIOUS_VALUE,
+  content: { ...khulnasoftContextSignal.content,
+    ...newContent,
+    data: { ...khulnasoftContextSignal.content?.data,
+      ...newContent?.data
+    },
+    meta: { ...khulnasoftContextSignal.content?.meta,
+      ...newContent?.meta,
+      breakpoints: newContent?.meta?.breakpoints || khulnasoftContextSignal.content?.meta?.breakpoints
+    }
+  }
+}));
+setKhulnasoftContextSignal(PREVIOUS_VALUE => ({ ...PREVIOUS_VALUE,
+  rootState: newRootState
+}))"
+`;

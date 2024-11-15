@@ -1,0 +1,17 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+  "changelog": "@changesets/cli/changelog",
+  "commit": false,
+  "fixed": [],
+  "linked": [["unisynth", "@khulnasoft.com/unisynth-cli"]],
+  "access": "public",
+  "baseBranch": "origin/main",
+  "updateInternalDependencies": "patch",
+  "ignore": [
+    "@khulnasoft.com/unisynth-fiddle",
+    "@khulnasoft.com/e2e-*",
+    "@khulnasoft.com/*example*",
+    "@e2e-app/*",
+    "@khulnasoft.com/e2e*"
+  ]
+}

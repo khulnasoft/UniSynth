@@ -1,0 +1,4 @@
+{
+  "name": "@khulnasoft.com/e2e-qwik",
+  "implicitDependencies": ["@khulnasoft.com/e2e-app-qwik", "!@e2e-app/vue"]
+}

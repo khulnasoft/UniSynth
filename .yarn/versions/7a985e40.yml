@@ -1,0 +1,5 @@
+undecided:
+  - "@khulnasoft.com/unisynth-repo"
+  - "unisynth"
+  - "@khulnasoft.com/eslint-plugin-unisynth"
+  - "@khulnasoft.com/unisynth-fiddle"
