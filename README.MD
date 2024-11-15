@@ -1,12 +1,4 @@
 <br>
-<br>
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.khulnasoft.com/api/v1/image/assets%2FYJIGb4i01jvw0SRdL5Bt%2F44413839f214431290930e447572b843">
-    <img width="400" alt="Unisynth logo" src="https://cdn.khulnasoft.com/api/v1/image/assets%2FYJIGb4i01jvw0SRdL5Bt%2F570f689e59824cb78cf5773350ab4144">
-  </picture>
-</p>
-
 <p align="center">
   Write components once, compile to every framework
 </p>
@@ -70,11 +62,3 @@ Once you're ready, checkout our [issues](https://github.com/khulnasoft/unisynth/
 
 <br>
 <br>
-<p align="center">
-   <a href="https://www.khulnasoft.com/m/developers">
-      <picture>
-         <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/844291/230786554-eb225eeb-2f6b-4286-b8c2-535b1131744a.png">
-         <img width="250" alt="Made with love by Khulnasoft.com" src="https://user-images.githubusercontent.com/844291/230786555-a58479e4-75f3-4222-a6eb-74c5af953eac.png">
-       </picture>
-   </a>
-</p>
