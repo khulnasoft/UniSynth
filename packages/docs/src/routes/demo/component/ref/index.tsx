@@ -1,4 +1,8 @@
-import { component$, useVisibleTask$, useSignal } from '@khulnasoft.com/unisynth';
+import {
+  component$,
+  useVisibleTask$,
+  useSignal,
+} from '@khulnasoft.com/unisynth';
 
 export default component$(() => {
   const width = useSignal(0);

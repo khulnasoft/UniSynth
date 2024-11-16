@@ -1,4 +1,11 @@
-import { component$, Slot, type UnisynthIntrinsicElements, untrack, $, sync$ } from '@khulnasoft.com/unisynth';
+import {
+  component$,
+  Slot,
+  type UnisynthIntrinsicElements,
+  untrack,
+  $,
+  sync$,
+} from '@khulnasoft.com/unisynth';
 import { getClientNavPath, shouldPrefetchData, shouldPrefetchSymbols } from './utils';
 import { loadClientData } from './use-endpoint';
 import { useLocation, useNavigate } from './use-functions';

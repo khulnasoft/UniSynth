@@ -72,7 +72,9 @@ interface SerializerInput<T> {
     | undefined;
 
   /** Collect all relevant values before serializing */
-  $collect$?: undefined | ((obj: T, collector: Collector, leaks: boolean | UnisynthElement) => void);
+  $collect$?:
+    | undefined
+    | ((obj: T, collector: Collector, leaks: boolean | UnisynthElement) => void);
 
   /** Deserialize the object, first pass */
   $prepare$: (data: string, containerState: ContainerState, doc: Document) => T;
@@ -595,7 +597,11 @@ export const canSerialize = (obj: any): boolean => {
   return false;
 };
 
-export const collectDeps = (obj: unknown, collector: Collector, leaks: boolean | UnisynthElement) => {
+export const collectDeps = (
+  obj: unknown,
+  collector: Collector,
+  leaks: boolean | UnisynthElement
+) => {
   for (const s of collectorSerializers) {
     if (s.$test$(obj)) {
       s.$collect$!(obj, collector, leaks);

@@ -29,14 +29,19 @@ export const MEDIA = mediaObj({
       promoted: true,
       author: 'HiRez.io',
     },
-    youtube('Unisynth JS - Crash Introduction to Building a Super Fast Application', 'zLHYDY9dAbs', {
-      playlist: 'PLkswEDcfBXYcl1gW7L5zyCVF9LpGhlOqu',
-      promoted: true,
-      author: 'Code Raiders',
-    }),
+    youtube(
+      'Unisynth JS - Crash Introduction to Building a Super Fast Application',
+      'zLHYDY9dAbs',
+      {
+        playlist: 'PLkswEDcfBXYcl1gW7L5zyCVF9LpGhlOqu',
+        promoted: true,
+        author: 'Code Raiders',
+      }
+    ),
     {
       href: 'https://frontendmasters.com/courses/unisynth/',
-      imgSrc: 'https://static.frontendmasters.com/assets/courses/2023-02-28-unisynth/posterframe.webp',
+      imgSrc:
+        'https://static.frontendmasters.com/assets/courses/2023-02-28-unisynth/posterframe.webp',
       title: 'FrontendMasters: Unisynth for Instant-Loading Websites & Apps',
       language: 'en',
       promoted: true,
@@ -111,9 +116,13 @@ export const MEDIA = mediaObj({
         promoted: true,
       }
     ),
-    youtube('JavaScript Streaming: A Unisynth Glimpse Into The Future - Shai Reznik', '5vckrrqtWto', {
-      promoted: true,
-    }),
+    youtube(
+      'JavaScript Streaming: A Unisynth Glimpse Into The Future - Shai Reznik',
+      '5vckrrqtWto',
+      {
+        promoted: true,
+      }
+    ),
     youtube('Get Started With Unisynth: The JavaScript Framework Game-Changer', 'uXVaeKzN44Y', {
       promoted: true,
       author: 'camelCase',
@@ -151,7 +160,9 @@ export const MEDIA = mediaObj({
     }),
     youtube('Unisynth the HTML First Framework', 'GdIZh42etYk', { author: 'CodingCatDev' }),
     youtube('Build Resumable Apps with Unisynth', '_PDpoJUacuc', { author: 'Learn With Jason' }),
-    youtube('Introduction to Unisynth - Misko Hevery', 'gYbHdss_y04', { author: 'JavaScript Israel' }),
+    youtube('Introduction to Unisynth - Misko Hevery', 'gYbHdss_y04', {
+      author: 'JavaScript Israel',
+    }),
     youtube(
       'Build Performant, Resumable Sites with Unisynth and Partytown (with Miško Hevery) | Some Antics',
       'aGuJPcIdX0A',
@@ -208,7 +219,10 @@ export const MEDIA = mediaObj({
       'JxYbg7eZNLY',
       { promoted: true, author: 'JNation' }
     ),
-    youtube('Unisynth: A no hydration instant', 'Zddw6qy5pf0', { promoted: true, author: 'Devoxx' }),
+    youtube('Unisynth: A no hydration instant', 'Zddw6qy5pf0', {
+      promoted: true,
+      author: 'Devoxx',
+    }),
     youtube(
       'Unisynth City: Reimangined meta-framework for the edge, Adam Bradley, ViteConf 2022',
       'dSLWJBGWigs',

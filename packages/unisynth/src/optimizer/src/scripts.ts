@@ -1,3 +1,4 @@
 export const UNISYNTH_LOADER_DEFAULT_MINIFIED: string = (globalThis as any)
   .UNISYNTH_LOADER_DEFAULT_MINIFIED;
-export const UNISYNTH_LOADER_DEFAULT_DEBUG: string = (globalThis as any).UNISYNTH_LOADER_DEFAULT_DEBUG;
+export const UNISYNTH_LOADER_DEFAULT_DEBUG: string = (globalThis as any)
+  .UNISYNTH_LOADER_DEFAULT_DEBUG;

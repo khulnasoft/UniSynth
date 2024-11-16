@@ -1,5 +1,12 @@
 import { component$, useSignal, useTask$ } from '@khulnasoft.com/unisynth';
-import { routeAction$, routeLoader$, useLocation, z, zod$, Form } from '@khulnasoft.com/unisynth-city';
+import {
+  routeAction$,
+  routeLoader$,
+  useLocation,
+  z,
+  zod$,
+  Form,
+} from '@khulnasoft.com/unisynth-city';
 import { formAction$, useForm, zodForm$, type InitialValues } from '@modular-forms/qwik';
 import { eq } from 'drizzle-orm';
 import AppCard from '~/components/app-card';

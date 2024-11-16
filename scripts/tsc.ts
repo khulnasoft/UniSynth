@@ -15,9 +15,13 @@ export async function tscUnisynth(config: BuildConfig) {
 
 export async function tscUnisynthCity(config: BuildConfig) {
   console.log('tsc unisynth-city');
-  const result = await execa('tsc', ['-p', join(config.srcUnisynthCityDir, '..', 'tsconfig.json')], {
-    stdout: 'inherit',
-  });
+  const result = await execa(
+    'tsc',
+    ['-p', join(config.srcUnisynthCityDir, '..', 'tsconfig.json')],
+    {
+      stdout: 'inherit',
+    }
+  );
   if (result.failed) {
     panic(`tsc for unisynth failed`);
   }

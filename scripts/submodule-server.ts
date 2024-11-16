@@ -35,7 +35,10 @@ export async function submoduleServer(config: BuildConfig) {
     format: 'esm',
     banner: { js: getBanner('@khulnasoft.com/unisynth/server', config.distVersion) },
     outExtension: { '.js': '.mjs' },
-    plugins: [importPath(/^@builder\.io\/unisynth$/, '@khulnasoft.com/unisynth'), unisynthDomPlugin],
+    plugins: [
+      importPath(/^@builder\.io\/unisynth$/, '@khulnasoft.com/unisynth'),
+      unisynthDomPlugin,
+    ],
     define: {
       ...(await inlineUnisynthScriptsEsBuild(config)),
       'globalThis.IS_CJS': 'false',
@@ -61,7 +64,10 @@ export async function submoduleServer(config: BuildConfig) {
       js: `return module.exports; })(typeof module === 'object' && module.exports ? module : { exports: {} });`,
     },
     outExtension: { '.js': '.cjs' },
-    plugins: [importPath(/^@builder\.io\/unisynth$/, '@khulnasoft.com/unisynth'), unisynthDomPlugin],
+    plugins: [
+      importPath(/^@builder\.io\/unisynth$/, '@khulnasoft.com/unisynth'),
+      unisynthDomPlugin,
+    ],
     target: nodeTarget,
     define: {
       ...(await inlineUnisynthScriptsEsBuild(config)),

@@ -43,7 +43,9 @@ export default component$(() => {
           <Link
             href="/unisynthcity-test/actions/"
             class={{
-              active: loc.url.pathname.startsWith("/unisynthcity-test/actions/"),
+              active: loc.url.pathname.startsWith(
+                "/unisynthcity-test/actions/",
+              ),
             }}
             data-test-link="docs-actions"
           >
@@ -61,7 +63,9 @@ export default component$(() => {
           <Link
             href="/unisynthcity-test/products/hat/"
             class={{
-              active: loc.url.pathname.startsWith("/unisynthcity-test/products/"),
+              active: loc.url.pathname.startsWith(
+                "/unisynthcity-test/products/",
+              ),
             }}
             data-test-link="products-hat"
           >
@@ -70,7 +74,9 @@ export default component$(() => {
           <Link
             href="/unisynthcity-test/about-us/"
             class={{
-              active: loc.url.pathname.startsWith("/unisynthcity-test/about-us/"),
+              active: loc.url.pathname.startsWith(
+                "/unisynthcity-test/about-us/",
+              ),
             }}
             data-test-link="about-us"
           >
@@ -85,7 +91,9 @@ export default component$(() => {
             <Link
               href="/unisynthcity-test/sign-in/"
               class={{
-                active: loc.url.pathname.startsWith("/unisynthcity-test/sign-in/"),
+                active: loc.url.pathname.startsWith(
+                  "/unisynthcity-test/sign-in/",
+                ),
               }}
               data-test-link="sign-out"
             >

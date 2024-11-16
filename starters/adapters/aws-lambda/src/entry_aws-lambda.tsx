@@ -21,7 +21,11 @@ declare global {
   interface UnisynthCityPlatform extends PlatformAwsLambda {}
 }
 
-export const { handle } = createUnisynthCity({ render, unisynthCityPlan, manifest });
+export const { handle } = createUnisynthCity({
+  render,
+  unisynthCityPlan,
+  manifest,
+});
 
 export const unisynthApp = serverless({ handle }, { binary: true });
 // handler is the default export for the lambda functions

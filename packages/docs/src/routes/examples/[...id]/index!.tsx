@@ -1,5 +1,15 @@
-import { component$, useStyles$, useTask$, useStore, useVisibleTask$ } from '@khulnasoft.com/unisynth';
-import type { RequestHandler, PathParams, StaticGenerateHandler } from '@khulnasoft.com/unisynth-city';
+import {
+  component$,
+  useStyles$,
+  useTask$,
+  useStore,
+  useVisibleTask$,
+} from '@khulnasoft.com/unisynth';
+import type {
+  RequestHandler,
+  PathParams,
+  StaticGenerateHandler,
+} from '@khulnasoft.com/unisynth-city';
 import { Repl } from '../../../repl/repl';
 import styles from './examples.css?inline';
 import { Header } from '../../../components/header/header';

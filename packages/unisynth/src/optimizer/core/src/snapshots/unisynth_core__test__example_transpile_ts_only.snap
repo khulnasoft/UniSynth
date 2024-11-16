@@ -1,6 +1,6 @@
 ---
 source: packages/unisynth/src/optimizer/core/src/test.rs
-assertion_line: 2513
+assertion_line: 2514
 expression: output
 ---
 ==INPUT==
@@ -27,7 +27,7 @@ export const App = /*#__PURE__*/ componentQrl(/*#__PURE__*/ inlinedQrl((props)=>
 }, "App_component_ckEPmXZlub0"));
 
 
-Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";;AAGA,OAAO,MAAM,oBAAM,sCAAW,CAAC;IAC3B,QACK,IAAI;YACD,CAAC,EAAE,MAAM,QAAQ,mCAAU,IAAM,QAAQ,GAAG,CAAC,qDAAS,UAAU,EAAE,EAAE;QACxE,EAAE;AAEV,iCAAG\"}")
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";;AAGA,OAAO,MAAM,oBAAM,sCAAW,CAAC;IAC3B,QACK,IAAI;YACD,CAAC,EAAE,MAAM,QAAQ,mCAAU,IAAM,QAAQ,GAAG,CAAC,qDAAS,cAAc,EAAE,EAAE;QAC5E,EAAE;AAEV,iCAAG\"}")
 == DIAGNOSTICS ==
 
 []

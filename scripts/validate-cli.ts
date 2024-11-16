@@ -147,7 +147,11 @@ async function validateStarter(
   console.log(`${emoji} ${starterId} validated\n`);
 }
 
-function assertRightUnisynthDepsVersions(appPkgJson: any, unisynthVersion: string, starterType: string) {
+function assertRightUnisynthDepsVersions(
+  appPkgJson: any,
+  unisynthVersion: string,
+  starterType: string
+) {
   assert.strictEqual(
     appPkgJson.devDependencies['@khulnasoft.com/unisynth'].includes(unisynthVersion),
     true,

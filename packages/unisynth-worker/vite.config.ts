@@ -16,7 +16,11 @@ export default defineConfig(() => {
       rollupOptions: {
         external: (id) => {
           if (
-            ['@khulnasoft.com/unisynth', '@khulnasoft.com/unisynth-city', '@khulnasoft.com/unisynth/build'].includes(id)
+            [
+              '@khulnasoft.com/unisynth',
+              '@khulnasoft.com/unisynth-city',
+              '@khulnasoft.com/unisynth/build',
+            ].includes(id)
           ) {
             return true;
           }

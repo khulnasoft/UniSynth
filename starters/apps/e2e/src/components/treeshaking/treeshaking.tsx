@@ -6,7 +6,9 @@ import {
   useContextProvider,
 } from "@khulnasoft.com/unisynth";
 
-export const LOGS = createContextId<{ content: string }>("unisynth.logs.resource");
+export const LOGS = createContextId<{ content: string }>(
+  "unisynth.logs.resource",
+);
 
 export const TreeshakingApp = component$(() => {
   const logs = {

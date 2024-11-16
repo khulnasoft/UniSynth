@@ -94,4 +94,5 @@ export const usePreventNavigate$ = implicit$FirstArg(usePreventNavigateQrl);
 
 export const useAction = (): RouteAction => useContext(RouteActionContext);
 
-export const useUnisynthCityEnv = () => noSerialize(useServerData<UnisynthCityEnvData>('unisynthcity'));
+export const useUnisynthCityEnv = () =>
+  noSerialize(useServerData<UnisynthCityEnvData>('unisynthcity'));

@@ -4,9 +4,9 @@
   "version": "0.0.1",
   "bugs": "https://github.com/khulnasoft/unisynth/issues",
   "devDependencies": {
-    "@khulnasoft.com/unisynth": "workspace:^",
-    "vite": "5.3.5",
-    "vite-plugin-static-copy": "1.0.6"
+    "@khulnasoft.com/unisynth": "1.10.0",
+    "vite": "5.4.11",
+    "vite-plugin-static-copy": "2.1.0"
   },
   "engines": {
     "node": ">=16.8.0 <18.0.0 || >=18.11"
@@ -26,7 +26,6 @@
   "peerDependencies": {
     "@khulnasoft.com/unisynth": "workspace:^"
   },
-  "unisynth": "./lib/index.unisynth.mjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/khulnasoft/unisynth.git",
@@ -36,5 +35,6 @@
     "build": "vite build --mode lib"
   },
   "type": "module",
-  "types": "./lib/types/index.d.ts"
+  "types": "./lib/types/index.d.ts",
+  "unisynth": "./lib/index.unisynth.mjs"
 }

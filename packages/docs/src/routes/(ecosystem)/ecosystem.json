@@ -203,9 +203,9 @@
       "description": "Smart spinner component for Unisynth, to manage the duration of loading states."
     },
     {
-      "title": "qwik-image",
-      "github": "https://github.com/unisynthifiers/qwik-image",
-      "imgSrc": "/ecosystem/qwik-image-logo.png",
+      "title": "unisynth-image",
+      "github": "https://github.com/unisynthifiers/unisynth-image",
+      "imgSrc": "/ecosystem/unisynth-image-logo.png",
       "width": 90,
       "height": 90,
       "description": "Performant images with automatic optimization."

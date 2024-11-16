@@ -41,7 +41,12 @@ export const Nav = component$(() => {
           <a href="/?type=job">
             <strong>Jobs</strong>
           </a>
-          <a class="github" href="http://github.com/khulnasoft/unisynth" target="_blank" rel="noreferrer">
+          <a
+            class="github"
+            href="http://github.com/khulnasoft/unisynth"
+            target="_blank"
+            rel="noreferrer"
+          >
             Built with Unisynth
           </a>
         </nav>

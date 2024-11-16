@@ -1,6 +1,6 @@
 ---
 source: packages/unisynth/src/optimizer/core/src/test.rs
-assertion_line: 1083
+assertion_line: 1084
 expression: output
 ---
 ==INPUT==
@@ -59,8 +59,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "host:onDocumentScroll$",
   "captures": false,
   "loc": [
-    712,
-    753
+    720,
+    761
   ]
 }
 */
@@ -98,8 +98,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "component$",
   "captures": false,
   "loc": [
-    83,
-    1045
+    91,
+    1053
   ]
 }
 */
@@ -124,8 +124,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "host:onClick$",
   "captures": false,
   "loc": [
-    638,
-    670
+    646,
+    678
   ]
 }
 */
@@ -170,8 +170,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "$",
   "captures": false,
   "loc": [
-    105,
-    1041
+    113,
+    1049
   ]
 }
 */
@@ -196,8 +196,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "host:onDocumentScroll$",
   "captures": false,
   "loc": [
-    795,
-    834
+    803,
+    842
   ]
 }
 */
@@ -222,8 +222,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "custom$",
   "captures": false,
   "loc": [
-    984,
-    1009
+    992,
+    1017
   ]
 }
 */
@@ -248,8 +248,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "onDocument-scroLL$",
   "captures": false,
   "loc": [
-    568,
-    604
+    576,
+    612
   ]
 }
 */
@@ -274,8 +274,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "onDocumentScroll$",
   "captures": false,
   "loc": [
-    365,
-    398
+    373,
+    406
   ]
 }
 */
@@ -300,8 +300,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "on-cLick$",
   "captures": false,
   "loc": [
-    428,
-    456
+    436,
+    464
   ]
 }
 */
@@ -326,8 +326,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "onClick$",
   "captures": false,
   "loc": [
-    229,
-    256
+    237,
+    264
   ]
 }
 */
@@ -352,8 +352,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "onDocumentScroll$",
   "captures": false,
   "loc": [
-    293,
-    328
+    301,
+    336
   ]
 }
 */
@@ -379,8 +379,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "$",
   "captures": false,
   "loc": [
-    139,
-    166
+    147,
+    174
   ]
 }
 */
@@ -405,8 +405,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "onDocument-sCroll$",
   "captures": false,
   "loc": [
-    494,
-    530
+    502,
+    538
   ]
 }
 */

@@ -8,8 +8,8 @@ import type {
 export type { UnisynthIntrinsicAttributes } from './jsx-unisynth-attributes';
 
 /**
- * The interface holds available attributes of both native DOM elements and custom Unisynth elements. An
- * example showing how to define a customizable wrapper component:
+ * The interface holds available attributes of both native DOM elements and custom Unisynth
+ * elements. An example showing how to define a customizable wrapper component:
  *
  * ```tsx
  * import { component$, Slot, type UnisynthIntrinsicElements } from "@khulnasoft.com/unisynth";

@@ -164,7 +164,11 @@ export const _appendHeadStyle = (containerState: ContainerState, styleTask: Styl
   }
 };
 
-export const prepend = (staticCtx: RenderStaticContext, parent: UnisynthElement, newChild: Node) => {
+export const prepend = (
+  staticCtx: RenderStaticContext,
+  parent: UnisynthElement,
+  newChild: Node
+) => {
   staticCtx.$operations$.push({
     $operation$: directPrepend,
     $args$: [parent, newChild],

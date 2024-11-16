@@ -3,7 +3,11 @@ import type { UnisynthCityPlan, FailReturn, Action, Loader } from '@khulnasoft.c
 import type { ErrorResponse } from './error-handler';
 import type { AbortMessage, RedirectMessage } from './redirect-handler';
 import type { RequestEventInternal } from './request-event';
-import type { _deserializeData, _serializeData, _verifySerializable } from '@khulnasoft.com/unisynth';
+import type {
+  _deserializeData,
+  _serializeData,
+  _verifySerializable,
+} from '@khulnasoft.com/unisynth';
 
 /** @public */
 export interface EnvGetter {
@@ -431,7 +435,8 @@ export type CacheControlTarget =
   | (string & {});
 
 /** @public */
-export interface RequestEvent<PLATFORM = UnisynthCityPlatform> extends RequestEventCommon<PLATFORM> {
+export interface RequestEvent<PLATFORM = UnisynthCityPlatform>
+  extends RequestEventCommon<PLATFORM> {
   /** True if headers have been sent, preventing any more headers from being set. */
   readonly headersSent: boolean;
 

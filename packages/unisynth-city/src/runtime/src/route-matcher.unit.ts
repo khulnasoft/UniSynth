@@ -101,7 +101,10 @@ describe('route-matcher', () => {
   });
 
   test('regressions', () => {
-    assert.deepEqual(matchRoute('unisynthcity-test/api/data.json', '/unisynthcity-test/blog/'), null);
+    assert.deepEqual(
+      matchRoute('unisynthcity-test/api/data.json', '/unisynthcity-test/blog/'),
+      null
+    );
     assert.deepEqual(matchRoute('/api/[org]/[user].json', '/api/builder.io/oss.json'), {
       org: 'builder.io',
       user: 'oss',

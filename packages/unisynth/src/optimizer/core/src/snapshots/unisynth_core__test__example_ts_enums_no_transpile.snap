@@ -1,6 +1,6 @@
 ---
 source: packages/unisynth/src/optimizer/core/src/test.rs
-assertion_line: 2113
+assertion_line: 2114
 expression: output
 ---
 ==INPUT==
@@ -45,7 +45,7 @@ export const App_component_ckEPmXZlub0 = ()=>{
 };
 
 
-Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";yCAQ8B;IAC1B,QAAQ,GAAG,CAAC,MAAM,CAAC;IACnB,SACM;YACE,CAAC,EAAE,MAAM,QAAQ,UAAU,EAAE,EAAE;QACnC;AAER\"}")
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";yCAQ8B;IAC1B,QAAQ,GAAG,CAAC,MAAM,CAAC;IACnB,SACM;YACE,CAAC,EAAE,MAAM,QAAQ,cAAc,EAAE,EAAE;QACvC;AAER\"}")
 /*
 {
   "origin": "test.tsx",
@@ -61,8 +61,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "component$",
   "captures": false,
   "loc": [
-    126,
-    248
+    134,
+    260
   ]
 }
 */

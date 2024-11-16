@@ -165,7 +165,9 @@ async function buildServiceWorker(config: BuildConfig) {
 }
 
 async function buildAdapterAzureSwaVite(config: BuildConfig) {
-  const entryPoints = [join(config.srcUnisynthCityDir, 'adapters', 'azure-swa', 'vite', 'index.ts')];
+  const entryPoints = [
+    join(config.srcUnisynthCityDir, 'adapters', 'azure-swa', 'vite', 'index.ts'),
+  ];
 
   const external = ['vite', 'fs', 'path', '@khulnasoft.com/unisynth-city/static'];
 
@@ -199,7 +201,13 @@ async function buildAdapterCloudflarePagesVite(config: BuildConfig) {
 
   await build({
     entryPoints,
-    outfile: join(config.distUnisynthCityPkgDir, 'adapters', 'cloudflare-pages', 'vite', 'index.mjs'),
+    outfile: join(
+      config.distUnisynthCityPkgDir,
+      'adapters',
+      'cloudflare-pages',
+      'vite',
+      'index.mjs'
+    ),
     bundle: true,
     platform: 'node',
     target: nodeTarget,
@@ -210,7 +218,13 @@ async function buildAdapterCloudflarePagesVite(config: BuildConfig) {
 
   await build({
     entryPoints,
-    outfile: join(config.distUnisynthCityPkgDir, 'adapters', 'cloudflare-pages', 'vite', 'index.cjs'),
+    outfile: join(
+      config.distUnisynthCityPkgDir,
+      'adapters',
+      'cloudflare-pages',
+      'vite',
+      'index.cjs'
+    ),
     bundle: true,
     platform: 'node',
     target: nodeTarget,
@@ -221,7 +235,9 @@ async function buildAdapterCloudflarePagesVite(config: BuildConfig) {
 }
 
 async function buildAdapterCloudRunVite(config: BuildConfig) {
-  const entryPoints = [join(config.srcUnisynthCityDir, 'adapters', 'cloud-run', 'vite', 'index.ts')];
+  const entryPoints = [
+    join(config.srcUnisynthCityDir, 'adapters', 'cloud-run', 'vite', 'index.ts'),
+  ];
 
   await build({
     entryPoints,
@@ -247,7 +263,9 @@ async function buildAdapterCloudRunVite(config: BuildConfig) {
 }
 
 async function buildAdapterBunVite(config: BuildConfig) {
-  const entryPoints = [join(config.srcUnisynthCityDir, 'adapters', 'bun-server', 'vite', 'index.ts')];
+  const entryPoints = [
+    join(config.srcUnisynthCityDir, 'adapters', 'bun-server', 'vite', 'index.ts'),
+  ];
 
   await build({
     entryPoints,
@@ -276,7 +294,9 @@ async function buildAdapterBunVite(config: BuildConfig) {
 }
 
 async function buildAdapterDenoVite(config: BuildConfig) {
-  const entryPoints = [join(config.srcUnisynthCityDir, 'adapters', 'deno-server', 'vite', 'index.ts')];
+  const entryPoints = [
+    join(config.srcUnisynthCityDir, 'adapters', 'deno-server', 'vite', 'index.ts'),
+  ];
 
   await build({
     entryPoints,
@@ -305,7 +325,9 @@ async function buildAdapterDenoVite(config: BuildConfig) {
 }
 
 async function buildAdapterNodeServerVite(config: BuildConfig) {
-  const entryPoints = [join(config.srcUnisynthCityDir, 'adapters', 'node-server', 'vite', 'index.ts')];
+  const entryPoints = [
+    join(config.srcUnisynthCityDir, 'adapters', 'node-server', 'vite', 'index.ts'),
+  ];
 
   await build({
     entryPoints,
@@ -331,7 +353,9 @@ async function buildAdapterNodeServerVite(config: BuildConfig) {
 }
 
 async function buildAdapterNetlifyEdgeVite(config: BuildConfig) {
-  const entryPoints = [join(config.srcUnisynthCityDir, 'adapters', 'netlify-edge', 'vite', 'index.ts')];
+  const entryPoints = [
+    join(config.srcUnisynthCityDir, 'adapters', 'netlify-edge', 'vite', 'index.ts'),
+  ];
 
   await build({
     entryPoints,
@@ -418,7 +442,9 @@ async function buildAdapterStaticVite(config: BuildConfig) {
 }
 
 async function buildAdapterVercelEdgeVite(config: BuildConfig) {
-  const entryPoints = [join(config.srcUnisynthCityDir, 'adapters', 'vercel-edge', 'vite', 'index.ts')];
+  const entryPoints = [
+    join(config.srcUnisynthCityDir, 'adapters', 'vercel-edge', 'vite', 'index.ts'),
+  ];
 
   await build({
     entryPoints,
@@ -474,7 +500,9 @@ async function buildMiddlewareAwsLambda(config: BuildConfig) {
 }
 
 async function buildMiddlewareCloudflarePages(config: BuildConfig) {
-  const entryPoints = [join(config.srcUnisynthCityDir, 'middleware', 'cloudflare-pages', 'index.ts')];
+  const entryPoints = [
+    join(config.srcUnisynthCityDir, 'middleware', 'cloudflare-pages', 'index.ts'),
+  ];
 
   await build({
     entryPoints,
@@ -562,7 +590,9 @@ async function buildMiddlewareNode(config: BuildConfig) {
 }
 
 async function buildMiddlewareRequestHandler(config: BuildConfig) {
-  const entryPoints = [join(config.srcUnisynthCityDir, 'middleware', 'request-handler', 'index.ts')];
+  const entryPoints = [
+    join(config.srcUnisynthCityDir, 'middleware', 'request-handler', 'index.ts'),
+  ];
 
   await build({
     entryPoints,

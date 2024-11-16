@@ -1,6 +1,6 @@
 ---
 source: packages/unisynth/src/optimizer/core/src/test.rs
-assertion_line: 1196
+assertion_line: 1197
 expression: output
 ---
 ==INPUT==
@@ -45,7 +45,7 @@ export const Lightweight = (props)=>{
 };
 
 
-Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";;AACA,SAAkC,IAAI,EAAE,SAAS,QAAQ,mBAAmB;AAE5E,OAAO,MAAM,aAAa,CAAC;IACvB,UAAU;AACd,EAAE;AAEF,OAAO,MAAM,WAAW,KAAK,YAAY;AAEzC,OAAO,MAAM,oBAAM,iHAQhB;AAEH,OAAO,MAAM,cAAc,CAAC;IACxB;AAGJ,EAAG\"}")
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";;AACA,SAAkC,IAAI,EAAE,SAAS,QAAQ,2BAA2B;AAEpF,OAAO,MAAM,aAAa,CAAC;IACvB,UAAU;AACd,EAAE;AAEF,OAAO,MAAM,WAAW,KAAK,YAAY;AAEzC,OAAO,MAAM,oBAAM,iHAQhB;AAEH,OAAO,MAAM,cAAc,CAAC;IACxB;AAGJ,EAAG\"}")
 ============================= test.tsx_App_component_useMemo_6Sc9KVki3Y0.js (ENTRY POINT)==
 
 import { useLexicalScope } from "@khulnasoft.com/unisynth";
@@ -71,8 +71,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "useMemo$",
   "captures": true,
   "loc": [
-    280,
-    327
+    288,
+    335
   ]
 }
 */
@@ -99,8 +99,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "useMemo$",
   "captures": false,
   "loc": [
-    450,
-    497
+    458,
+    505
   ]
 }
 */
@@ -138,8 +138,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "component$",
   "captures": false,
   "loc": [
-    214,
-    393
+    222,
+    401
   ]
 }
 */
@@ -173,8 +173,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "$",
   "captures": true,
   "loc": [
-    343,
-    389
+    351,
+    397
   ]
 }
 */

@@ -4,7 +4,10 @@ import { join } from 'node:path';
 import { type BuildConfig } from './util';
 import { format } from 'prettier';
 
-export async function generateUnisynthApiMarkdownDocs(config: BuildConfig, apiJsonInputDir: string) {
+export async function generateUnisynthApiMarkdownDocs(
+  config: BuildConfig,
+  apiJsonInputDir: string
+) {
   await generateApiMarkdownPackageDocs(config, apiJsonInputDir, ['unisynth']);
 }
 

@@ -15,7 +15,7 @@ import { constants, existsSync } from 'node:fs';
 import { inlineUnisynthScriptsEsBuild } from './submodule-unisynthloader';
 import RawPlugin from 'esbuild-plugin-raw';
 
-/** Builds @builder.io/optimizer */
+/** Builds @khulnasoft.com/optimizer */
 export async function submoduleOptimizer(config: BuildConfig) {
   const submodule = 'optimizer';
 
@@ -142,7 +142,8 @@ async function generatePlatformBindingsData(config: BuildConfig) {
           };
 
           unisynthArchTriples[platformName] = unisynthArchTriples[platformName] || {};
-          unisynthArchTriples[platformName][archName] = unisynthArchTriples[platformName][archName] || [];
+          unisynthArchTriples[platformName][archName] =
+            unisynthArchTriples[platformName][archName] || [];
           unisynthArchTriples[platformName][archName].push(unisynthTriple as any);
         }
       }
@@ -158,7 +159,12 @@ async function generatePlatformBindingsData(config: BuildConfig) {
 
   const code = c.join('\n') + '\n';
 
-  const platformBindingPath = join(config.srcUnisynthDir, 'optimizer', 'src', 'unisynth-binding-map.ts');
+  const platformBindingPath = join(
+    config.srcUnisynthDir,
+    'optimizer',
+    'src',
+    'unisynth-binding-map.ts'
+  );
   let isWritable;
   try {
     await access(platformBindingPath, constants.W_OK);

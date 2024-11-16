@@ -1,6 +1,6 @@
 import { component$, useContext, useSignal, $ } from '@khulnasoft.com/unisynth';
 import { SHOP_CONTEXT, fetchFromShopify, formatPrice } from '../utils';
-import { Image } from 'qwik-image';
+import { Image } from 'unisynth-image';
 import { modifyLineItemMutation, removeLineItemMutation } from '../mutation';
 
 export const ShopCartRows = component$(() => {

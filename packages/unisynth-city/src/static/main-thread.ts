@@ -1,4 +1,9 @@
-import type { PageModule, UnisynthCityPlan, RouteData, PathParams } from '@khulnasoft.com/unisynth-city';
+import type {
+  PageModule,
+  UnisynthCityPlan,
+  RouteData,
+  PathParams,
+} from '@khulnasoft.com/unisynth-city';
 import type { StaticGenerateOptions, StaticGenerateResult, StaticRoute, System } from './types';
 import { createRouteTester } from './routes';
 import { generateNotFoundPages } from './not-found';
@@ -19,8 +24,9 @@ export async function mainThread(sys: System) {
   const log = await sys.createLogger();
   log.info('\n' + bold(green('Starting Unisynth City SSG...')));
 
-  const unisynthCityPlan: UnisynthCityPlan = (await import(pathToFileURL(opts.unisynthCityPlanModulePath).href))
-    .default;
+  const unisynthCityPlan: UnisynthCityPlan = (
+    await import(pathToFileURL(opts.unisynthCityPlanModulePath).href)
+  ).default;
 
   const queue: StaticRoute[] = [];
   const active = new Set<string>();

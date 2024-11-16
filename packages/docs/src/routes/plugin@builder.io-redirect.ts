@@ -9,8 +9,8 @@ import type { RequestHandler } from '@khulnasoft.com/unisynth-city/middleware/re
  *
  *   # Issue
  *
- *   - Because of Unisynth REPL is is possible to write arbitrary code that runs on a builder.io subdomain
- *       with unisynth.dev/repl
+ *   - Because of Unisynth REPL is is possible to write arbitrary code that runs on a builder.io
+ *       subdomain with unisynth.dev/repl
  *   - This opens vulnerabilities around XSS, cookie jacking, because builder.io uses cross-subdomain
  *       cookies
  *

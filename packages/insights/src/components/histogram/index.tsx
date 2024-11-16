@@ -1,4 +1,9 @@
-import { component$, useStore, useComputed$, type UnisynthMouseEvent } from '@khulnasoft.com/unisynth';
+import {
+  component$,
+  useStore,
+  useComputed$,
+  type UnisynthMouseEvent,
+} from '@khulnasoft.com/unisynth';
 import { vectorMax, type Bucket } from '~/stats/vector';
 
 const height = 75;

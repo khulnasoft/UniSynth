@@ -19,7 +19,10 @@ export default component$(() => {
             </a>
           </li>
           <li>
-            <a href="/unisynthcity-test/api/data.json" data-test-link="api-data">
+            <a
+              href="/unisynthcity-test/api/data.json"
+              data-test-link="api-data"
+            >
               Data
             </a>
           </li>

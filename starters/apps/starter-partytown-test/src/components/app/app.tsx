@@ -18,7 +18,8 @@ export const App = component$(() => {
         </a>
       </p>
       <p class="congrats">
-        Congratulations <a href="https://github.com/khulnasoft/unisynth">Unisynth</a> with{" "}
+        Congratulations{" "}
+        <a href="https://github.com/khulnasoft/unisynth">Unisynth</a> with{" "}
         <a href="https://partytown.builder.io/">Partytown</a> is working!
       </p>
 
@@ -86,9 +87,10 @@ export const App = component$(() => {
           Observe that the binding changes: <code>Hello {state.name}!</code>
         </li>
         <li>
-          Notice that Unisynth automatically lazily-loaded and resumed the component
-          upon interaction without the developer having to code that behavior.
-          (Lazy hydration is what gives even large apps instant on behavior.)
+          Notice that Unisynth automatically lazily-loaded and resumed the
+          component upon interaction without the developer having to code that
+          behavior. (Lazy hydration is what gives even large apps instant on
+          behavior.)
         </li>
         <li>
           Read the docs <a href="https://unisynth.dev/">here</a>.

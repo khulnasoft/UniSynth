@@ -1,4 +1,7 @@
-import { renderToStream, RenderToStreamOptions } from "@khulnasoft.com/unisynth/server";
+import {
+  renderToStream,
+  RenderToStreamOptions,
+} from "@khulnasoft.com/unisynth/server";
 import { Root } from "./root";
 
 /**

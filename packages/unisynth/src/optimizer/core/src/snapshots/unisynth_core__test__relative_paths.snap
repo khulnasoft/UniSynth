@@ -1,6 +1,6 @@
 ---
 source: packages/unisynth/src/optimizer/core/src/test.rs
-assertion_line: 3302
+assertion_line: 3305
 expression: output
 ---
 ============================= ../../node_modules/dep/dist/lib.mjs_App_component_div_p_button_onClick_8dWUa0cJAr4.js (ENTRY POINT)==
@@ -28,8 +28,8 @@ Some("{\"version\":3,\"sources\":[\"node_modules/dep/dist/lib.mjs\"],\"sourceRoo
   "ctxName": "onClick$",
   "captures": true,
   "loc": [
-    706,
-    838
+    722,
+    854
   ]
 }
 */
@@ -73,8 +73,8 @@ Some("{\"version\":3,\"sources\":[\"node_modules/dep/dist/lib.mjs\"],\"sourceRoo
   "ctxName": "component$",
   "captures": false,
   "loc": [
-    315,
-    1037
+    331,
+    1053
   ]
 }
 */
@@ -91,7 +91,7 @@ export const App = /*#__PURE__*/ componentQrl(/*#__PURE__*/ qrl(()=>import("./li
 export { useData as _auto_useData };
 
 
-Some("{\"version\":3,\"sources\":[\"node_modules/dep/dist/lib.mjs\"],\"sourceRoot\":\"/path/to/app/\",\"names\":[],\"mappings\":\";AACA,SAAS,YAAY,EAAc,QAAQ,QAAyB,mBAAmB;AAIvF,MAAM,UAAU;IACZ,OAAO,SAAS;QACZ,OAAO;IACX;AACJ;AAEA,OAAO,MAAM,MAAM,WAAW,GAAG,mHAuBA\"}")
+Some("{\"version\":3,\"sources\":[\"node_modules/dep/dist/lib.mjs\"],\"sourceRoot\":\"/path/to/app/\",\"names\":[],\"mappings\":\";AACA,SAAS,YAAY,EAAc,QAAQ,QAAyB,2BAA2B;AAI/F,MAAM,UAAU;IACZ,OAAO,SAAS;QACZ,OAAO;IACX;AACJ;AAEA,OAAO,MAAM,MAAM,WAAW,GAAG,mHAuBA\"}")
 ============================= components/main.tsx_Local_component_jJ0v28bs0p8.js (ENTRY POINT)==
 
 import { _jsxQ } from "@khulnasoft.com/unisynth";
@@ -117,8 +117,8 @@ Some("{\"version\":3,\"sources\":[\"src/thing/components/main.tsx\"],\"sourceRoo
   "ctxName": "component$",
   "captures": false,
   "loc": [
-    120,
-    175
+    128,
+    183
   ]
 }
 */

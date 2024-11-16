@@ -1,4 +1,9 @@
-import { component$, $, useOnWindow, useSignal } from "@khulnasoft.com/unisynth";
+import {
+  component$,
+  $,
+  useOnWindow,
+  useSignal,
+} from "@khulnasoft.com/unisynth";
 import styles from "./next-steps.module.css";
 
 export const GETTING_STARTED_STEPS = [

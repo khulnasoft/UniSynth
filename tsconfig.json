@@ -23,7 +23,9 @@
       "@unisynth-city-sw-register-build": [
         "packages/unisynth-city/src/buildtime/runtime-generation/sw-register-build.ts"
       ],
-      "@unisynth-city-sw-register": ["packages/unisynth-city/src/runtime/src/sw-register-runtime.ts"],
+      "@unisynth-city-sw-register": [
+        "packages/unisynth-city/src/runtime/src/sw-register-runtime.ts"
+      ],
       "@unisynth-city-not-found-paths": [
         "packages/unisynth-city/src/middleware/request-handler/generated/not-found-paths.ts"
       ],

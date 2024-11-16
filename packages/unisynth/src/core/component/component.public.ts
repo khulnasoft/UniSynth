@@ -134,15 +134,17 @@ export type _Only$<P> = {
 /**
  * Declare a Unisynth component that can be used to create UI.
  *
- * Use `component$` to declare a Unisynth component. A Unisynth component is a special kind of component
- * that allows the Unisynth framework to lazy load and execute the component independently of other Unisynth
- * components as well as lazy load the component's life-cycle hooks and event handlers.
+ * Use `component$` to declare a Unisynth component. A Unisynth component is a special kind of
+ * component that allows the Unisynth framework to lazy load and execute the component independently
+ * of other Unisynth components as well as lazy load the component's life-cycle hooks and event
+ * handlers.
  *
  * Side note: You can also declare regular (standard JSX) components that will have standard
  * synchronous behavior.
  *
- * Unisynth component is a facade that describes how the component should be used without forcing the
- * implementation of the component to be eagerly loaded. A minimum Unisynth definition consists of:
+ * Unisynth component is a facade that describes how the component should be used without forcing
+ * the implementation of the component to be eagerly loaded. A minimum Unisynth definition consists
+ * of:
  *
  * ### Example
  *
@@ -186,7 +188,11 @@ export const componentQrl = <PROPS extends Record<any, any>>(
   componentQrl: QRL<OnRenderFn<PROPS>>
 ): Component<PROPS> => {
   // Return a QComponent Factory function.
-  function UnisynthComponent(props: PublicProps<PROPS>, key: string | null, flags: number): JSXNode {
+  function UnisynthComponent(
+    props: PublicProps<PROPS>,
+    key: string | null,
+    flags: number
+  ): JSXNode {
     assertQrl(componentQrl);
     assertNumber(flags, 'The Unisynth Component was not invoked correctly');
     const hash = qTest ? 'sX' : componentQrl.$hash$.slice(0, 4);
@@ -208,7 +214,9 @@ export const componentQrl = <PROPS extends Record<any, any>>(
   return UnisynthComponent as any;
 };
 
-export const isUnisynthComponent = <T extends Component<any>>(component: unknown): component is T => {
+export const isUnisynthComponent = <T extends Component<any>>(
+  component: unknown
+): component is T => {
   return typeof component == 'function' && (component as any)[SERIALIZABLE_STATE] !== undefined;
 };
 
@@ -227,15 +235,17 @@ export type PropFunctionProps<PROPS extends Record<any, any>> = {
 /**
  * Declare a Unisynth component that can be used to create UI.
  *
- * Use `component$` to declare a Unisynth component. A Unisynth component is a special kind of component
- * that allows the Unisynth framework to lazy load and execute the component independently of other Unisynth
- * components as well as lazy load the component's life-cycle hooks and event handlers.
+ * Use `component$` to declare a Unisynth component. A Unisynth component is a special kind of
+ * component that allows the Unisynth framework to lazy load and execute the component independently
+ * of other Unisynth components as well as lazy load the component's life-cycle hooks and event
+ * handlers.
  *
  * Side note: You can also declare regular (standard JSX) components that will have standard
  * synchronous behavior.
  *
- * Unisynth component is a facade that describes how the component should be used without forcing the
- * implementation of the component to be eagerly loaded. A minimum Unisynth definition consists of:
+ * Unisynth component is a facade that describes how the component should be used without forcing
+ * the implementation of the component to be eagerly loaded. A minimum Unisynth definition consists
+ * of:
  *
  * ### Example
  *

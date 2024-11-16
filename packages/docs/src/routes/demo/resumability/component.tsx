@@ -116,7 +116,9 @@ export const UnderstandingResumability = component$(() => {
                     </p>
                     <ul>
                       <li>HTML from CDN (or SSG)</li>
-                      <li>Contains UnisynthLoader global listener (1kb / ~1ms)</li>
+                      <li>
+                        Contains UnisynthLoader global listener (1kb / ~1ms)
+                      </li>
                     </ul>
                   </Callout>
                 )

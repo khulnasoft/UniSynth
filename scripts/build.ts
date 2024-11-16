@@ -182,7 +182,8 @@ export async function build(config: BuildConfig) {
           );
         },
         [join(config.srcUnisynthDir, 'optimizer')]: () => submoduleOptimizer(config),
-        [join(config.srcUnisynthDir, 'prefetch-service-worker')]: () => submoduleUnisynthPrefetch(config),
+        [join(config.srcUnisynthDir, 'prefetch-service-worker')]: () =>
+          submoduleUnisynthPrefetch(config),
         [join(config.srcUnisynthDir, 'server')]: () => submoduleServer(config),
         [join(config.srcUnisynthCityDir, 'runtime/src')]: () => buildUnisynthCity(config),
       });

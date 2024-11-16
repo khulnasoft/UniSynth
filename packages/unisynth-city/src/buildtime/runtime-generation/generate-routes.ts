@@ -90,7 +90,8 @@ function getClientRouteBundleNames(unisynthPlugin: UnisynthVitePlugin, r: BuildR
   const bundlesNames: string[] = [];
 
   // TODO: Remove globalThis that was previously used. Left in for backwards compatibility.
-  const manifest: UnisynthManifest = globalThis.UNISYNTH_MANIFEST || unisynthPlugin.api.getManifest()!;
+  const manifest: UnisynthManifest =
+    globalThis.UNISYNTH_MANIFEST || unisynthPlugin.api.getManifest()!;
   if (manifest) {
     const manifestBundleNames = Object.keys(manifest.bundles);
 

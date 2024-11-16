@@ -32,7 +32,9 @@ test('translated pathname / with prefix', ({ assertRoute }) => {
   assert.equal(r.paramNames.length, 0);
   assert.equal(r.segments[0][0].content, 'it');
   assert.equal(r.layouts.length, 2);
-  assert.ok(r.layouts[0].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/layout.tsx'));
+  assert.ok(
+    r.layouts[0].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/layout.tsx')
+  );
   assert.ok(
     r.layouts[1].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/(common)/layout.tsx')
   );
@@ -50,7 +52,9 @@ test('translated pathname /docs/getting-started with prefix', ({ assertRoute }) 
   assert.equal(r.segments[1][0].content, 'documentazione');
   assert.equal(r.segments[2][0].content, 'per-iniziare');
   assert.equal(r.layouts.length, 2);
-  assert.ok(r.layouts[0].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/layout.tsx'));
+  assert.ok(
+    r.layouts[0].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/layout.tsx')
+  );
   assert.ok(
     r.layouts[1].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/docs/layout.tsx')
   );
@@ -72,7 +76,9 @@ test('translated pathname /docs/[category]/[id] with prefix', ({ assertRoute }) 
   assert.equal(r.segments[2][0].content, 'category');
   assert.equal(r.segments[3][0].content, 'id');
   assert.equal(r.layouts.length, 2);
-  assert.ok(r.layouts[0].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/layout.tsx'));
+  assert.ok(
+    r.layouts[0].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/layout.tsx')
+  );
   assert.ok(
     r.layouts[1].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/docs/layout.tsx')
   );
@@ -91,7 +97,9 @@ test('translated pathname /about-us with prefix', ({ assertRoute }) => {
   assert.equal(r.segments[0][0].content, 'it');
   assert.equal(r.segments[1][0].content, 'informazioni');
   assert.equal(r.layouts.length, 2);
-  assert.ok(r.layouts[0].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/layout.tsx'));
+  assert.ok(
+    r.layouts[0].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/layout.tsx')
+  );
   assert.ok(
     r.layouts[1].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/(common)/layout.tsx')
   );
@@ -111,12 +119,16 @@ test('translated pathname /products/[id] with prefix', ({ assertRoute }) => {
   assert.equal(r.segments[1][0].content, 'prodotti');
   assert.equal(r.segments[2][0].content, 'id');
   assert.equal(r.layouts.length, 2);
-  assert.ok(r.layouts[0].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/layout.tsx'));
+  assert.ok(
+    r.layouts[0].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/layout.tsx')
+  );
   assert.ok(
     r.layouts[1].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/(common)/layout.tsx')
   );
   assert.ok(
-    r.filePath.endsWith('starters/apps/unisynthcity-test/src/routes/(common)/products/[id]/index.tsx')
+    r.filePath.endsWith(
+      'starters/apps/unisynthcity-test/src/routes/(common)/products/[id]/index.tsx'
+    )
   );
 });
 
@@ -130,7 +142,9 @@ test('translated pathname /docs/getting-started', ({ assertRoute }) => {
   assert.equal(r.segments[0][0].content, 'documentazione');
   assert.equal(r.segments[1][0].content, 'per-iniziare');
   assert.equal(r.layouts.length, 2);
-  assert.ok(r.layouts[0].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/layout.tsx'));
+  assert.ok(
+    r.layouts[0].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/layout.tsx')
+  );
   assert.ok(
     r.layouts[1].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/docs/layout.tsx')
   );
@@ -151,7 +165,9 @@ test('translated pathname /docs/[category]/[id]', ({ assertRoute }) => {
   assert.equal(r.segments[1][0].content, 'category');
   assert.equal(r.segments[2][0].content, 'id');
   assert.equal(r.layouts.length, 2);
-  assert.ok(r.layouts[0].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/layout.tsx'));
+  assert.ok(
+    r.layouts[0].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/layout.tsx')
+  );
   assert.ok(
     r.layouts[1].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/docs/layout.tsx')
   );
@@ -169,7 +185,9 @@ test('translated pathname /about-us', ({ assertRoute }) => {
   assert.equal(r.paramNames.length, 0);
   assert.equal(r.segments[0][0].content, 'informazioni');
   assert.equal(r.layouts.length, 2);
-  assert.ok(r.layouts[0].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/layout.tsx'));
+  assert.ok(
+    r.layouts[0].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/layout.tsx')
+  );
   assert.ok(
     r.layouts[1].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/(common)/layout.tsx')
   );
@@ -188,12 +206,16 @@ test('translated pathname /products/[id]', ({ assertRoute }) => {
   assert.equal(r.segments[0][0].content, 'prodotti');
   assert.equal(r.segments[1][0].content, 'id');
   assert.equal(r.layouts.length, 2);
-  assert.ok(r.layouts[0].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/layout.tsx'));
+  assert.ok(
+    r.layouts[0].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/layout.tsx')
+  );
   assert.ok(
     r.layouts[1].filePath.endsWith('starters/apps/unisynthcity-test/src/routes/(common)/layout.tsx')
   );
   assert.ok(
-    r.filePath.endsWith('starters/apps/unisynthcity-test/src/routes/(common)/products/[id]/index.tsx')
+    r.filePath.endsWith(
+      'starters/apps/unisynthcity-test/src/routes/(common)/products/[id]/index.tsx'
+    )
   );
 });
 

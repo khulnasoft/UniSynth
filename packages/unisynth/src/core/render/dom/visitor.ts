@@ -246,7 +246,10 @@ export const diffChildren = (
   return wait;
 };
 
-export const getChildren = (elm: UnisynthElement, filter: (el: Node | VirtualElement) => boolean) => {
+export const getChildren = (
+  elm: UnisynthElement,
+  filter: (el: Node | VirtualElement) => boolean
+) => {
   const end = isVirtualElement(elm) ? elm.close : null;
   const nodes: (Node | VirtualElement)[] = [];
   let node: Node | null | VirtualElement = elm.firstChild;
@@ -274,7 +277,10 @@ export const getChildren = (elm: UnisynthElement, filter: (el: Node | VirtualEle
 //   }
 // };
 
-const getChildrenVnodes = (elm: UnisynthElement, filter: (el: Node | VirtualElement) => boolean) => {
+const getChildrenVnodes = (
+  elm: UnisynthElement,
+  filter: (el: Node | VirtualElement) => boolean
+) => {
   return getChildren(elm, filter).map(getVnodeFromEl);
 };
 
@@ -1242,7 +1248,11 @@ const createKeyToOldIdx = (
   return map;
 };
 
-export const addUnisynthEvent = (staticCtx: RenderStaticContext, elm: UnisynthElement, prop: string) => {
+export const addUnisynthEvent = (
+  staticCtx: RenderStaticContext,
+  elm: UnisynthElement,
+  prop: string
+) => {
   if (!prop.startsWith('on:')) {
     setAttribute(staticCtx, elm, prop, '');
   }

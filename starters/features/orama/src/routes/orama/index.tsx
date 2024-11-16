@@ -1,4 +1,9 @@
-import { $, component$, useSignal, useStylesScoped$ } from "@khulnasoft.com/unisynth";
+import {
+  $,
+  component$,
+  useSignal,
+  useStylesScoped$,
+} from "@khulnasoft.com/unisynth";
 import { server$ } from "@khulnasoft.com/unisynth-city";
 import { search } from "@orama/orama";
 import { type Pokemon, oramaDb, createOramaDb } from "~/orama";

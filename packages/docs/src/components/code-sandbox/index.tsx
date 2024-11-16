@@ -1,4 +1,10 @@
-import { component$, useContext, useStylesScoped$, Slot, useSignal } from '@khulnasoft.com/unisynth';
+import {
+  component$,
+  useContext,
+  useStylesScoped$,
+  Slot,
+  useSignal,
+} from '@khulnasoft.com/unisynth';
 import CSS from './index.css?inline';
 import { GlobalStore } from '../../context';
 import { EditIcon } from '../svgs/edit-icon';
@@ -63,7 +69,9 @@ export default component$<{
           <ul>
             <li class="edit">
               <a
-                href={'https://github.com/khulnasoft/unisynth/blob/main/packages/docs/' + (url || src)}
+                href={
+                  'https://github.com/khulnasoft/unisynth/blob/main/packages/docs/' + (url || src)
+                }
                 rel="noopener"
                 target="_blank"
                 title="edit this snippet"

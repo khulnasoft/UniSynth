@@ -249,7 +249,10 @@ async function submoduleCoreDev(config: BuildConfig) {
   await Promise.all([esm, cjs]);
 
   // Point the minified and prod versions to the dev versions
-  await writeFile(join(config.distUnisynthPkgDir, 'core.prod.mjs'), `export * from './core.mjs';\n`);
+  await writeFile(
+    join(config.distUnisynthPkgDir, 'core.prod.mjs'),
+    `export * from './core.mjs';\n`
+  );
   await writeFile(
     join(config.distUnisynthPkgDir, 'core.prod.cjs'),
     `module.exports = require('./core.cjs');\n`

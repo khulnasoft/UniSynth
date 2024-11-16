@@ -51,8 +51,9 @@ export interface QContext {
   $slots$: ProcessedJSXNode[] | null;
   $dynamicSlots$: QContext[] | null;
   /**
-   * The Unisynth Context of the virtual parent component, null if no parent. For an real element, it's
-   * the owner virtual component, and for a virtual component it's the wrapping virtual component.
+   * The Unisynth Context of the virtual parent component, null if no parent. For an real element,
+   * it's the owner virtual component, and for a virtual component it's the wrapping virtual
+   * component.
    */
   $parentCtx$: QContext | null | undefined;
   /**

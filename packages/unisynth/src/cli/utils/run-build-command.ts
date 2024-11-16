@@ -291,7 +291,9 @@ export async function runBuildCommand(app: AppCommand) {
           console.log(``);
           console.log(`${bgMagenta(' Missing an integration ')}`);
           console.log(``);
-          console.log(`${magenta('・')} Use ${magenta(pmRun + ' unisynth add')} to add an integration`);
+          console.log(
+            `${magenta('・')} Use ${magenta(pmRun + ' unisynth add')} to add an integration`
+          );
           console.log(`${magenta('・')} Use ${magenta(pmRun + ' preview')} to preview the build`);
         }
 

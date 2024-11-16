@@ -8,10 +8,10 @@
   },
   "devDependencies": {
     "@auth/core": "0.30.0",
-    "@khulnasoft.com/unisynth": "workspace:^",
-    "@khulnasoft.com/unisynth-city": "workspace:^",
+    "@khulnasoft.com/unisynth": "1.10.0",
+    "@khulnasoft.com/unisynth-city": "1.10.0",
     "@types/set-cookie-parser": "2.4.10",
-    "set-cookie-parser": "2.6.0"
+    "set-cookie-parser": "2.7.1"
   },
   "engines": {
     "node": ">=16.8.0 <18.0.0 || >=18.11"
@@ -32,12 +32,11 @@
     "authentication",
     "login",
     "plugin",
-    "unisynth",
-    "ssr"
+    "ssr",
+    "unisynth"
   ],
   "license": "MIT",
   "main": "./lib/index.unisynth.mjs",
-  "unisynth": "./lib/index.unisynth.mjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/khulnasoft/unisynth.git",
@@ -47,5 +46,6 @@
     "build": "vite build --mode lib"
   },
   "type": "module",
-  "types": "./lib/types/index.d.ts"
+  "types": "./lib/types/index.d.ts",
+  "unisynth": "./lib/index.unisynth.mjs"
 }

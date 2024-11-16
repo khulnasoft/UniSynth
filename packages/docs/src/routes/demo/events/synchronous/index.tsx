@@ -1,4 +1,8 @@
-import { component$, useSignal, useVisibleTask$ } from '@khulnasoft.com/unisynth';
+import {
+  component$,
+  useSignal,
+  useVisibleTask$,
+} from '@khulnasoft.com/unisynth';
 
 export default component$(() => {
   const draggableRef = useSignal<HTMLElement>();

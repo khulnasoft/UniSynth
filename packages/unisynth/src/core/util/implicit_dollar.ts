@@ -7,11 +7,11 @@ import { $, type QRL } from '../qrl/qrl.public';
  * Create a `____$(...)` convenience method from `___(...)`.
  *
  * It is very common for functions to take a lazy-loadable resource as a first argument. For this
- * reason, the Unisynth Optimizer automatically extracts the first argument from any function which ends
- * in `$`.
+ * reason, the Unisynth Optimizer automatically extracts the first argument from any function which
+ * ends in `$`.
  *
- * This means that `foo$(arg0)` and `foo($(arg0))` are equivalent with respect to Unisynth Optimizer.
- * The former is just a shorthand for the latter.
+ * This means that `foo$(arg0)` and `foo($(arg0))` are equivalent with respect to Unisynth
+ * Optimizer. The former is just a shorthand for the latter.
  *
  * For example, these function calls are equivalent:
  *

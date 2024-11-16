@@ -28,7 +28,9 @@ test.describe("loaders", () => {
 
       const submit = page.locator("#form-submit");
 
-      await expect(title).toHaveText("Loaders - Unisynth", { useInnerText: true });
+      await expect(title).toHaveText("Loaders - Unisynth", {
+        useInnerText: true,
+      });
       await expect(date).toHaveText("date: 2021-01-01T00:00:00.000Z");
       await expect(slow).toHaveText("slow: 123");
       await expect(nestedDate).toHaveText("date: 2021-01-01T00:00:00.000Z");
@@ -52,7 +54,9 @@ test.describe("loaders", () => {
       await expect(nestedName).toHaveText("name: Manuel");
 
       await page.locator("#link-stuff").click();
-      await expect(title).toHaveText("Loaders - Unisynth", { useInnerText: true });
+      await expect(title).toHaveText("Loaders - Unisynth", {
+        useInnerText: true,
+      });
       await expect(date).toHaveText("date: 2021-01-01T00:00:00.000Z");
       await expect(slow).toHaveText("slow: 123");
       await expect(nestedDate).toHaveText("date: 2021-01-01T00:00:00.000Z");
@@ -60,7 +64,9 @@ test.describe("loaders", () => {
       await expect(nestedName).toHaveText("name: stuff");
 
       await page.locator("#link-welcome").click();
-      await expect(title).toHaveText("Loaders - Unisynth", { useInnerText: true });
+      await expect(title).toHaveText("Loaders - Unisynth", {
+        useInnerText: true,
+      });
       await expect(date).toHaveText("date: 2021-01-01T00:00:00.000Z");
       await expect(slow).toHaveText("slow: 123");
       await expect(nestedDate).toHaveText("date: 2021-01-01T00:00:00.000Z");

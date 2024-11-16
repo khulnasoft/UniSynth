@@ -437,7 +437,12 @@ const UnisynthCityProvider = /* @__PURE__ */ componentQrl(
           navPath2.value = path;
           if (isBrowser) {
             loadClientData(resolvedURL, _getContextElement());
-            loadRoute(unisynthCity.routes, unisynthCity.menus, unisynthCity.cacheModules, resolvedURL.pathname);
+            loadRoute(
+              unisynthCity.routes,
+              unisynthCity.menus,
+              unisynthCity.cacheModules,
+              resolvedURL.pathname
+            );
           }
           actionState2.value = void 0;
           routeLocation2.isNavigating = true;

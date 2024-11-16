@@ -18,7 +18,10 @@ export default component$(() => {
         </Link>
       </div>
       <div>
-        <Link id="issue2890-link-2" href="/unisynthcity-test/issue2890/b?query=321">
+        <Link
+          id="issue2890-link-2"
+          href="/unisynthcity-test/issue2890/b?query=321"
+        >
           /b?query=321
         </Link>
       </div>

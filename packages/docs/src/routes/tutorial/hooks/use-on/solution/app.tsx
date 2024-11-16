@@ -1,4 +1,11 @@
-import { component$, useOnDocument, $, useStore, useOn, useOnWindow } from '@khulnasoft.com/unisynth';
+import {
+  component$,
+  useOnDocument,
+  $,
+  useStore,
+  useOn,
+  useOnWindow,
+} from '@khulnasoft.com/unisynth';
 
 export default component$(() => {
   const store = useStore(

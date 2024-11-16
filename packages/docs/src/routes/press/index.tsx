@@ -142,10 +142,22 @@ export default component$(() => {
 
   const unisynthColors = [
     { color: 'var(--unisynth-blue)', name: 'Unisynth Blue', hexCode: color.unisynthBlue },
-    { color: 'var(--unisynth-dark-blue)', name: 'Unisynth Dark Blue', hexCode: color.unisynthDarkBlue },
-    { color: 'var(--unisynth-light-blue)', name: 'Unisynth Light Blue', hexCode: color.unisynthLightBlue },
+    {
+      color: 'var(--unisynth-dark-blue)',
+      name: 'Unisynth Dark Blue',
+      hexCode: color.unisynthDarkBlue,
+    },
+    {
+      color: 'var(--unisynth-light-blue)',
+      name: 'Unisynth Light Blue',
+      hexCode: color.unisynthLightBlue,
+    },
     { color: 'var(--unisynth-purple)', name: 'Unisynth Purple', hexCode: color.unisynthPurple },
-    { color: 'var(--unisynth-dark-purple)', name: 'Unisynth Dark Purple', hexCode: color.unisynthDarkPurple },
+    {
+      color: 'var(--unisynth-dark-purple)',
+      name: 'Unisynth Dark Purple',
+      hexCode: color.unisynthDarkPurple,
+    },
     {
       color: 'var(--unisynth-dark-purple-bg)',
       name: 'Unisynth Dark Purple Bg',

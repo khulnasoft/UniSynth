@@ -16,7 +16,9 @@ export async function validatePlugin(opts: NormalizedPluginOptions) {
   try {
     const s = await fs.promises.stat(opts.routesDir);
     if (!s.isDirectory()) {
-      throw new Error(`unisynthCity plugin "routesDir" option must be a directory: ${opts.routesDir}`);
+      throw new Error(
+        `unisynthCity plugin "routesDir" option must be a directory: ${opts.routesDir}`
+      );
     }
   } catch (e) {
     throw new Error(`unisynthCity plugin "routesDir" not found: ${e}`);

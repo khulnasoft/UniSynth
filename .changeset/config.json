@@ -2,7 +2,14 @@
   "$schema": "https://unpkg.com/@changesets/config@3.0.1/schema.json",
   "changelog": ["./changelog-github-custom.cjs", { "repo": "khulnasoft/unisynth" }],
   "commit": false,
-  "fixed": [["@khulnasoft.com/unisynth", "@khulnasoft.com/unisynth-city", "eslint-plugin-unisynth", "create-unisynth"]],
+  "fixed": [
+    [
+      "@khulnasoft.com/unisynth",
+      "@khulnasoft.com/unisynth-city",
+      "eslint-plugin-unisynth",
+      "create-unisynth"
+    ]
+  ],
   "linked": [],
   "access": "public",
   "baseBranch": "main",

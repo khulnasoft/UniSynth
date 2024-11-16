@@ -275,14 +275,12 @@ describe('resolveId', () => {
   });
   test('libs', async () => {
     const plugin = await mockPlugin();
-    expect(await plugin.resolveId(null!, '@khulnasoft.com/unisynth/build', undefined)).toHaveProperty(
-      'id',
-      '@khulnasoft.com/unisynth/build'
-    );
-    expect(await plugin.resolveId(null!, '/@khulnasoft.com/unisynth/build', undefined)).toHaveProperty(
-      'id',
-      '@khulnasoft.com/unisynth/build'
-    );
+    expect(
+      await plugin.resolveId(null!, '@khulnasoft.com/unisynth/build', undefined)
+    ).toHaveProperty('id', '@khulnasoft.com/unisynth/build');
+    expect(
+      await plugin.resolveId(null!, '/@khulnasoft.com/unisynth/build', undefined)
+    ).toHaveProperty('id', '@khulnasoft.com/unisynth/build');
     expect(await plugin.resolveId(null!, '@unisynth-client-manifest', '/foo/bar')).toHaveProperty(
       'id',
       '@unisynth-client-manifest'

@@ -1,6 +1,6 @@
 ---
 source: packages/unisynth/src/optimizer/core/src/test.rs
-assertion_line: 327
+assertion_line: 328
 expression: output
 ---
 ==INPUT==
@@ -42,8 +42,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "component$",
   "captures": false,
   "loc": [
-    88,
-    205
+    96,
+    213
   ]
 }
 */
@@ -55,7 +55,7 @@ import { $, component$, useStore } from '@khulnasoft.com/unisynth';
 const Header = /*#__PURE__*/ componentQrl(/*#__PURE__*/ qrl(()=>import("./test.tsx_Header_component_J4uyIhaBNR4"), "Header_component_J4uyIhaBNR4"));
 
 
-Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";;AACA,SAAS,CAAC,EAAE,UAAU,EAAE,QAAQ,QAAQ,mBAAmB;AAC3D,MAAM,uBAAS\"}")
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";;AACA,SAAS,CAAC,EAAE,UAAU,EAAE,QAAQ,QAAQ,2BAA2B;AACnE,MAAM,uBAAS\"}")
 == DIAGNOSTICS ==
 
 []

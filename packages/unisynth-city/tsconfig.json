@@ -24,7 +24,9 @@
       "@khulnasoft.com/unisynth-city/adapters/static/vite": [
         "packages/unisynth-city/src/adapters/static/vite/index.ts"
       ],
-      "@khulnasoft.com/unisynth-city/middleware/azure-swa": ["packages/unisynth-city/src/middleware/azure-swa"],
+      "@khulnasoft.com/unisynth-city/middleware/azure-swa": [
+        "packages/unisynth-city/src/middleware/azure-swa"
+      ],
       "@khulnasoft.com/unisynth-city/middleware/aws-lambda": [
         "packages/unisynth-city/src/middleware/aws-lambda"
       ],
@@ -34,7 +36,9 @@
       "@khulnasoft.com/unisynth-city/middleware/request-handler": [
         "packages/unisynth-city/src/middleware/request-handler"
       ],
-      "@khulnasoft.com/unisynth-city/middleware/node": ["packages/unisynth-city/src/middleware/node"],
+      "@khulnasoft.com/unisynth-city/middleware/node": [
+        "packages/unisynth-city/src/middleware/node"
+      ],
       "@khulnasoft.com/unisynth-city/middleware/netlify-edge": [
         "packages/unisynth-city/src/middleware/netlify-edge"
       ],
@@ -45,7 +49,9 @@
       "@unisynth-city-sw-register-build": [
         "packages/unisynth-city/src/buildtime/runtime-generation/sw-register-build.ts"
       ],
-      "@unisynth-city-sw-register": ["packages/unisynth-city/src/runtime/src/sw-register-runtime.ts"],
+      "@unisynth-city-sw-register": [
+        "packages/unisynth-city/src/runtime/src/sw-register-runtime.ts"
+      ],
       "@unisynth-city-not-found-paths": [
         "packages/unisynth-city/src/middleware/request-handler/generated/not-found-paths.ts"
       ],

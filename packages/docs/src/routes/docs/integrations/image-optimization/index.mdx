@@ -202,7 +202,7 @@ export default component$(() => {
 ```
 </CodeSandbox>
 
-> **Note:** qwik-image and unpic are not a CDN and does not host your images. They work with existing image optimization CDNs. We suggest using some of the popular CDNs:
+> **Note:** unisynth-image and unpic are not a CDN and does not host your images. They work with existing image optimization CDNs. We suggest using some of the popular CDNs:
 > - Cloudinary
 > - Cloudflare
 > - Bunny.net
@@ -215,7 +215,7 @@ export default component$(() => {
 > - Storyblok
 > - WordPress.com and Jetpack Site Accelerator
 
-## `qwik-image`
+## `unisynth-image`
 
 Performant images with automatic optimization.
 
@@ -223,36 +223,36 @@ Performant images with automatic optimization.
 <PackageManagerTabs>
 <span q:slot="pnpm">
 ```shell
-pnpm install qwik-image
+pnpm install unisynth-image
 ```
 </span>
 <span q:slot="npm">
 ```shell
-npm install qwik-image
+npm install unisynth-image
 ```
 </span>
 <span q:slot="yarn">
 ```shell
-yarn add qwik-image
+yarn add unisynth-image
 ```
 </span>
 <span q:slot="bun">
 ```shell
-bun install qwik-image
+bun install unisynth-image
 ```
 </span>
 </PackageManagerTabs>
 
 > This is a pluggable component so devs could connect different image loaders to it (like builder.io or other CDNs)
 
-<CodeSandbox src="/src/routes/demo/integration/img/qwik-image/index.tsx" style={{ height: '40em' }}>
+<CodeSandbox src="/src/routes/demo/integration/img/unisynth-image/index.tsx" style={{ height: '40em' }}>
 ```tsx
 import { $, component$ } from '@khulnasoft.com/unisynth';
 import {
   Image,
   type ImageTransformerProps,
   useImageProvider,
-} from 'qwik-image';
+} from 'unisynth-image';
 
 export default component$(() => {
   const imageTransformer$ = $(
@@ -286,6 +286,6 @@ export default component$(() => {
 ```
 </CodeSandbox>
 
-Here is the Github repository with detailed instructions on usage and customizations: [unisynthifiers/qwik-image](https://github.com/unisynthifiers/qwik-image)
+Here is the Github repository with detailed instructions on usage and customizations: [unisynthifiers/unisynth-image](https://github.com/unisynthifiers/unisynth-image)
 
 

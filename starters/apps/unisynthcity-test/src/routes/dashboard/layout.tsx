@@ -1,5 +1,8 @@
 import { component$, Slot, useStyles$ } from "@khulnasoft.com/unisynth";
-import type { RequestHandler, DocumentHead } from "@khulnasoft.com/unisynth-city";
+import type {
+  RequestHandler,
+  DocumentHead,
+} from "@khulnasoft.com/unisynth-city";
 import { isUserAuthenticated } from "../../auth/auth";
 import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";

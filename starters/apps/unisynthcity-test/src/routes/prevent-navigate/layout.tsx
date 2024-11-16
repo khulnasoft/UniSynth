@@ -1,5 +1,9 @@
 import { Slot, component$, useSignal } from "@khulnasoft.com/unisynth";
-import { Link, useNavigate, usePreventNavigate$ } from "@khulnasoft.com/unisynth-city";
+import {
+  Link,
+  useNavigate,
+  usePreventNavigate$,
+} from "@khulnasoft.com/unisynth-city";
 
 export default component$(() => {
   const okToNavigate = useSignal(true);

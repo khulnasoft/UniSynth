@@ -92,7 +92,8 @@ export type TransformProps<PROPS extends Record<any, any>> = {
   [K in keyof PROPS as K extends `on${string}` ? `${K}$` : K]: PROPS[K];
 };
 
-export type UnisynthifyProps<PROPS extends Record<any, any>> = TransformProps<PROPS> & UnisynthifyBase;
+export type UnisynthifyProps<PROPS extends Record<any, any>> = TransformProps<PROPS> &
+  UnisynthifyBase;
 
 export interface UnisynthifyOptions {
   tagName?: string;

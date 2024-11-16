@@ -17,7 +17,10 @@ import {
   readFileSync,
 } from "node:fs";
 import type { UnisynthManifest } from "@khulnasoft.com/unisynth/optimizer";
-import type { Render, RenderToStreamOptions } from "@khulnasoft.com/unisynth/server";
+import type {
+  Render,
+  RenderToStreamOptions,
+} from "@khulnasoft.com/unisynth/server";
 import type { PackageJSON } from "../scripts/util";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { getErrorHtml } from "../packages/unisynth-city/src/middleware/request-handler/error-handler";
@@ -46,7 +49,12 @@ const appNames = readdirSync(startersAppsDir).filter(
 
 const rootDir = resolve(__dirname, "..");
 const packagesDir = resolve(rootDir, "packages");
-const unisynthCityMjs = join(packagesDir, "unisynth-city", "lib", "index.unisynth.mjs");
+const unisynthCityMjs = join(
+  packagesDir,
+  "unisynth-city",
+  "lib",
+  "index.unisynth.mjs",
+);
 
 /** Used when unisynth-city server is enabled */
 const unisynthCityVirtualEntry = "@city-ssr-entry";
@@ -136,7 +144,10 @@ async function buildApp(
         if (id.endsWith(unisynthCityVirtualEntry)) {
           return unisynthCityVirtualEntry;
         }
-        if (id === unisynthCityStaticPaths || id === unisynthCityNotFoundPaths) {
+        if (
+          id === unisynthCityStaticPaths ||
+          id === unisynthCityNotFoundPaths
+        ) {
           return "./" + id;
         }
       },

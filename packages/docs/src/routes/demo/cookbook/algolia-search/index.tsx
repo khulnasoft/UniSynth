@@ -1,4 +1,9 @@
-import { $, component$, useSignal, useStylesScoped$ } from '@khulnasoft.com/unisynth';
+import {
+  $,
+  component$,
+  useSignal,
+  useStylesScoped$,
+} from '@khulnasoft.com/unisynth';
 
 type AlgoliaResult = {
   hits: {

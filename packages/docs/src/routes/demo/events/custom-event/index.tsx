@@ -1,4 +1,9 @@
-import { component$, type QRL, Slot, useStore } from '@khulnasoft.com/unisynth';
+import {
+  component$,
+  type QRL,
+  Slot,
+  useStore,
+} from '@khulnasoft.com/unisynth';
 
 export default component$(() => {
   return (

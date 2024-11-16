@@ -1,4 +1,10 @@
-import { component$, useStyles$, type QRL, useVisibleTask$, useSignal } from '@khulnasoft.com/unisynth';
+import {
+  component$,
+  useStyles$,
+  type QRL,
+  useVisibleTask$,
+  useSignal,
+} from '@khulnasoft.com/unisynth';
 import prismjs from 'prismjs';
 // Set to global so that prism language plugins can find it.
 const _global =

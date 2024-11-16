@@ -1,4 +1,9 @@
-import { $, component$, useOnDocument, useStore } from '@khulnasoft.com/unisynth';
+import {
+  $,
+  component$,
+  useOnDocument,
+  useStore,
+} from '@khulnasoft.com/unisynth';
 
 // Assume reusable use method that does not have access to JSX
 // but needs to register event handlers.

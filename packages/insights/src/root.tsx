@@ -1,6 +1,10 @@
 import './global.css';
 import { component$ } from '@khulnasoft.com/unisynth';
-import { UnisynthCityProvider, RouterOutlet, ServiceWorkerRegister } from '@khulnasoft.com/unisynth-city';
+import {
+  UnisynthCityProvider,
+  RouterOutlet,
+  ServiceWorkerRegister,
+} from '@khulnasoft.com/unisynth-city';
 import { Insights } from '@khulnasoft.com/unisynth-labs';
 import { RouterHead } from './components/router-head/router-head';
 export default component$(() => {

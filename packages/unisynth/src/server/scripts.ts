@@ -1,9 +1,10 @@
-const UNISYNTH_LOADER_DEFAULT_MINIFIED: string = (globalThis as any).UNISYNTH_LOADER_DEFAULT_MINIFIED;
+const UNISYNTH_LOADER_DEFAULT_MINIFIED: string = (globalThis as any)
+  .UNISYNTH_LOADER_DEFAULT_MINIFIED;
 const UNISYNTH_LOADER_DEFAULT_DEBUG: string = (globalThis as any).UNISYNTH_LOADER_DEFAULT_DEBUG;
 
 /**
- * Provides the `unisynthloader.js` file as a string. Useful for tooling to inline the unisynthloader script
- * into HTML.
+ * Provides the `unisynthloader.js` file as a string. Useful for tooling to inline the
+ * unisynthloader script into HTML.
  *
  * @public
  */
@@ -16,8 +17,8 @@ const UNISYNTH_PREFETCH_MINIFIED: string = (globalThis as any).UNISYNTH_PREFETCH
 const UNISYNTH_PREFETCH_DEBUG: string = (globalThis as any).UNISYNTH_PREFETCH_DEBUG;
 
 /**
- * Provides the `unisynth-prefetch-service-worker.js` file as a string. Useful for tooling to inline the
- * unisynth-prefetch-service-worker script into HTML.
+ * Provides the `unisynth-prefetch-service-worker.js` file as a string. Useful for tooling to inline
+ * the unisynth-prefetch-service-worker script into HTML.
  *
  * @public
  */

@@ -1,4 +1,9 @@
-import { component$, createContextId, useContextProvider, useStore } from '@khulnasoft.com/unisynth';
+import {
+  component$,
+  createContextId,
+  useContextProvider,
+  useStore,
+} from '@khulnasoft.com/unisynth';
 
 interface TodosStore {
   items: string[];

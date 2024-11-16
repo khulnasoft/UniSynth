@@ -82,7 +82,9 @@ const _loadDependencies = async (replOptions: ReplInputOptions) => {
   if (!isSameUnisynthVersion(self.unisynthOptimizer?.versions.unisynth)) {
     await exec(UNISYNTH_PKG_NAME, '/optimizer.cjs');
     if (self.unisynthOptimizer) {
-      console.debug(`Loaded @khulnasoft.com/unisynth/optimizer: ${self.unisynthOptimizer.versions.unisynth}`);
+      console.debug(
+        `Loaded @khulnasoft.com/unisynth/optimizer: ${self.unisynthOptimizer.versions.unisynth}`
+      );
     } else {
       throw new Error(`Unable to load @khulnasoft.com/unisynth/optimizer ${unisynthVersion}`);
     }
@@ -91,7 +93,9 @@ const _loadDependencies = async (replOptions: ReplInputOptions) => {
   if (!isSameUnisynthVersion(self.unisynthServer?.versions.unisynth)) {
     await exec(UNISYNTH_PKG_NAME, '/server.cjs');
     if (self.unisynthServer) {
-      console.debug(`Loaded @khulnasoft.com/unisynth/server: ${self.unisynthServer.versions.unisynth}`);
+      console.debug(
+        `Loaded @khulnasoft.com/unisynth/server: ${self.unisynthServer.versions.unisynth}`
+      );
     } else {
       throw new Error(`Unable to load @khulnasoft.com/unisynth/server ${unisynthVersion}`);
     }

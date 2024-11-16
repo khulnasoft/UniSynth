@@ -114,7 +114,9 @@ export default component$(() => {
                 >
                   <ImgUnisynthNewsletter />
                 </div>
-                <div class="text-2xl font-bold">Unisynthly Newsletter - Weekly news about Unisynth</div>
+                <div class="text-2xl font-bold">
+                  Unisynthly Newsletter - Weekly news about Unisynth
+                </div>
               </div>
             </a>
           </section>

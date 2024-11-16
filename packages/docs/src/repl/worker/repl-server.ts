@@ -137,13 +137,21 @@ export const initReplServer = (win: Window, doc: Document, nav: Navigator) => {
               if (ev?.target?.state == 'activated') {
                 replReady();
               } else {
-                console.debug('Unisynth REPL server "%s" statechange: %s', clientId, ev?.target?.state);
+                console.debug(
+                  'Unisynth REPL server "%s" statechange: %s',
+                  clientId,
+                  ev?.target?.state
+                );
               }
             });
           }
         },
         (err) => {
-          console.error('Unisynth REPL Server "%s" service worker registration failed:', clientId, err);
+          console.error(
+            'Unisynth REPL Server "%s" service worker registration failed:',
+            clientId,
+            err
+          );
         }
       )
       .catch((e) => console.error('REPL service worker error', e));

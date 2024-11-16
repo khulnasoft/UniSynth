@@ -41,7 +41,11 @@ export default component$(() => {
           )}
         </li>
         <li>
-          <Link href="/unisynthcity-test/mit/" target="_self" data-test-link="mit">
+          <Link
+            href="/unisynthcity-test/mit/"
+            target="_self"
+            data-test-link="mit"
+          >
             {/* Should not use include preventdefault:client */}
             MIT
           </Link>
