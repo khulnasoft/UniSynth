@@ -1,6 +1,6 @@
 ---
 source: packages/unisynth/src/optimizer/core/src/test.rs
-assertion_line: 347
+assertion_line: 348
 expression: output
 ---
 ==INPUT==
@@ -49,7 +49,7 @@ export const STEP = 1;
 export const App = /*#__PURE__*/ componentQrl(/*#__PURE__*/ qrl(()=>import("./test.tsx_App_component_ckEPmXZlub0"), "App_component_ckEPmXZlub0"));
 
 
-Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";;AACA,SAAwB,QAAQ,QAAQ,mBAAmB;AAC3D,OAAO,MAAM,aAAa;IACtB,OAAO,SAAS;QAAC,OAAO;IAAC;AAC7B,EAAC;AAED,OAAO,MAAM,OAAO,EAAE;AAEtB,OAAO,MAAM,oBAAM,iHAoBjB\"}")
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";;AACA,SAAwB,QAAQ,QAAQ,2BAA2B;AACnE,OAAO,MAAM,aAAa;IACtB,OAAO,SAAS;QAAC,OAAO;IAAC;AAC7B,EAAC;AAED,OAAO,MAAM,OAAO,EAAE;AAEtB,OAAO,MAAM,oBAAM,iHAoBjB\"}")
 ============================= test.tsx_App_component_div_onClick_1CGetmFZx0g.js (ENTRY POINT)==
 
 import { useLexicalScope } from "@khulnasoft.com/unisynth";
@@ -75,8 +75,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "onClick$",
   "captures": true,
   "loc": [
-    366,
-    391
+    374,
+    399
   ]
 }
 */
@@ -106,8 +106,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "onClick$",
   "captures": true,
   "loc": [
-    522,
-    590
+    530,
+    598
   ]
 }
 */
@@ -162,8 +162,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "component$",
   "captures": false,
   "loc": [
-    186,
-    708
+    194,
+    716
   ]
 }
 */

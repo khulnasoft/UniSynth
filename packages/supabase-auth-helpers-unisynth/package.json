@@ -8,9 +8,9 @@
     "@supabase/auth-helpers-shared": "^0.6.3"
   },
   "devDependencies": {
-    "@khulnasoft.com/unisynth": "workspace:^",
-    "@khulnasoft.com/unisynth-city": "workspace:^",
-    "@supabase/supabase-js": "2.44.4"
+    "@khulnasoft.com/unisynth": "1.10.0",
+    "@khulnasoft.com/unisynth-city": "1.10.0",
+    "@supabase/supabase-js": "2.46.1"
   },
   "exports": {
     ".": {

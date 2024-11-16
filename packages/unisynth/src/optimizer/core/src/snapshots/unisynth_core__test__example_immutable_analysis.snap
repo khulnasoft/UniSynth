@@ -1,6 +1,6 @@
 ---
 source: packages/unisynth/src/optimizer/core/src/test.rs
-assertion_line: 2025
+assertion_line: 2026
 expression: output
 ---
 ==INPUT==
@@ -77,8 +77,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "onEvent$",
   "captures": false,
   "loc": [
-    665,
-    691
+    677,
+    703
   ]
 }
 */
@@ -115,8 +115,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "immutable4$",
   "captures": true,
   "loc": [
-    984,
-    1016
+    996,
+    1028
   ]
 }
 */
@@ -143,8 +143,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "transparent$",
   "captures": false,
   "loc": [
-    723,
-    751
+    735,
+    763
   ]
 }
 */
@@ -264,8 +264,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "component$",
   "captures": false,
   "loc": [
-    166,
-    1591
+    174,
+    1607
   ]
 }
 */
@@ -296,8 +296,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "$",
   "captures": true,
   "loc": [
-    267,
-    405
+    275,
+    413
   ]
 }
 */

@@ -1,6 +1,6 @@
 ---
 source: packages/unisynth/src/optimizer/core/src/test.rs
-assertion_line: 1483
+assertion_line: 1484
 expression: output
 ---
 ==INPUT==
@@ -49,8 +49,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/src/components/mongo/404.
   "ctxName": "component$",
   "captures": false,
   "loc": [
-    76,
-    172
+    84,
+    180
   ]
 }
 */
@@ -75,8 +75,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/src/components/mongo/404.
   "ctxName": "onClick$",
   "captures": false,
   "loc": [
-    120,
-    146
+    128,
+    154
   ]
 }
 */

@@ -1,6 +1,6 @@
 ---
 source: packages/unisynth/src/optimizer/core/src/test.rs
-assertion_line: 3541
+assertion_line: 3549
 expression: output
 ---
 ==INPUT==
@@ -59,8 +59,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "component$",
   "captures": false,
   "loc": [
-    87,
-    285
+    95,
+    293
   ]
 }
 */
@@ -89,8 +89,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "onClick$",
   "captures": true,
   "loc": [
-    217,
-    236
+    225,
+    244
   ]
 }
 */

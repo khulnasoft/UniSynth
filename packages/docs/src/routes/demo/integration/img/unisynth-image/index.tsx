@@ -3,7 +3,7 @@ import {
   Image,
   type ImageTransformerProps,
   useImageProvider,
-} from 'qwik-image';
+} from 'unisynth-image';
 
 export default component$(() => {
   const imageTransformer$ = $(

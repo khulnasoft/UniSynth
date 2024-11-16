@@ -1,6 +1,6 @@
 ---
 source: packages/unisynth/src/optimizer/core/src/test.rs
-assertion_line: 494
+assertion_line: 495
 expression: output
 ---
 ==INPUT==
@@ -38,8 +38,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "useStyles$",
   "captures": false,
   "loc": [
-    118,
-    129
+    126,
+    137
   ]
 }
 */
@@ -69,8 +69,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "component$",
   "captures": false,
   "loc": [
-    95,
-    182
+    103,
+    190
   ]
 }
 */

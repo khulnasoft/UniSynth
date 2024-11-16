@@ -1,6 +1,6 @@
 ---
 source: packages/unisynth/src/optimizer/core/src/test.rs
-assertion_line: 2187
+assertion_line: 2188
 expression: output
 ---
 ==INPUT==
@@ -22,8 +22,8 @@ import { componentQrl } from "@khulnasoft.com/unisynth";
 import { qrlDEV } from "@khulnasoft.com/unisynth";
 export const App = /*#__PURE__*/ componentQrl(/*#__PURE__*/ qrlDEV(()=>import("./test.tsx_App_component_ckEPmXZlub0"), "App_component_ckEPmXZlub0", {
     file: "/user/unisynth/src/test.tsx",
-    lo: 90,
-    hi: 229,
+    lo: 98,
+    hi: 241,
     displayName: "test.tsx_App_component"
 }));
 
@@ -40,8 +40,8 @@ export const App_component_ckEPmXZlub0 = ()=>{
             class: "stuff",
             onClick$: /*#__PURE__*/ qrlDEV(()=>import("./test.tsx_App_component_Cmp_p_onClick_vuXzfUTkpto"), "App_component_Cmp_p_onClick_vuXzfUTkpto", {
                 file: "/user/unisynth/src/test.tsx",
-                lo: 164,
-                hi: 189,
+                lo: 172,
+                hi: 197,
                 displayName: "test.tsx_App_component_Cmp_p_onClick"
             })
         }, "Hello Unisynth", 3, null, {
@@ -73,8 +73,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "component$",
   "captures": false,
   "loc": [
-    90,
-    229
+    98,
+    241
   ]
 }
 */
@@ -99,8 +99,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "onClick$",
   "captures": false,
   "loc": [
-    164,
-    189
+    172,
+    197
   ]
 }
 */

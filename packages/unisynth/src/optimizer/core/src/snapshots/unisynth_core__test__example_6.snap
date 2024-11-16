@@ -1,6 +1,6 @@
 ---
 source: packages/unisynth/src/optimizer/core/src/test.rs
-assertion_line: 187
+assertion_line: 188
 expression: output
 ---
 ==INPUT==
@@ -31,8 +31,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "$",
   "captures": false,
   "loc": [
-    74,
-    99
+    82,
+    107
   ]
 }
 */

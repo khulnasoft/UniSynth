@@ -18,7 +18,7 @@ import {
 } from './utils';
 import { checkoutQuery, productsQuery } from './query';
 import { checkoutCreateMutation } from './mutation';
-import { useImageProvider, type ImageTransformerProps } from 'qwik-image';
+import { useImageProvider, type ImageTransformerProps } from 'unisynth-image';
 import type { CheckoutQuery, ProductsQuery, CheckoutCreateMutation, ShopApp } from './types';
 
 export const onRequest: RequestHandler = async (request) => {

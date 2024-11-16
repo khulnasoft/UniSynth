@@ -1,6 +1,6 @@
 ---
 source: packages/unisynth/src/optimizer/core/src/test.rs
-assertion_line: 1711
+assertion_line: 1712
 expression: output
 ---
 ==INPUT==
@@ -79,8 +79,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "useTask$",
   "captures": true,
   "loc": [
-    391,
-    514
+    407,
+    530
   ]
 }
 */
@@ -116,8 +116,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "$",
   "captures": false,
   "loc": [
-    602,
-    666
+    618,
+    682
   ]
 }
 */
@@ -144,8 +144,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "client$",
   "captures": false,
   "loc": [
-    695,
-    764
+    711,
+    780
   ]
 }
 */
@@ -194,8 +194,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "component$",
   "captures": false,
   "loc": [
-    289,
-    986
+    305,
+    1002
   ]
 }
 */
@@ -220,8 +220,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "onClick$",
   "captures": false,
   "loc": [
-    908,
-    935
+    924,
+    951
   ]
 }
 */
@@ -249,8 +249,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "useTask$",
   "captures": false,
   "loc": [
-    839,
-    868
+    855,
+    884
   ]
 }
 */

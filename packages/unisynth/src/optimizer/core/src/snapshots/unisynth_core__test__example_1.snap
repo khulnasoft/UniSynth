@@ -1,6 +1,6 @@
 ---
 source: packages/unisynth/src/optimizer/core/src/test.rs
-assertion_line: 90
+assertion_line: 91
 expression: output
 ---
 ==INPUT==
@@ -43,8 +43,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "$",
   "captures": false,
   "loc": [
-    92,
-    175
+    100,
+    183
   ]
 }
 */
@@ -73,8 +73,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "$",
   "captures": false,
   "loc": [
-    211,
-    261
+    219,
+    269
   ]
 }
 */
@@ -86,7 +86,7 @@ export const renderHeader = /*#__PURE__*/ qrl(()=>import("./test.tsx_renderHeade
 const renderHeader = component(/*#__PURE__*/ qrl(()=>import("./test.tsx_renderHeader_component_U6Kkv07sbpQ"), "renderHeader_component_U6Kkv07sbpQ"));
 
 
-Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";AACA,SAAY,SAAS,QAAkB,mBAAmB;AAE1D,OAAO,MAAM,gHAIV;AACH,MAAM,eAAe\"}")
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";AACA,SAAY,SAAS,QAAkB,2BAA2B;AAElE,OAAO,MAAM,gHAIV;AACH,MAAM,eAAe\"}")
 ============================= test.tsx_renderHeader_div_onClick_fV2uzAL99u4.tsx (ENTRY POINT)==
 
 export const renderHeader_div_onClick_fV2uzAL99u4 = (ctx)=>console.log(ctx);
@@ -109,8 +109,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "$",
   "captures": false,
   "loc": [
-    137,
-    162
+    145,
+    170
   ]
 }
 */

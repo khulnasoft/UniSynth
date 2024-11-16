@@ -1,6 +1,6 @@
 ---
 source: packages/unisynth/src/optimizer/core/src/test.rs
-assertion_line: 1368
+assertion_line: 1369
 expression: output
 ---
 ==INPUT==
@@ -62,8 +62,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "useBrowserVisibleTask$",
   "captures": true,
   "loc": [
-    244,
-    403
+    252,
+    411
   ]
 }
 */
@@ -112,8 +112,8 @@ Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],
   "ctxName": "component$",
   "captures": false,
   "loc": [
-    128,
-    475
+    136,
+    483
   ]
 }
 */

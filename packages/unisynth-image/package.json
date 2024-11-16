@@ -1,0 +1,32 @@
+{
+  "name": "unisynth-image",
+  "version": "0.0.15",
+  "description": "The goal is a component to support performant images on the web and automatic image optimization. That will be built as a pluggable component so devs could connect different image loaders to it (like Cloudinary, or builder)",
+  "main": "./index.unisynth.cjs",
+  "unisynth": "./index.unisynth.mjs",
+  "module": "./index.unisynth.mjs",
+  "types": "./index.d.ts",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/khulnasoft/unisynth"
+  },
+  "author": "gioboa",
+  "bugs": {
+    "url": "https://github.com/khulnasoft/unisynth/issues"
+  },
+  "homepage": "https://github.com/khulnasoft/unisynth#readme",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.unisynth.mjs",
+      "require": "./index.unisynth.cjs"
+    }
+  },
+  "dependencies": {},
+  "peerDependencies": {},
+  "keywords": [
+    "unisynth-image",
+    "image optimization"
+  ]
+}
