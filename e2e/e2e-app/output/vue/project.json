@@ -1,4 +1,0 @@
-{
-  "name": "@e2e-app/vue",
-  "implicitDependencies": ["@khulnasoft.com/e2e-app"]
-}

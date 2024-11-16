@@ -1,17 +1,21 @@
 {
-  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
-  "changelog": "@changesets/cli/changelog",
+  "$schema": "https://unpkg.com/@changesets/config@3.0.1/schema.json",
+  "changelog": ["./changelog-github-custom.cjs", { "repo": "khulnasoft/unisynth" }],
   "commit": false,
-  "fixed": [],
-  "linked": [["unisynth", "@khulnasoft.com/unisynth-cli"]],
+  "fixed": [["@khulnasoft.com/unisynth", "@khulnasoft.com/unisynth-city", "eslint-plugin-unisynth", "create-unisynth"]],
+  "linked": [],
   "access": "public",
-  "baseBranch": "origin/main",
-  "updateInternalDependencies": "patch",
+  "baseBranch": "main",
+  "updateInternalDependencies": "minor",
   "ignore": [
-    "@khulnasoft.com/unisynth-fiddle",
-    "@khulnasoft.com/e2e-*",
-    "@khulnasoft.com/*example*",
-    "@e2e-app/*",
-    "@khulnasoft.com/e2e*"
-  ]
+    "unisynth-docs",
+    "@khulnasoft.com/unisynth-labs",
+    "insights",
+    "@khulnasoft.com/unisynth-react",
+    "@khulnasoft.com/unisynth-worker",
+    "unisynth-cli-e2e"
+  ],
+  "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
+    "onlyUpdatePeerDependentsWhenOutOfRange": true
+  }
 }

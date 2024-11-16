@@ -1,34 +1,69 @@
-import { component$, Slot } from '@builder.io/qwik';
-import { useLocation, useNavigate } from '@builder.io/qwik-city';
-import { RightSidebar } from './right-sidebar';
-import Sidebar from './sidebar';
+import { component$, Slot, useContext, useStyles$ } from '@khulnasoft.com/unisynth';
+import { useContent, useLocation } from '@khulnasoft.com/unisynth-city';
+import { ContentNav } from '../../components/content-nav/content-nav';
+import Contributors from '../../components/contributors';
+import { Footer } from '../../components/footer/footer';
+import { Header } from '../../components/header/header';
+import { OnThisPage } from '../../components/on-this-page/on-this-page';
+import { createBreadcrumbs, SideBar } from '../../components/sidebar/sidebar';
+import { GlobalStore } from '../../context';
+import styles from './docs.css?inline';
+
+// eslint-disable-next-line
+export { useMarkdownItems } from '../../components/sidebar/sidebar';
 
 export default component$(() => {
-  const nav = useNavigate();
-  const location = useLocation();
+  useStyles$(styles);
+  const loc = useLocation();
+  // hide OnThisPage on docs overview page; only show on sub-pages
+  const hasOnThisPage = loc.url.pathname !== '/docs/';
+  const { menu } = useContent();
+  const globalStore = useContext(GlobalStore);
+  const { url } = useLocation();
+  const breadcrumbs = createBreadcrumbs(menu, url.pathname);
 
   return (
-    <div class="flex items-start max-md:flex-col gap-8 max-md:mt-4">
-      <div class="border-primary border-r min-h-screen max-md:min-h-0 border-opacity-50 max-md:border-r-0 sticky top-20 max-md:top-[calc(4rem-2px)] max-md:self-stretch max-md:-m-4 max-md:px-4 max-md:bg-purple-990 max-md:bg-opacity-80 max-md:backdrop-blur max-md:!z-50">
-        <Sidebar class="mt-24 max-md:mt-0" />
-      </div>
-      <div
-        onClick$={(e, el) => {
-          const closestHeading = (e.target as HTMLElement)?.closest('h1, h2, h3, h4, h5, h6');
-          if (closestHeading?.id) {
-            const url = new URL(window.location.href);
-            url.hash = closestHeading.id;
-            nav(url.href);
-          }
-        }}
-        class="grow flex flex-col xl:flex-row p-8 max-md:px-4 max-md:max-w-full mt-8 max-md:mt-0 mb-12 max-md:mb-0 max-md:overflow-x-hidden min-w-0"
-      >
-        <div class="prose prose-invert lg:prose-xl max-lg:max-w-full max-w-none min-w-0">
-          <Slot />
-        </div>
-        <div class="w-[240px] shrink-0 ml-12 max-xl:ml-0 max-xl:mt-8 max-xl:static max-xl:top-none max-xl:w-full max-xl:border-t border-primary border-opacity-50">
-          <RightSidebar key={location.url.pathname} class="mt-4 max-md:mt-4 sticky top-36" />
-        </div>
+    <div class="docs fixed-header">
+      <Header />
+      <nav class="breadcrumbs">
+        <button
+          onClick$={() => (globalStore.sideMenuOpen = !globalStore.sideMenuOpen)}
+          type="button"
+          title="Toggle left menu"
+          aria-label="Toggle left menu"
+        >
+          <span class="sr-only">Navigation</span>
+          <svg width="24" height="24">
+            <path
+              d="M5 6h14M5 12h14M5 18h14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+        {breadcrumbs.length > 0 ? (
+          <ol>
+            {breadcrumbs.map((b, key) => (
+              <li key={key}>{b.text}</li>
+            ))}
+          </ol>
+        ) : null}
+      </nav>
+      <div class="flex gap-12 xl:gap-20 items-stretch content-container">
+        <SideBar />
+        <main class="contents">
+          <div class="docs-container">
+            <article>
+              <Slot />
+              <Contributors />
+            </article>
+            <ContentNav />
+            <Footer />
+          </div>
+          {hasOnThisPage && <OnThisPage />}
+        </main>
       </div>
     </div>
   );

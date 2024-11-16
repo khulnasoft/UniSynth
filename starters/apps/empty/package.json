@@ -1,0 +1,13 @@
+{
+  "name": "unisynth-empty-starter",
+  "description": "Blank project with routing included",
+  "type": "module",
+  "__unisynth__": {
+    "priority": 1,
+    "displayName": "Empty App (Unisynth City + Unisynth)",
+    "unisynthCity": true,
+    "docs": [
+      "https://unisynth.dev/docs/getting-started/"
+    ]
+  }
+}

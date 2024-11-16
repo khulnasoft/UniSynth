@@ -1,0 +1,50 @@
+{
+  "name": "supabase-auth-helpers-unisynth",
+  "description": "A collection of framework specific Auth utilities for working with Supabase.",
+  "version": "0.0.3",
+  "author": "Unisynth Team",
+  "bugs": "https://github.com/khulnasoft/unisynth/issues",
+  "dependencies": {
+    "@supabase/auth-helpers-shared": "^0.6.3"
+  },
+  "devDependencies": {
+    "@khulnasoft.com/unisynth": "workspace:^",
+    "@khulnasoft.com/unisynth-city": "workspace:^",
+    "@supabase/supabase-js": "2.44.4"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "import": "./lib/index.unisynth.mjs",
+      "require": "./lib/index.unisynth.cjs"
+    }
+  },
+  "files": [
+    "lib"
+  ],
+  "homepage": "https://unisynth.dev/",
+  "keywords": [
+    "Auth",
+    "Unisynth",
+    "Supabase"
+  ],
+  "license": "MIT",
+  "main": "./lib/index.unisynth.mjs",
+  "peerDependencies": {
+    "@supabase/supabase-js": "^2.44.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "unisynth": "./lib/index.unisynth.mjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/khulnasoft/unisynth.git",
+    "directory": "packages/unisynth-auth"
+  },
+  "scripts": {
+    "build": "vite build --mode lib"
+  },
+  "type": "module",
+  "types": "./lib/types/index.d.ts"
+}

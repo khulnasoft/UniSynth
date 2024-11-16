@@ -1,0 +1,13 @@
+{
+  "name": "unisynth-basic-starter",
+  "description": "Demo app with sample routes",
+  "type": "module",
+  "__unisynth__": {
+    "priority": 2,
+    "displayName": "Playground App (Unisynth City + Unisynth)",
+    "unisynthCity": true,
+    "docs": [
+      "https://unisynth.dev/docs/getting-started/"
+    ]
+  }
+}

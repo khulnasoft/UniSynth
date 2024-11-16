@@ -1,0 +1,48 @@
+{
+  "id": "unisynth-city-middleware-firebase",
+  "package": "@khulnasoft.com/unisynth-city/middleware/firebase",
+  "members": [
+    {
+      "name": "createUnisynthCity",
+      "id": "createunisynthcity",
+      "hierarchy": [
+        {
+          "name": "createUnisynthCity",
+          "id": "createunisynthcity"
+        }
+      ],
+      "kind": "Function",
+      "content": "```typescript\nexport declare function createUnisynthCity(opts: UnisynthCityFirebaseOptions): (req: any, res: any) => Promise<void>;\n```\n\n\n<table><thead><tr><th>\n\nParameter\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\nopts\n\n\n</td><td>\n\n[UnisynthCityFirebaseOptions](#unisynthcityfirebaseoptions)\n\n\n</td><td>\n\n\n</td></tr>\n</tbody></table>\n**Returns:**\n\n(req: any, res: any) =&gt; Promise&lt;void&gt;",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth-city/src/middleware/firebase/index.ts",
+      "mdFile": "unisynth-city.createunisynthcity.md"
+    },
+    {
+      "name": "PlatformFirebase",
+      "id": "platformfirebase",
+      "hierarchy": [
+        {
+          "name": "PlatformFirebase",
+          "id": "platformfirebase"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface PlatformFirebase extends Object \n```\n**Extends:** Object",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth-city/src/middleware/firebase/index.ts",
+      "mdFile": "unisynth-city.platformfirebase.md"
+    },
+    {
+      "name": "UnisynthCityFirebaseOptions",
+      "id": "unisynthcityfirebaseoptions",
+      "hierarchy": [
+        {
+          "name": "UnisynthCityFirebaseOptions",
+          "id": "unisynthcityfirebaseoptions"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface UnisynthCityFirebaseOptions extends ServerRenderOptions \n```\n**Extends:** ServerRenderOptions",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth-city/src/middleware/firebase/index.ts",
+      "mdFile": "unisynth-city.unisynthcityfirebaseoptions.md"
+    }
+  ]
+}

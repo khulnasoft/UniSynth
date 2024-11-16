@@ -1,0 +1,49 @@
+---
+source: packages/unisynth/src/optimizer/core/src/test.rs
+assertion_line: 1950
+expression: output
+---
+==INPUT==
+
+
+import { component$ } from '@khulnasoft.com/unisynth';
+export const Greeter = component$(() => <div/>)
+
+============================= components/apps/apps.tsx_Greeter_component_0jjOvx068y0.ts (ENTRY POINT)==
+
+import { _jsxQ } from "@khulnasoft.com/unisynth";
+export const Greeter_component_0jjOvx068y0 = ()=>/*#__PURE__*/ _jsxQ("div", null, null, null, 3, "KD_0");
+
+
+Some("{\"version\":3,\"sources\":[\"C:\\\\users\\\\apps/components/apps/apps.tsx\"],\"names\":[],\"mappings\":\";6CAEkC,kBAAM,MAAC\"}")
+/*
+{
+  "origin": "components/apps/apps.tsx",
+  "name": "Greeter_component_0jjOvx068y0",
+  "entry": null,
+  "displayName": "apps.tsx_Greeter_component",
+  "hash": "0jjOvx068y0",
+  "canonicalFilename": "apps.tsx_Greeter_component_0jjOvx068y0",
+  "path": "components/apps",
+  "extension": "ts",
+  "parent": null,
+  "ctxKind": "function",
+  "ctxName": "component$",
+  "captures": false,
+  "loc": [
+    91,
+    103
+  ]
+}
+*/
+============================= components/apps/apps.ts ==
+
+import { componentQrl } from "@khulnasoft.com/unisynth";
+import { qrl } from "@khulnasoft.com/unisynth";
+export const Greeter = /*#__PURE__*/ componentQrl(/*#__PURE__*/ qrl(()=>import("./apps.tsx_Greeter_component_0jjOvx068y0"), "Greeter_component_0jjOvx068y0"));
+
+
+Some("{\"version\":3,\"sources\":[\"C:\\\\users\\\\apps/components/apps/apps.tsx\"],\"names\":[],\"mappings\":\";;AAEA,OAAO,MAAM,wBAAU,yHAAwB\"}")
+== DIAGNOSTICS ==
+
+[]

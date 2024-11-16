@@ -1,0 +1,370 @@
+{
+  "id": "unisynth-server",
+  "package": "@khulnasoft.com/unisynth/server",
+  "members": [
+    {
+      "name": "getUnisynthLoaderScript",
+      "id": "getunisynthloaderscript",
+      "hierarchy": [
+        {
+          "name": "getUnisynthLoaderScript",
+          "id": "getunisynthloaderscript"
+        }
+      ],
+      "kind": "Function",
+      "content": "Provides the `unisynthloader.js` file as a string. Useful for tooling to inline the unisynthloader script into HTML.\n\n\n```typescript\nexport declare function getUnisynthLoaderScript(opts?: {\n    debug?: boolean;\n}): string;\n```\n\n\n<table><thead><tr><th>\n\nParameter\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\nopts\n\n\n</td><td>\n\n{ debug?: boolean; }\n\n\n</td><td>\n\n_(Optional)_\n\n\n</td></tr>\n</tbody></table>\n**Returns:**\n\nstring",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/scripts.ts",
+      "mdFile": "unisynth.getunisynthloaderscript.md"
+    },
+    {
+      "name": "getUnisynthPrefetchWorkerScript",
+      "id": "getunisynthprefetchworkerscript",
+      "hierarchy": [
+        {
+          "name": "getUnisynthPrefetchWorkerScript",
+          "id": "getunisynthprefetchworkerscript"
+        }
+      ],
+      "kind": "Function",
+      "content": "Provides the `unisynth-prefetch-service-worker.js` file as a string. Useful for tooling to inline the unisynth-prefetch-service-worker script into HTML.\n\n\n```typescript\nexport declare function getUnisynthPrefetchWorkerScript(opts?: {\n    debug?: boolean;\n}): string;\n```\n\n\n<table><thead><tr><th>\n\nParameter\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\nopts\n\n\n</td><td>\n\n{ debug?: boolean; }\n\n\n</td><td>\n\n_(Optional)_\n\n\n</td></tr>\n</tbody></table>\n**Returns:**\n\nstring",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/scripts.ts",
+      "mdFile": "unisynth.getunisynthprefetchworkerscript.md"
+    },
+    {
+      "name": "InOrderAuto",
+      "id": "inorderauto",
+      "hierarchy": [
+        {
+          "name": "InOrderAuto",
+          "id": "inorderauto"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface InOrderAuto \n```\n\n\n<table><thead><tr><th>\n\nProperty\n\n\n</th><th>\n\nModifiers\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\n[maximunChunk?](#)\n\n\n</td><td>\n\n\n</td><td>\n\nnumber\n\n\n</td><td>\n\n_(Optional)_\n\n\n</td></tr>\n<tr><td>\n\n[maximunInitialChunk?](#)\n\n\n</td><td>\n\n\n</td><td>\n\nnumber\n\n\n</td><td>\n\n_(Optional)_\n\n\n</td></tr>\n<tr><td>\n\n[strategy](#)\n\n\n</td><td>\n\n\n</td><td>\n\n'auto'\n\n\n</td><td>\n\n\n</td></tr>\n</tbody></table>",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.inorderauto.md"
+    },
+    {
+      "name": "InOrderDisabled",
+      "id": "inorderdisabled",
+      "hierarchy": [
+        {
+          "name": "InOrderDisabled",
+          "id": "inorderdisabled"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface InOrderDisabled \n```\n\n\n<table><thead><tr><th>\n\nProperty\n\n\n</th><th>\n\nModifiers\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\n[strategy](#)\n\n\n</td><td>\n\n\n</td><td>\n\n'disabled'\n\n\n</td><td>\n\n\n</td></tr>\n</tbody></table>",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.inorderdisabled.md"
+    },
+    {
+      "name": "InOrderStreaming",
+      "id": "inorderstreaming",
+      "hierarchy": [
+        {
+          "name": "InOrderStreaming",
+          "id": "inorderstreaming"
+        }
+      ],
+      "kind": "TypeAlias",
+      "content": "```typescript\nexport type InOrderStreaming = InOrderAuto | InOrderDisabled | InOrderDirect;\n```\n**References:** [InOrderAuto](#inorderauto)<!-- -->, [InOrderDisabled](#inorderdisabled)",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.inorderstreaming.md"
+    },
+    {
+      "name": "PrefetchImplementation",
+      "id": "prefetchimplementation",
+      "hierarchy": [
+        {
+          "name": "PrefetchImplementation",
+          "id": "prefetchimplementation"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface PrefetchImplementation \n```\n\n\n<table><thead><tr><th>\n\nProperty\n\n\n</th><th>\n\nModifiers\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\n[linkFetchPriority?](#)\n\n\n</td><td>\n\n\n</td><td>\n\n'auto' \\| 'low' \\| 'high' \\| null\n\n\n</td><td>\n\n_(Optional)_ Value of the `<link fetchpriority=\"...\">` attribute when link is used. Defaults to `null` if links are inserted.\n\n\n</td></tr>\n<tr><td>\n\n[linkInsert?](#)\n\n\n</td><td>\n\n\n</td><td>\n\n'js-append' \\| 'html-append' \\| null\n\n\n</td><td>\n\n_(Optional)_ `js-append`<!-- -->: Use JS runtime to create each `<link>` and append to the body.\n\n`html-append`<!-- -->: Render each `<link>` within html, appended at the end of the body.\n\n\n</td></tr>\n<tr><td>\n\n[linkRel?](#)\n\n\n</td><td>\n\n\n</td><td>\n\n'prefetch' \\| 'preload' \\| 'modulepreload' \\| null\n\n\n</td><td>\n\n_(Optional)_ Value of the `<link rel=\"...\">` attribute when link is used. Defaults to `prefetch` if links are inserted.\n\n\n</td></tr>\n<tr><td>\n\n[prefetchEvent?](#)\n\n\n</td><td>\n\n\n</td><td>\n\n'always' \\| null\n\n\n</td><td>\n\n_(Optional)_ Dispatch a `qprefetch` event with detail data containing the bundles that should be prefetched. The event dispatch script will be inlined into the document's HTML so any listeners of this event should already be ready to handle the event.\n\nThis implementation will inject a script similar to:\n\n```\n<script type=\"module\">\n  document.dispatchEvent(new CustomEvent(\"qprefetch\", { detail:{ \"bundles\": [...] } }))\n</script>\n```\nBy default, the `prefetchEvent` implementation will be set to `always`<!-- -->.\n\n\n</td></tr>\n<tr><td>\n\n[workerFetchInsert?](#)\n\n\n</td><td>\n\n\n</td><td>\n\n'always' \\| 'no-link-support' \\| null\n\n\n</td><td>\n\n_(Optional)_ `always`<!-- -->: Always include the worker fetch JS runtime.\n\n`no-link-support`<!-- -->: Only include the worker fetch JS runtime when the browser doesn't support `<link>` prefetch/preload/modulepreload.\n\n\n</td></tr>\n</tbody></table>",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.prefetchimplementation.md"
+    },
+    {
+      "name": "PrefetchResource",
+      "id": "prefetchresource",
+      "hierarchy": [
+        {
+          "name": "PrefetchResource",
+          "id": "prefetchresource"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface PrefetchResource \n```\n\n\n<table><thead><tr><th>\n\nProperty\n\n\n</th><th>\n\nModifiers\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\n[imports](#)\n\n\n</td><td>\n\n\n</td><td>\n\n[PrefetchResource](#prefetchresource)<!-- -->\\[\\]\n\n\n</td><td>\n\n\n</td></tr>\n<tr><td>\n\n[url](#)\n\n\n</td><td>\n\n\n</td><td>\n\nstring\n\n\n</td><td>\n\n\n</td></tr>\n</tbody></table>",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.prefetchresource.md"
+    },
+    {
+      "name": "PrefetchStrategy",
+      "id": "prefetchstrategy",
+      "hierarchy": [
+        {
+          "name": "PrefetchStrategy",
+          "id": "prefetchstrategy"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface PrefetchStrategy \n```\n\n\n<table><thead><tr><th>\n\nProperty\n\n\n</th><th>\n\nModifiers\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\n[implementation?](#)\n\n\n</td><td>\n\n\n</td><td>\n\n[PrefetchImplementation](#prefetchimplementation)\n\n\n</td><td>\n\n_(Optional)_\n\n\n</td></tr>\n<tr><td>\n\n[symbolsToPrefetch?](#)\n\n\n</td><td>\n\n\n</td><td>\n\n[SymbolsToPrefetch](#symbolstoprefetch)\n\n\n</td><td>\n\n_(Optional)_\n\n\n</td></tr>\n</tbody></table>",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.prefetchstrategy.md"
+    },
+    {
+      "name": "UnisynthLoaderOptions",
+      "id": "unisynthloaderoptions",
+      "hierarchy": [
+        {
+          "name": "UnisynthLoaderOptions",
+          "id": "unisynthloaderoptions"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface UnisynthLoaderOptions \n```\n\n\n<table><thead><tr><th>\n\nProperty\n\n\n</th><th>\n\nModifiers\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\n[include?](#)\n\n\n</td><td>\n\n\n</td><td>\n\n'always' \\| 'never' \\| 'auto'\n\n\n</td><td>\n\n_(Optional)_\n\n\n</td></tr>\n<tr><td>\n\n[position?](#)\n\n\n</td><td>\n\n\n</td><td>\n\n'top' \\| 'bottom'\n\n\n</td><td>\n\n_(Optional)_\n\n\n</td></tr>\n</tbody></table>",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.unisynthloaderoptions.md"
+    },
+    {
+      "name": "Render",
+      "id": "render",
+      "hierarchy": [
+        {
+          "name": "Render",
+          "id": "render"
+        }
+      ],
+      "kind": "TypeAlias",
+      "content": "```typescript\nexport type Render = RenderToString | RenderToStream;\n```\n**References:** [RenderToString](#rendertostring)<!-- -->, [RenderToStream](#rendertostream)",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.render.md"
+    },
+    {
+      "name": "RenderOptions",
+      "id": "renderoptions",
+      "hierarchy": [
+        {
+          "name": "RenderOptions",
+          "id": "renderoptions"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface RenderOptions extends SerializeDocumentOptions \n```\n**Extends:** [SerializeDocumentOptions](#serializedocumentoptions)\n\n\n<table><thead><tr><th>\n\nProperty\n\n\n</th><th>\n\nModifiers\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\n[base?](#)\n\n\n</td><td>\n\n\n</td><td>\n\nstring \\| ((options: [RenderOptions](#renderoptions)<!-- -->) =&gt; string)\n\n\n</td><td>\n\n_(Optional)_ Specifies the root of the JS files of the client build. Setting a base, will cause the render of the `q:base` attribute in the `q:container` element.\n\n\n</td></tr>\n<tr><td>\n\n[containerAttributes?](#)\n\n\n</td><td>\n\n\n</td><td>\n\nRecord&lt;string, string&gt;\n\n\n</td><td>\n\n_(Optional)_\n\n\n</td></tr>\n<tr><td>\n\n[containerTagName?](#)\n\n\n</td><td>\n\n\n</td><td>\n\nstring\n\n\n</td><td>\n\n_(Optional)_ When set, the app is serialized into a fragment. And the returned html is not a complete document. Defaults to `html`\n\n\n</td></tr>\n<tr><td>\n\n[locale?](#)\n\n\n</td><td>\n\n\n</td><td>\n\nstring \\| ((options: [RenderOptions](#renderoptions)<!-- -->) =&gt; string)\n\n\n</td><td>\n\n_(Optional)_ Language to use when rendering the document.\n\n\n</td></tr>\n<tr><td>\n\n[prefetchStrategy?](#)\n\n\n</td><td>\n\n\n</td><td>\n\n[PrefetchStrategy](#prefetchstrategy) \\| null\n\n\n</td><td>\n\n_(Optional)_\n\n\n</td></tr>\n<tr><td>\n\n[unisynthLoader?](#)\n\n\n</td><td>\n\n\n</td><td>\n\n[UnisynthLoaderOptions](#unisynthloaderoptions)\n\n\n</td><td>\n\n_(Optional)_ Specifies if the Unisynth Loader script is added to the document or not.\n\nDefaults to `{ include: true }`<!-- -->.\n\n\n</td></tr>\n<tr><td>\n\n[unisynthPrefetchServiceWorker?](#)\n\n\n</td><td>\n\n\n</td><td>\n\nUnisynthPrefetchServiceWorkerOptions\n\n\n</td><td>\n\n_(Optional)_ Specifies if the Unisynth Prefetch Service Worker script is added to the document or not.\n\nDefaults to `{ include: false }`<!-- -->. NOTE: This may be change in the future.\n\n\n</td></tr>\n<tr><td>\n\n[serverData?](#)\n\n\n</td><td>\n\n\n</td><td>\n\nRecord&lt;string, any&gt;\n\n\n</td><td>\n\n_(Optional)_\n\n\n</td></tr>\n<tr><td>\n\n[snapshot?](#)\n\n\n</td><td>\n\n\n</td><td>\n\nboolean\n\n\n</td><td>\n\n_(Optional)_ Defaults to `true`\n\n\n</td></tr>\n</tbody></table>",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.renderoptions.md"
+    },
+    {
+      "name": "RenderResult",
+      "id": "renderresult",
+      "hierarchy": [
+        {
+          "name": "RenderResult",
+          "id": "renderresult"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface RenderResult \n```\n\n\n<table><thead><tr><th>\n\nProperty\n\n\n</th><th>\n\nModifiers\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\n[isStatic](#)\n\n\n</td><td>\n\n\n</td><td>\n\nboolean\n\n\n</td><td>\n\n\n</td></tr>\n<tr><td>\n\n[manifest?](#)\n\n\n</td><td>\n\n\n</td><td>\n\nUnisynthManifest\n\n\n</td><td>\n\n_(Optional)_\n\n\n</td></tr>\n<tr><td>\n\n[prefetchResources](#)\n\n\n</td><td>\n\n\n</td><td>\n\n[PrefetchResource](#prefetchresource)<!-- -->\\[\\]\n\n\n</td><td>\n\n\n</td></tr>\n<tr><td>\n\n[snapshotResult](#)\n\n\n</td><td>\n\n\n</td><td>\n\nSnapshotResult \\| undefined\n\n\n</td><td>\n\n\n</td></tr>\n</tbody></table>",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.renderresult.md"
+    },
+    {
+      "name": "renderToStream",
+      "id": "rendertostream",
+      "hierarchy": [
+        {
+          "name": "renderToStream",
+          "id": "rendertostream"
+        }
+      ],
+      "kind": "Function",
+      "content": "```typescript\nexport type RenderToStream = (opts: RenderToStreamOptions) => Promise<RenderToStreamResult>;\n```\n**References:** [RenderToStreamOptions](#rendertostreamoptions)<!-- -->, [RenderToStreamResult](#rendertostreamresult)",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/render.ts",
+      "mdFile": "unisynth.rendertostream.md"
+    },
+    {
+      "name": "RenderToStream",
+      "id": "rendertostream",
+      "hierarchy": [
+        {
+          "name": "RenderToStream",
+          "id": "rendertostream"
+        }
+      ],
+      "kind": "TypeAlias",
+      "content": "```typescript\nexport type RenderToStream = (opts: RenderToStreamOptions) => Promise<RenderToStreamResult>;\n```\n**References:** [RenderToStreamOptions](#rendertostreamoptions)<!-- -->, [RenderToStreamResult](#rendertostreamresult)",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.rendertostream.md"
+    },
+    {
+      "name": "RenderToStreamOptions",
+      "id": "rendertostreamoptions",
+      "hierarchy": [
+        {
+          "name": "RenderToStreamOptions",
+          "id": "rendertostreamoptions"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface RenderToStreamOptions extends RenderOptions \n```\n**Extends:** [RenderOptions](#renderoptions)\n\n\n<table><thead><tr><th>\n\nProperty\n\n\n</th><th>\n\nModifiers\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\n[stream](#)\n\n\n</td><td>\n\n\n</td><td>\n\nStreamWriter\n\n\n</td><td>\n\n\n</td></tr>\n<tr><td>\n\n[streaming?](#)\n\n\n</td><td>\n\n\n</td><td>\n\n[StreamingOptions](#streamingoptions)\n\n\n</td><td>\n\n_(Optional)_\n\n\n</td></tr>\n</tbody></table>",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.rendertostreamoptions.md"
+    },
+    {
+      "name": "RenderToStreamResult",
+      "id": "rendertostreamresult",
+      "hierarchy": [
+        {
+          "name": "RenderToStreamResult",
+          "id": "rendertostreamresult"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface RenderToStreamResult extends RenderResult \n```\n**Extends:** [RenderResult](#renderresult)\n\n\n<table><thead><tr><th>\n\nProperty\n\n\n</th><th>\n\nModifiers\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\n[flushes](#)\n\n\n</td><td>\n\n\n</td><td>\n\nnumber\n\n\n</td><td>\n\n\n</td></tr>\n<tr><td>\n\n[size](#)\n\n\n</td><td>\n\n\n</td><td>\n\nnumber\n\n\n</td><td>\n\n\n</td></tr>\n<tr><td>\n\n[timing](#)\n\n\n</td><td>\n\n\n</td><td>\n\n{ firstFlush: number; render: number; snapshot: number; }\n\n\n</td><td>\n\n\n</td></tr>\n</tbody></table>",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.rendertostreamresult.md"
+    },
+    {
+      "name": "renderToString",
+      "id": "rendertostring",
+      "hierarchy": [
+        {
+          "name": "renderToString",
+          "id": "rendertostring"
+        }
+      ],
+      "kind": "Function",
+      "content": "```typescript\nexport type RenderToString = (opts: RenderToStringOptions) => Promise<RenderToStringResult>;\n```\n**References:** [RenderToStringOptions](#rendertostringoptions)<!-- -->, [RenderToStringResult](#rendertostringresult)",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/render.ts",
+      "mdFile": "unisynth.rendertostring.md"
+    },
+    {
+      "name": "RenderToString",
+      "id": "rendertostring",
+      "hierarchy": [
+        {
+          "name": "RenderToString",
+          "id": "rendertostring"
+        }
+      ],
+      "kind": "TypeAlias",
+      "content": "```typescript\nexport type RenderToString = (opts: RenderToStringOptions) => Promise<RenderToStringResult>;\n```\n**References:** [RenderToStringOptions](#rendertostringoptions)<!-- -->, [RenderToStringResult](#rendertostringresult)",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.rendertostring.md"
+    },
+    {
+      "name": "RenderToStringOptions",
+      "id": "rendertostringoptions",
+      "hierarchy": [
+        {
+          "name": "RenderToStringOptions",
+          "id": "rendertostringoptions"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface RenderToStringOptions extends RenderOptions \n```\n**Extends:** [RenderOptions](#renderoptions)",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.rendertostringoptions.md"
+    },
+    {
+      "name": "RenderToStringResult",
+      "id": "rendertostringresult",
+      "hierarchy": [
+        {
+          "name": "RenderToStringResult",
+          "id": "rendertostringresult"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface RenderToStringResult extends RenderResult \n```\n**Extends:** [RenderResult](#renderresult)\n\n\n<table><thead><tr><th>\n\nProperty\n\n\n</th><th>\n\nModifiers\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\n[html](#)\n\n\n</td><td>\n\n\n</td><td>\n\nstring\n\n\n</td><td>\n\n\n</td></tr>\n<tr><td>\n\n[timing](#)\n\n\n</td><td>\n\n\n</td><td>\n\n{ render: number; snapshot: number; }\n\n\n</td><td>\n\n\n</td></tr>\n</tbody></table>",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.rendertostringresult.md"
+    },
+    {
+      "name": "resolveManifest",
+      "id": "resolvemanifest",
+      "hierarchy": [
+        {
+          "name": "resolveManifest",
+          "id": "resolvemanifest"
+        }
+      ],
+      "kind": "Function",
+      "content": "```typescript\nexport declare function resolveManifest(manifest: UnisynthManifest | ResolvedManifest | undefined): ResolvedManifest | undefined;\n```\n\n\n<table><thead><tr><th>\n\nParameter\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\nmanifest\n\n\n</td><td>\n\nUnisynthManifest \\| ResolvedManifest \\| undefined\n\n\n</td><td>\n\n\n</td></tr>\n</tbody></table>\n**Returns:**\n\nResolvedManifest \\| undefined",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/render.ts",
+      "mdFile": "unisynth.resolvemanifest.md"
+    },
+    {
+      "name": "SerializeDocumentOptions",
+      "id": "serializedocumentoptions",
+      "hierarchy": [
+        {
+          "name": "SerializeDocumentOptions",
+          "id": "serializedocumentoptions"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface SerializeDocumentOptions \n```\n\n\n<table><thead><tr><th>\n\nProperty\n\n\n</th><th>\n\nModifiers\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\n[debug?](#)\n\n\n</td><td>\n\n\n</td><td>\n\nboolean\n\n\n</td><td>\n\n_(Optional)_\n\n\n</td></tr>\n<tr><td>\n\n[manifest?](#)\n\n\n</td><td>\n\n\n</td><td>\n\nUnisynthManifest \\| ResolvedManifest\n\n\n</td><td>\n\n_(Optional)_\n\n\n</td></tr>\n<tr><td>\n\n[symbolMapper?](#)\n\n\n</td><td>\n\n\n</td><td>\n\nSymbolMapperFn\n\n\n</td><td>\n\n_(Optional)_\n\n\n</td></tr>\n</tbody></table>",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.serializedocumentoptions.md"
+    },
+    {
+      "name": "setServerPlatform",
+      "id": "setserverplatform",
+      "hierarchy": [
+        {
+          "name": "setServerPlatform",
+          "id": "setserverplatform"
+        }
+      ],
+      "kind": "Function",
+      "content": "```typescript\nexport declare function setServerPlatform(manifest: UnisynthManifest | ResolvedManifest | undefined): Promise<void>;\n```\n\n\n<table><thead><tr><th>\n\nParameter\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\nmanifest\n\n\n</td><td>\n\nUnisynthManifest \\| ResolvedManifest \\| undefined\n\n\n</td><td>\n\n\n</td></tr>\n</tbody></table>\n**Returns:**\n\nPromise&lt;void&gt;",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/index.ts",
+      "mdFile": "unisynth.setserverplatform.md"
+    },
+    {
+      "name": "StreamingOptions",
+      "id": "streamingoptions",
+      "hierarchy": [
+        {
+          "name": "StreamingOptions",
+          "id": "streamingoptions"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface StreamingOptions \n```\n\n\n<table><thead><tr><th>\n\nProperty\n\n\n</th><th>\n\nModifiers\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\n[inOrder?](#)\n\n\n</td><td>\n\n\n</td><td>\n\n[InOrderStreaming](#inorderstreaming)\n\n\n</td><td>\n\n_(Optional)_\n\n\n</td></tr>\n</tbody></table>",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.streamingoptions.md"
+    },
+    {
+      "name": "SymbolsToPrefetch",
+      "id": "symbolstoprefetch",
+      "hierarchy": [
+        {
+          "name": "SymbolsToPrefetch",
+          "id": "symbolstoprefetch"
+        }
+      ],
+      "kind": "TypeAlias",
+      "content": "Auto: Prefetch all possible QRLs used by the document. Default\n\n\n```typescript\nexport type SymbolsToPrefetch = 'auto' | ((opts: {\n    manifest: UnisynthManifest;\n}) => PrefetchResource[]);\n```\n**References:** [PrefetchResource](#prefetchresource)",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/types.ts",
+      "mdFile": "unisynth.symbolstoprefetch.md"
+    },
+    {
+      "name": "versions",
+      "id": "versions",
+      "hierarchy": [
+        {
+          "name": "versions",
+          "id": "versions"
+        }
+      ],
+      "kind": "Variable",
+      "content": "```typescript\nversions: {\n    readonly unisynth: string;\n    readonly unisynthDom: string;\n}\n```",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth/src/server/utils.ts",
+      "mdFile": "unisynth.versions.md"
+    }
+  ]
+}

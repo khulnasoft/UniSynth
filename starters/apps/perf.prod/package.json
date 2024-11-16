@@ -1,0 +1,7 @@
+{
+  "description": "Unisynth Performance starter app.",
+  "type": "module",
+  "__unisynth__": {
+    "priority": 0
+  }
+}

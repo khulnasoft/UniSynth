@@ -1,10 +1,14 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit",
-    "source.organizeImports": "explicit"
-  },
-  "typescript.format.enable": true,
-  "editor.formatOnSave": true,
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "nxConsole.nxWorkspacePath": ""
+  "vitest.include": ["**/*.unit.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
+  "vitest.exclude": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/dist-dev/**",
+    "**/cypress/**",
+    "**/.{idea,git,cache,output,temp}/**"
+  ],
+  "javascript.preferences.autoImportFileExcludePatterns": ["node:test"],
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }

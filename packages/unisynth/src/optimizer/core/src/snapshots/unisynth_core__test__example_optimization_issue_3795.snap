@@ -1,0 +1,44 @@
+---
+source: packages/unisynth/src/optimizer/core/src/test.rs
+assertion_line: 685
+expression: output
+---
+==INPUT==
+
+
+import { component$ } from '@khulnasoft.com/unisynth';
+
+export const Issue3795 = component$(() => {
+    let base = "foo";
+    const firstAssignment = base;
+    base += "bar";
+    const secondAssignment = base;
+    return (
+      <div id='issue-3795-result'>{firstAssignment} {secondAssignment}</div>
+    )
+  });
+
+============================= test.js ==
+
+import { componentQrl } from "@khulnasoft.com/unisynth";
+import { _jsxQ } from "@khulnasoft.com/unisynth";
+import { inlinedQrl } from "@khulnasoft.com/unisynth";
+export const Issue3795 = /*#__PURE__*/ componentQrl(/*#__PURE__*/ inlinedQrl(()=>{
+    let base = "foo";
+    const firstAssignment = base;
+    base += "bar";
+    const secondAssignment = base;
+    return /*#__PURE__*/ _jsxQ("div", null, {
+        id: "issue-3795-result"
+    }, [
+        firstAssignment,
+        " ",
+        secondAssignment
+    ], 1, "u6_0");
+}, "Issue3795_component_wsE8beycatI"));
+
+
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";;;AAGA,OAAO,MAAM,0BAAY,sCAAW;IAChC,IAAI,OAAO;IACX,MAAM,kBAAkB;IACxB,QAAQ;IACR,MAAM,mBAAmB;IACzB,qBACE,MAAC;QAAI,IAAG;;QAAqB;QAAgB;QAAE;;AAEnD,uCAAG\"}")
+== DIAGNOSTICS ==
+
+[]

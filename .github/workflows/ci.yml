@@ -1,0 +1,937 @@
+# Build and test everything
+#
+# First it builds the packages and stores them in artifacts/cache.
+# Meanwhile it lints the code.
+# Then it runs the unit tests with the artifacts, as well as builds the docs and insights
+# Once it all works, it does a release
+#
+# NOTE: only use pnpm run scripts for build commands
+# This way we're sure that dev and CI environments are consistent
+
+name: Unisynth CI
+
+# TODO fix e2e tests hanging and not cancelling
+# # We only need one instance of the workflow running at a time, per branch
+# concurrency:
+#   group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+#   cancel-in-progress: true
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - next
+      - unisynth-labs
+      - vercelserverless
+      - 'build/**'
+  workflow_dispatch:
+    inputs:
+      disttag:
+        description: 'Publish "@khulnasoft.com/unisynth" to NPM using this dist-tag, push the git-tag to the repo and create a GitHub release. The "latest" and "next" dist-tags will use the version number already committed in package.json.'
+        required: true
+        type: choice
+        default: 'dev'
+        options:
+          - dev
+          - next
+          - latest
+
+env:
+  # Disable incremental build, speeds up CI
+  CARGO_INCREMENTAL: 0
+
+jobs:
+  changes:
+    name: Setup
+    runs-on: ubuntu-latest
+    outputs:
+      hash-unisynth: ${{ steps.cache-unisynth.outputs.cache-primary-key }}
+      hash-rust: ${{ steps.cache-rust.outputs.cache-primary-key }}
+      hash-others: ${{ steps.cache-others.outputs.cache-primary-key }}
+      hash-docs: ${{ steps.cache-docs.outputs.cache-primary-key }}
+      hash-insights: ${{ steps.cache-insights.outputs.cache-primary-key }}
+      hash-unit: ${{ steps.cache-unit.outputs.cache-primary-key }}
+      hash-e2e: ${{ steps.cache-e2e.outputs.cache-primary-key }}
+      build-unisynth: ${{ steps.cache-unisynth.outputs.cache-hit != 'true' }}
+      build-rust: ${{ steps.cache-rust.outputs.cache-hit != 'true' }}
+      build-others: ${{ steps.cache-others.outputs.cache-hit != 'true' }}
+      build-docs: ${{ steps.cache-docs.outputs.cache-hit != 'true' }}
+      build-insights: ${{ steps.cache-insights.outputs.cache-hit != 'true' }}
+      build-unit: ${{ steps.cache-unit.outputs.cache-hit != 'true' }}
+      build-e2e: ${{ steps.cache-e2e.outputs.cache-hit != 'true' }}
+      disttag: ${{ steps.set_dist_tag.outputs.disttag }}
+
+    steps:
+      - name: Branch
+        run: echo "${{ github.ref }}"
+      - name: NPM Dist Tag from input
+        run: echo "${{ github.event.inputs.disttag }}"
+      - name: Github event
+        run: echo event_name=${{ github.event_name }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set Dist Tag
+        id: set_dist_tag
+        if: |
+          github.ref == 'refs/heads/main' && (
+            github.event_name == 'push' ||
+            github.event_name == 'workflow_dispatch'
+          )
+        run: |
+          if [ ${{ github.event_name }} == 'workflow_dispatch' ]; then
+            disttag="${{ github.event.inputs.disttag }}"
+            echo "Overriding disttag with input: $disttag"
+            echo "disttag=${disttag}" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          is_release=false
+          commit_id=${{ github.sha }}
+          owner=${{ github.repository_owner }}
+          repo=${{ github.event.repository.name }}
+
+          removed_files=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/$owner/$repo/commits/$commit_id" | jq -r '.files[] | select(.status == "removed") | .filename')
+
+          echo "Removed files: $removed_files"
+
+          md_file_removed=false
+          for file in $removed_files; do
+            if [[ $file == .changeset/*.md ]]; then
+              md_file_removed=true
+              break
+            fi
+          done
+
+          if [ $md_file_removed = true ]; then
+            if ! ls .changeset/*.md > /dev/null 2>&1; then
+              is_release=true
+            fi
+          fi
+
+          echo "is_release: $is_release"
+
+          if [ "$is_release" = true ]; then
+            disttag='latest'
+          else 
+            disttag="${{github.event.inputs.disttag}}"
+          fi
+
+          echo "disttag: $disttag"
+
+          echo "disttag=${disttag}" >> $GITHUB_OUTPUT
+
+      - run: jq .scripts package.json > scripts.json
+
+      - name: 'check cache: unisynth'
+        id: cache-unisynth
+        uses: actions/cache/restore@v4
+        with:
+          lookup-only: true
+          path: packages/unisynth/dist
+          # Note that this includes the package.json of unisynth
+          key: ${{ hashfiles('.github/workflows/ci.yml', 'pnpm-lock.yaml', 'scripts.json', 'scripts/**/*', 'packages/unisynth/**/*', '!**/*.unit.*', '!**/*.rs') }}
+      - run: 'echo ${{ steps.cache-unisynth.outputs.cache-primary-key }} > unisynth-key.txt'
+      - name: 'check cache: rust'
+        id: cache-rust
+        uses: actions/cache/restore@v4
+        with:
+          lookup-only: true
+          path: packages/unisynth/bindings
+          key: ${{ hashfiles('Makefile', 'rust-toolchain', '**/Cargo.toml', '**/Cargo.lock', '**/*.rs') }}
+      - run: 'echo ${{ steps.cache-rust.outputs.cache-primary-key }} > rust-key.txt'
+      - name: 'check cache: others'
+        id: cache-others
+        uses: actions/cache/restore@v4
+        with:
+          lookup-only: true
+          path: |
+            packages/unisynth-city/lib
+            packages/unisynth-labs/lib
+            packages/unisynth-labs/vite
+            packages/unisynth-react/lib
+            packages/eslint-plugin-unisynth/dist
+            packages/create-unisynth/dist
+          # note that all inputs need to be listed here, including unisynth, for correct cache invalidation
+          key: ${{ hashfiles('unisynth-key.txt', 'rust-key.txt', 'packages/unisynth-city/**/*', 'packages/unisynth-labs/**/*', 'packages/unisynth-react/**/*', 'packages/eslint-plugin-unisynth/**/*', 'packages/create-unisynth/**/*', '!**/*.unit.*') }}
+      - run: 'echo ${{ steps.cache-others.outputs.cache-primary-key }} > others-key.txt'
+      - name: 'check cache: docs'
+        id: cache-docs
+        uses: actions/cache/restore@v4
+        with:
+          lookup-only: true
+          path: docs-build-completed.txt
+          key: ${{ hashfiles('others-key.txt', 'packages/docs/**/*') }}
+      - name: 'check cache: insights'
+        id: cache-insights
+        uses: actions/cache/restore@v4
+        with:
+          lookup-only: true
+          path: |
+            packages/insights/dist
+            packages/insights/.netlify
+          key: ${{ hashfiles('others-key.txt', 'packages/unisynth-insights/**/*') }}
+      - name: 'check cache: unit tests'
+        id: cache-unit
+        uses: actions/cache/restore@v4
+        with:
+          lookup-only: true
+          path: unit-tests-completed.txt
+          key: ${{ hashfiles('others-key.txt', 'packages/**/*.unit.*') }}
+      - name: 'check cache: e2e tests'
+        id: cache-e2e
+        uses: actions/cache/restore@v4
+        with:
+          lookup-only: true
+          path: e2e-tests-completed.txt
+          key: ${{ hashfiles('others-key.txt', 'starters/**/*') }}
+
+  ############ BUILD Unisynth ############
+  build-unisynth:
+    if: needs.changes.outputs.build-unisynth == 'true'
+    name: Build Unisynth
+    needs: changes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'pnpm'
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install NPM Dependencies
+        run: |
+          corepack enable
+          # Ensure that the unisynth binary gets made
+          mkdir -p packages/unisynth/bindings/
+          pnpm install --frozen-lockfile
+
+      - name: 'build: unisynth'
+        run: pnpm build --unisynth --set-dist-tag="${{ needs.changes.outputs.disttag }}"
+
+      - name: Print Unisynth Dist Build
+        continue-on-error: true
+        run: tree -a packages/unisynth/dist/
+
+      - name: Save unisynth cache
+        uses: actions/cache/save@v4
+        with:
+          key: ${{ needs.changes.outputs.hash-unisynth }}
+          path: packages/unisynth/dist
+
+      - name: Save artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact-unisynth-no-optimizer
+          include-hidden-files: true
+          path: packages/unisynth/dist/
+          if-no-files-found: error
+
+  ############ BUILD PLATFORM BINDINGS ############
+  build-bindings:
+    if: needs.changes.outputs.build-rust == 'true'
+    strategy:
+      matrix:
+        settings:
+          - host: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+            wasm: true
+
+          # the last x86 macos available as a standard runner
+          - host: macos-13
+            target: x86_64-apple-darwin
+
+          - host: macos-latest
+            target: aarch64-apple-darwin
+
+          - host: windows-latest
+            target: x86_64-pc-windows-msvc
+
+    name: Build optimizer ${{ matrix.settings.target }}
+    runs-on: ${{ matrix.settings.host }}
+
+    needs: changes
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+
+      - uses: pnpm/action-setup@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'pnpm'
+          registry-url: https://registry.npmjs.org/
+      - run: pnpm install
+      - if: matrix.settings.wasm
+        run: pnpm install wasm-pack
+
+      - name: Lint check
+        if: matrix.settings.wasm
+        run: pnpm lint.rust
+
+      - name: Unit tests
+        if: matrix.settings.wasm
+        run: pnpm test.rust
+
+      - name: Build Platform Binding
+        run: pnpm build --platform-binding
+
+      - name: Build Wasm Binding
+        if: matrix.settings.wasm
+        run: pnpm build --wasm
+
+      - name: Print Packages Dist Build
+        continue-on-error: true
+        run: ls -lR packages/unisynth/bindings/
+
+      - name: Upload Platform Binding Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact-bindings-${{ matrix.settings.target }}
+          include-hidden-files: true
+          path: packages/unisynth/bindings/
+          if-no-files-found: error
+
+  ############ BUILD PACKAGE ############
+  combined-unisynth:
+    name: Bundle Unisynth
+    if: always()
+    runs-on: ubuntu-latest
+    needs:
+      - build-unisynth
+      - build-bindings
+      - changes
+
+    steps:
+      - name: Verify builds
+        if: |
+          !(
+            (needs.build-unisynth.result == 'success' || needs.build-unisynth.result == 'skipped') &&
+            (needs.build-bindings.result == 'success' || needs.build-bindings.result == 'skipped')
+          )
+        run: exit 1
+
+      - name: Restore artifacts
+        if: needs.changes.outputs.build-rust == 'true'
+        uses: actions/download-artifact@v4
+
+      - name: Restore Unisynth from cache
+        uses: actions/cache/restore@v4
+        with:
+          path: packages/unisynth/dist
+          key: ${{ needs.changes.outputs.hash-unisynth }}
+
+      - name: Restore Rust from cache
+        if: needs.changes.outputs.build-rust != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: packages/unisynth/bindings
+          key: ${{ needs.changes.outputs.hash-rust }}
+
+      - name: Move Rust Artifacts
+        if: needs.changes.outputs.build-rust == 'true'
+        run: |
+          mkdir -p packages/unisynth/bindings
+          mv artifact-bindings-*/* packages/unisynth/bindings
+
+      - name: Save rust cache
+        if: needs.changes.outputs.build-rust == 'true'
+        uses: actions/cache/save@v4
+        with:
+          key: ${{ needs.changes.outputs.hash-rust }}
+          path: packages/unisynth/bindings
+
+      - name: Upload Unisynth artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact-unisynth
+          include-hidden-files: true
+          path: |
+            packages/unisynth/bindings
+            packages/unisynth/dist
+          if-no-files-found: error
+
+  build-other-packages:
+    name: Build Other Packages
+    needs:
+      - changes
+      - combined-unisynth
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify combined-unisynth
+        if: needs.combined-unisynth.result != 'success'
+        run: exit 1
+
+      - name: Checkout
+        if: needs.changes.outputs.build-others == 'true'
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        if: needs.changes.outputs.build-others == 'true'
+      - name: Setup Node
+        if: needs.changes.outputs.build-others == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'pnpm'
+          registry-url: https://registry.npmjs.org/
+
+      - name: Restore Unisynth artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: artifact-unisynth
+          path: packages/unisynth/
+
+      - name: Install NPM Dependencies
+        if: needs.changes.outputs.build-others == 'true'
+        run: corepack pnpm install
+
+      - name: 'build: unisynth-city & others'
+        if: needs.changes.outputs.build-others == 'true'
+        run: pnpm build --tsc --api --unisynthcity --cli --unisynthlabs --unisynthreact --eslint --set-dist-tag="${{ needs.changes.outputs.disttag }}"
+      - name: Save others cache
+        if: needs.changes.outputs.build-others == 'true'
+        uses: actions/cache/save@v4
+        with:
+          key: ${{ needs.changes.outputs.hash-others }}
+          path: |
+            packages/unisynth-city/lib
+            packages/unisynth-labs/lib
+            packages/unisynth-labs/vite
+            packages/unisynth-react/lib
+            packages/eslint-plugin-unisynth/dist
+            packages/create-unisynth/dist
+
+      - name: 'restore: unisynth-city & others'
+        if: needs.changes.outputs.build-others != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            packages/unisynth-city/lib
+            packages/unisynth-labs/lib
+            packages/unisynth-labs/vite
+            packages/unisynth-react/lib
+            packages/eslint-plugin-unisynth/dist
+            packages/create-unisynth/dist
+          key: ${{ needs.changes.outputs.hash-others }}
+
+      - name: Print UnisynthCity Lib Build
+        run: tree -a packages/unisynth-city/lib/
+
+      - name: Upload UnisynthCity Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact-unisynthcity
+          include-hidden-files: true
+          path: packages/unisynth-city/lib/
+          if-no-files-found: error
+
+      - name: Print UnisynthLabs Lib Build
+        run: tree -a packages/unisynth-labs/lib/ packages/unisynth-labs/vite/
+
+      - name: Upload UnisynthLabs+React Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact-unisynthlabs
+          include-hidden-files: true
+          path: |
+            packages/unisynth-labs/lib/
+            packages/unisynth-labs/vite/
+            packages/unisynth-labs/package.json
+          if-no-files-found: error
+
+      - name: Print unisynth-react Lib Build
+        run: tree -a packages/unisynth-react/lib/
+
+      - name: Upload unisynth-react Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact-unisynthreact
+          include-hidden-files: true
+          path: |
+            packages/unisynth-react/lib/
+            packages/unisynth-react/package.json
+          if-no-files-found: error
+
+      - name: Print Create Unisynth CLI Dist Build
+        run: tree -a packages/create-unisynth/dist/
+
+      - name: Upload Create Unisynth CLI Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact-create-unisynth
+          include-hidden-files: true
+          path: packages/create-unisynth/dist/
+          if-no-files-found: error
+
+      - name: Print Eslint rules Dist Build
+        run: tree -a packages/eslint-plugin-unisynth/dist/
+
+      - name: Upload Eslint rules Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact-eslint-plugin-unisynth
+          include-hidden-files: true
+          path: packages/eslint-plugin-unisynth/dist/
+          if-no-files-found: error
+
+  ############ BUILD INSIGHTS ############
+  build-insights:
+    if: always() && needs.changes.outputs.build-insights == 'true'
+    name: Build Insights
+    needs:
+      - changes
+      - build-other-packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Verify build-other-packages
+        if: needs.build-other-packages.result != 'success'
+        run: exit 1
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+
+      - name: Move Distribution Artifacts
+        run: |
+          mv artifact-unisynth/* packages/unisynth/
+          mkdir -p packages/unisynth-city/lib/
+          mv artifact-unisynthcity/* packages/unisynth-city/lib/
+          mkdir -p packages/create-unisynth/dist/
+          mv artifact-create-unisynth/* packages/create-unisynth/dist/
+          mkdir -p packages/eslint-plugin-unisynth/dist/
+          mv artifact-eslint-plugin-unisynth/* packages/eslint-plugin-unisynth/dist/
+          mv artifact-unisynthlabs/lib packages/unisynth-labs/lib
+          mv artifact-unisynthlabs/vite packages/unisynth-labs/vite
+
+      - uses: pnpm/action-setup@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'pnpm'
+          registry-url: https://registry.npmjs.org/
+
+      - run: corepack pnpm install --frozen-lockfile
+      - name: Build Unisynth Insights
+        run: pnpm run build.packages.insights
+
+      - name: Save Insights Cache
+        uses: actions/cache/save@v4
+        with:
+          key: ${{ needs.changes.outputs.hash-insights }}
+          path: |
+            packages/insights/dist
+            packages/insights/.netlify
+
+  ############ BUILD DOCS ############
+  build-docs:
+    if: always() && needs.changes.outputs.build-docs == 'true'
+    name: Build Docs
+    needs:
+      - changes
+      - build-other-packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Verify build-other-packages
+        if: needs.build-other-packages.result != 'success'
+        run: exit 1
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'pnpm'
+          registry-url: https://registry.npmjs.org/
+
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+
+      - name: Move Distribution Artifacts
+        run: |
+          mv artifact-unisynth/* packages/unisynth/
+          mkdir -p packages/unisynth-city/lib/
+          mv artifact-unisynthcity/* packages/unisynth-city/lib/
+          mkdir -p packages/create-unisynth/dist/
+          mv artifact-create-unisynth/* packages/create-unisynth/dist/
+          mkdir -p packages/eslint-plugin-unisynth/dist/
+          mv artifact-eslint-plugin-unisynth/* packages/eslint-plugin-unisynth/dist/
+          mv artifact-unisynthlabs/lib packages/unisynth-labs/lib
+          mv artifact-unisynthlabs/vite packages/unisynth-labs/vite
+          mv artifact-unisynthreact/lib packages/unisynth-react/lib
+
+      - run: corepack pnpm install --frozen-lockfile
+      - name: Build Unisynth Docs
+        run: pnpm run build.packages.docs && echo ok > docs-build-completed.txt
+
+      - name: Save Docs Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact-docs
+          include-hidden-files: true
+          path: |
+            packages/docs/dist
+            packages/docs/server
+
+      - name: Save Docs Cache
+        uses: actions/cache/save@v4
+        with:
+          key: ${{ needs.changes.outputs.hash-docs }}
+          path: docs-build-completed.txt
+
+  ############ UNIT TEST ############
+  test-unit:
+    name: Unit Tests
+    if: always() && needs.changes.outputs.build-unit == 'true'
+    runs-on: ubuntu-latest
+    needs:
+      - changes
+      - build-other-packages
+
+    steps:
+      - name: Verify build-other-packages
+        if: needs.build-other-packages.result != 'success'
+        run: exit 1
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'pnpm'
+          registry-url: https://registry.npmjs.org/
+      - run: corepack enable
+
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+
+      - name: Move Distribution Artifacts
+        run: |
+          mv artifact-unisynth/* packages/unisynth/
+          mkdir -p packages/unisynth-city/lib/
+          mv artifact-unisynthcity/* packages/unisynth-city/lib/
+          mkdir -p packages/create-unisynth/dist/
+          mv artifact-create-unisynth/* packages/create-unisynth/dist/
+          mkdir -p packages/eslint-plugin-unisynth/dist/
+          mv artifact-eslint-plugin-unisynth/* packages/eslint-plugin-unisynth/dist/
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Unit Tests
+        run: pnpm run test.unit && echo ok > unit-tests-completed.txt
+
+      - name: Save unit tests cache
+        uses: actions/cache/save@v4
+        with:
+          key: ${{ needs.changes.outputs.hash-unit }}
+          path: unit-tests-completed.txt
+
+  ############ E2E TEST ############
+  test-e2e:
+    # Sometimes the tests just hang
+    timeout-minutes: 20
+    name: E2E Tests
+    if: always() && needs.changes.outputs.build-e2e == 'true'
+
+    needs:
+      - build-other-packages
+      - changes
+      - test-unit
+
+    strategy:
+      matrix:
+        settings:
+          - host: ubuntu-latest
+            browser: chromium
+          # too slow and flaky. Perhaps better in v2?
+          # - host: ubuntu-latest
+          #   browser: firefox
+          - host: macos-latest
+            browser: webkit
+          - host: windows-latest
+            browser: chromium
+
+    runs-on: ${{ matrix.settings.host }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'pnpm'
+          registry-url: https://registry.npmjs.org/
+      - run: corepack enable
+
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+
+      - name: Move Distribution Artifacts
+        run: |
+          mv artifact-unisynth/* packages/unisynth/
+          mkdir -p packages/unisynth-city/lib/
+          mv artifact-unisynthcity/* packages/unisynth-city/lib/
+          mkdir -p packages/create-unisynth/dist/
+          mv artifact-create-unisynth/* packages/create-unisynth/dist/
+          mkdir -p packages/eslint-plugin-unisynth/dist/
+          mv artifact-eslint-plugin-unisynth/* packages/eslint-plugin-unisynth/dist/
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright
+        run: npx playwright install ${{ matrix.settings.browser }} --with-deps
+
+      - name: Playwright E2E Tests
+        run: pnpm run test.e2e.${{ matrix.settings.browser }} --timeout 60000 --retries 7 --workers 1
+
+      - name: Validate Create Unisynth Cli
+        if: matrix.settings.host != 'windows-latest'
+        run: pnpm cli.validate
+
+  ############ E2E CLI TEST ############
+  test-cli-e2e:
+    name: E2E CLI Tests
+    if: always() && needs.changes.outputs.build-e2e == 'true'
+
+    needs:
+      - build-other-packages
+      - changes
+      - test-unit
+
+    strategy:
+      matrix:
+        settings:
+          - host: ubuntu-latest
+          - host: macos-latest
+          - host: windows-latest
+
+    runs-on: ${{ matrix.settings.host }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'pnpm'
+          registry-url: https://registry.npmjs.org/
+      - run: corepack enable
+
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+
+      - name: Move Distribution Artifacts
+        run: |
+          mv artifact-unisynth/* packages/unisynth/
+          mkdir -p packages/unisynth-city/lib/
+          mv artifact-unisynthcity/* packages/unisynth-city/lib/
+          mkdir -p packages/create-unisynth/dist/
+          mv artifact-create-unisynth/* packages/create-unisynth/dist/
+          mkdir -p packages/eslint-plugin-unisynth/dist/
+          mv artifact-eslint-plugin-unisynth/* packages/eslint-plugin-unisynth/dist/
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: CLI E2E Tests
+        run: pnpm run test.e2e-cli
+
+  ########### LINT PACKAGES ############
+  lint-package:
+    name: Lint Package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'pnpm'
+          registry-url: https://registry.npmjs.org/
+      - run: corepack enable
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: SyncPack Check
+        if: always()
+        run: pnpm run lint.syncpack
+
+      - name: Prettier Check
+        if: always()
+        run: pnpm run lint.prettier
+
+      - name: Build ESLint
+        if: always()
+        run: pnpm build --eslint
+
+      - name: ESLint Check
+        if: always()
+        run: pnpm run lint.eslint
+
+  ############ RELEASE ############
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+
+    needs:
+      - changes
+      - test-unit
+      - test-e2e
+    # test-unit runs when any packages changes, so we have to release
+    # on main, we always check if we have something to release
+    # don't run on forks
+    if: |
+      always() && 
+      github.repository == 'khulnasoft/unisynth' && (
+        github.ref == 'refs/heads/main' ||
+        needs.test-unit.result == 'success'
+      )
+
+    steps:
+      - name: Verify test-e2e
+        if: needs.test-e2e.result != 'skipped'
+        run: |
+          if [ "${{ needs.test-e2e.result }}" != success ] ; then
+            exit 1
+          else
+            echo ok > e2e-tests-completed.txt
+          fi
+      - name: Save e2e tests cache
+        if: needs.test-e2e.result != 'skipped'
+        uses: actions/cache/save@v4
+        with:
+          key: ${{ needs.changes.outputs.hash-e2e }}
+          path: e2e-tests-completed.txt
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'pnpm'
+          registry-url: https://registry.npmjs.org/
+      - run: corepack enable
+
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+
+      - name: Move Distribution Artifacts
+        run: |
+          mv artifact-unisynth/* packages/unisynth/
+          mkdir -p packages/unisynth-city/lib/
+          mv artifact-unisynthcity/* packages/unisynth-city/lib/
+          mkdir -p packages/create-unisynth/dist/
+          mv artifact-create-unisynth/* packages/create-unisynth/dist/
+          mkdir -p packages/eslint-plugin-unisynth/dist/
+          mv artifact-eslint-plugin-unisynth/* packages/eslint-plugin-unisynth/dist/
+          mv artifact-unisynthlabs/lib packages/unisynth-labs/lib
+          mv artifact-unisynthlabs/vite packages/unisynth-labs/vite
+          mv artifact-unisynthreact/lib packages/unisynth-react/lib
+          rm -rf artifact-*
+
+      - run: pnpm install --frozen-lockfile
+
+      # Do this before other release steps to avoid
+      # publishing temporary files
+      - name: Create Release Pull Request or Publish to npm
+        if: github.ref == 'refs/heads/main'
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: pnpm release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Fixup package.json files
+        run: pnpm run release.fixup-package-json
+
+      - name: Commit Build Artifacts
+        if: github.event_name == 'push'
+        env:
+          UNISYNTH_API_TOKEN_GITHUB: ${{ secrets.UNISYNTH_API_TOKEN_GITHUB }}
+        run: pnpm run unisynth-push-build-repos
+
+      - name: Publish packages for testing
+        if: github.event_name != 'workflow_dispatch'
+        run: pnpm release.pkg-pr-new
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  ############ TRIGGER UNISYNTHCITY E2E TEST ############
+  trigger-unisynthcity-e2e:
+    name: Trigger Unisynth City E2E
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    needs:
+      - changes
+      - release
+
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.UNISYNTH_API_TOKEN_GITHUB }}
+          repository: builderIO/unisynth-city-e2e
+          event-type: main-updated
+
+  ############ Everything is fine ############
+  requirements-passed:
+    name: All requirements are met
+    runs-on: ubuntu-latest
+    needs:
+      - test-unit
+      - test-e2e
+      - lint-package
+      - build-docs
+      - build-insights
+    if: always()
+    steps:
+      - name: check status
+        if: |
+          !(
+            (needs.test-unit.result == 'success' || needs.test-unit.result == 'skipped') &&
+            (needs.test-e2e.result == 'success' || needs.test-e2e.result == 'skipped') &&
+            (needs.lint-package.result == 'success' || needs.lint-package.result == 'skipped') &&
+            (needs.build-docs.result == 'success' || needs.build-docs.result == 'skipped') &&
+            (needs.build-insights.result == 'success' || needs.build-insights.result == 'skipped')
+          )
+        run: exit 1

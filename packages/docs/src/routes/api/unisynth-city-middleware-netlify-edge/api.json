@@ -1,0 +1,48 @@
+{
+  "id": "unisynth-city-middleware-netlify-edge",
+  "package": "@khulnasoft.com/unisynth-city/middleware/netlify-edge",
+  "members": [
+    {
+      "name": "createUnisynthCity",
+      "id": "createunisynthcity",
+      "hierarchy": [
+        {
+          "name": "createUnisynthCity",
+          "id": "createunisynthcity"
+        }
+      ],
+      "kind": "Function",
+      "content": "```typescript\nexport declare function createUnisynthCity(opts: UnisynthCityNetlifyOptions): (request: Request, context: Context) => Promise<Response>;\n```\n\n\n<table><thead><tr><th>\n\nParameter\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\nopts\n\n\n</td><td>\n\n[UnisynthCityNetlifyOptions](#unisynthcitynetlifyoptions)\n\n\n</td><td>\n\n\n</td></tr>\n</tbody></table>\n**Returns:**\n\n(request: Request, context: Context) =&gt; Promise&lt;Response&gt;",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth-city/src/middleware/netlify-edge/index.ts",
+      "mdFile": "unisynth-city.createunisynthcity.md"
+    },
+    {
+      "name": "PlatformNetlify",
+      "id": "platformnetlify",
+      "hierarchy": [
+        {
+          "name": "PlatformNetlify",
+          "id": "platformnetlify"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface PlatformNetlify extends Partial<Omit<Context, 'next' | 'cookies'>> \n```\n**Extends:** Partial&lt;Omit&lt;Context, 'next' \\| 'cookies'&gt;&gt;",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth-city/src/middleware/netlify-edge/index.ts",
+      "mdFile": "unisynth-city.platformnetlify.md"
+    },
+    {
+      "name": "UnisynthCityNetlifyOptions",
+      "id": "unisynthcitynetlifyoptions",
+      "hierarchy": [
+        {
+          "name": "UnisynthCityNetlifyOptions",
+          "id": "unisynthcitynetlifyoptions"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface UnisynthCityNetlifyOptions extends ServerRenderOptions \n```\n**Extends:** ServerRenderOptions",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth-city/src/middleware/netlify-edge/index.ts",
+      "mdFile": "unisynth-city.unisynthcitynetlifyoptions.md"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+---
+source: packages/unisynth/src/optimizer/core/src/test.rs
+assertion_line: 1900
+expression: output
+---
+==INPUT==
+
+
+import { component$, $ } from '@khulnasoft.com/unisynth';
+
+export const Greeter = component$(() => {
+    const value = useSignal(0);
+    const checked = useSignal(false);
+    const stuff = useSignal();
+    return (
+        <>
+            <input bind:value={value} />
+            <input bind:checked={checked} />
+            <input bind:stuff={stuff} />
+            <div>{value}</div>
+            <div>{value.value}</div>
+        </>
+
+    )
+});
+
+============================= test.js ==
+
+import { componentQrl } from "@khulnasoft.com/unisynth";
+import { useLexicalScope } from "@khulnasoft.com/unisynth";
+import { inlinedQrl } from "@khulnasoft.com/unisynth";
+import { _jsxQ } from "@khulnasoft.com/unisynth";
+import { _fnSignal } from "@khulnasoft.com/unisynth";
+import { _jsxC } from "@khulnasoft.com/unisynth";
+import { Fragment as _Fragment } from "@khulnasoft.com/unisynth/jsx-runtime";
+export const Greeter = /*#__PURE__*/ componentQrl(/*#__PURE__*/ inlinedQrl(()=>{
+    const value = useSignal(0);
+    const checked = useSignal(false);
+    const stuff = useSignal();
+    return /*#__PURE__*/ _jsxC(_Fragment, {
+        children: [
+            /*#__PURE__*/ _jsxQ("input", null, {
+                "value": value,
+                "onInput$": /*#__PURE__*/ inlinedQrl((_, elm)=>{
+                    const [value] = useLexicalScope();
+                    return value.value = elm.value;
+                }, "s_6IZeYpXCNXA", [
+                    value
+                ])
+            }, null, 3, null),
+            /*#__PURE__*/ _jsxQ("input", null, {
+                "checked": checked,
+                "onInput$": /*#__PURE__*/ inlinedQrl((_, elm)=>{
+                    const [checked] = useLexicalScope();
+                    return checked.value = elm.checked;
+                }, "s_JPI3bLCVnso", [
+                    checked
+                ])
+            }, null, 3, null),
+            /*#__PURE__*/ _jsxQ("input", null, {
+                "stuff": stuff,
+                "onChange$": /*#__PURE__*/ inlinedQrl((_, elm)=>{
+                    const [stuff] = useLexicalScope();
+                    return stuff.value = elm.stuff;
+                }, "s_eyREJ0lZTFw", [
+                    stuff
+                ])
+            }, null, 3, null),
+            /*#__PURE__*/ _jsxQ("div", null, null, value, 3, null),
+            /*#__PURE__*/ _jsxQ("div", null, null, _fnSignal((p0)=>p0.value, [
+                value
+            ], "p0.value"), 3, null)
+        ]
+    }, 3, "u6_0");
+}, "s_n7HuG2hhU0Q"));
+
+
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";;;;;;;AAGA,OAAO,MAAM,wBAAU,sCAAW;IAC9B,MAAM,QAAQ,UAAU;IACxB,MAAM,UAAU,UAAU;IAC1B,MAAM,QAAQ;IACd,qBACI;;0BACI,MAAC;yBAAkB;;;2BAAA;;;;;0BACnB,MAAC;2BAAoB;;;2BAAA;;;;;0BACrB,MAAC;yBAAkB;;;2BAAA;;;;;0BACnB,MAAC,mBAAK;0BACN,MAAC,mCAAK,GAAM,KAAK;;;;;AAI7B,qBAAG\"}")
+== DIAGNOSTICS ==
+
+[]

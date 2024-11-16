@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+  "extends": "../api-extractor.json",
+  "mainEntryPointFilePath": "<projectFolder>/dist-dev/dts-out/packages/unisynth-react/src/index.d.ts",
+  "apiReport": {
+    "enabled": true,
+    "reportFileName": "api.md",
+    "reportFolder": "<projectFolder>/packages/unisynth-react/src/",
+    "reportTempFolder": "<projectFolder>/dist-dev/api-extractor/unisynth-react"
+  },
+  "dtsRollup": {
+    "enabled": true,
+    "untrimmedFilePath": "<projectFolder>/packages/unisynth-react/lib/types/index.d.ts"
+  },
+  "docModel": {
+    "enabled": true,
+    "apiJsonFilePath": "<projectFolder>/dist-dev/api/unisynth-react/docs.api.json"
+  }
+}

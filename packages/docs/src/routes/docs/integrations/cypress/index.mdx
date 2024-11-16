@@ -1,0 +1,59 @@
+---
+title: Cypress | Integrations
+keywords: 'e2e, testing'
+contributors:
+  - shairez
+  - Benny-Nottonson
+  - mrhoodz
+updated_at: '2023-07-18T17:46:28Z'
+created_at: '2023-04-28T06:05:17Z'
+---
+
+import PackageManagerTabs from '~/components/package-manager-tabs/index.tsx';
+
+# Cypress 
+
+With [Cypress](https://www.cypress.io), you can easily create tests for your modern web applications, debug them visually, and automatically run them in your continuous integration builds.
+
+
+## Component testing
+
+Cypress enables you to test your Unisynth components 
+in isolation with the help of the [cypress-ct-unisynth](https://github.com/unisynthifiers/cypress-unisynth) community plugin.
+
+
+
+
+## Usage
+
+You can add Cypress easily by using the following Unisynth starter script:
+
+
+<PackageManagerTabs>
+<span q:slot="pnpm">
+```shell
+pnpm run unisynth add cypress
+```
+</span>
+<span q:slot="npm">
+```shell
+npm run unisynth add cypress
+```
+</span>
+<span q:slot="yarn">
+```shell
+yarn run unisynth add cypress
+```
+</span>
+<span q:slot="bun">
+```shell
+bun run unisynth add cypress
+```
+</span>
+</PackageManagerTabs>
+
+This command adds `cypress` and `cypress-ct-unisynth` to your dependencies, appends testing commands to your `package.json` 
+scripts section and creates the configuration files needed to run component testing with Cypress.
+
+
+For further reference, please check the [Cypress documentation](https://docs.cypress.io/guides/overview/why-cypress) and the [cypress-unisynth documentation](https://github.com/unisynthifiers/cypress-unisynth).

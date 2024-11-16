@@ -1,0 +1,40 @@
+{
+  "name": "@khulnasoft.com/unisynth-worker",
+  "description": "Unisynth Worker allows to use Web Worker with worker$. Experimental.",
+  "version": "0.0.1",
+  "bugs": "https://github.com/khulnasoft/unisynth/issues",
+  "devDependencies": {
+    "@khulnasoft.com/unisynth": "workspace:^",
+    "vite": "5.3.5",
+    "vite-plugin-static-copy": "1.0.6"
+  },
+  "engines": {
+    "node": ">=16.8.0 <18.0.0 || >=18.11"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "import": "./lib/index.unisynth.mjs"
+    }
+  },
+  "files": [
+    "lib"
+  ],
+  "homepage": "https://unisynth.dev/",
+  "license": "MIT",
+  "main": "./lib/index.unisynth.mjs",
+  "peerDependencies": {
+    "@khulnasoft.com/unisynth": "workspace:^"
+  },
+  "unisynth": "./lib/index.unisynth.mjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/khulnasoft/unisynth.git",
+    "directory": "packages/unisynth-worker"
+  },
+  "scripts": {
+    "build": "vite build --mode lib"
+  },
+  "type": "module",
+  "types": "./lib/types/index.d.ts"
+}

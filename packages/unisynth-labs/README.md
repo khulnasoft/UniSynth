@@ -1,0 +1,47 @@
+# Unisynth Library ⚡️
+
+- [Unisynth Docs](https://unisynth.dev/)
+- [Discord](https://unisynth.dev/chat)
+- [Unisynth on GitHub](https://github.com/khulnasoft/unisynth)
+- [@khulnasoft](https://twitter.com/khulnasoft)
+- [Vite](https://vitejs.dev/)
+- [Partytown](https://partytown.builder.io/)
+- [Mitosis](https://github.com/BuilderIO/mitosis)
+- [Builder.io](https://www.builder.io/)
+
+---
+
+## Project Structure
+
+Inside your project, you'll see the following directories and files:
+
+```
+├── public/
+│   └── ...
+└── src/
+    ├── components/
+    │   └── ...
+    └── index.ts
+```
+
+- `src/components`: Recommended directory for components.
+
+- `index.ts`: The entry point of your component library, make sure all the public components are exported from this file.
+
+## Development
+
+Development mode uses [Vite's development server](https://vitejs.dev/). For Unisynth during development, the `dev` command will also server-side render (SSR) the output. The client-side development modules are loaded by the browser.
+
+```
+pnpm dev
+```
+
+> Note: during dev mode, Vite will request many JS files, which does not represent a Unisynth production build.
+
+## Production
+
+The production build should generate the production build of your component library and type definitions in (./lib).
+
+```
+pnpm build
+```

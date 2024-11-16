@@ -1,0 +1,912 @@
+---
+title: React | Integrations
+contributors:
+  - manucorporat
+  - swwind
+  - reemardelarosa
+  - mhevery
+  - AnthonyPAlicea
+  - adamdbradley
+  - igorbabko
+  - abhi-works
+  - Benny-Nottonson
+  - mrhoodz
+updated_at: '2023-10-03T18:53:23Z'
+created_at: '2023-04-06T21:28:28Z'
+---
+
+import CodeSandbox, {CodeFile} from '../../../../components/code-sandbox/index.tsx';
+import PackageManagerTabs from '~/components/package-manager-tabs/index.tsx';
+
+# Unisynth React ⚛️
+
+Unisynth React allows you to use [React](https://react.dev/) within [Unisynth](https://unisynth.dev/). The advantage of using Unisynth React is that you can use existing React components and libraries within Unisynth. This allows you to take advantage of the large ecosystem of React components and libraries such as [Material UI](https://mui.com/), [Threejs](https://github.com/pmndrs/react-three-fiber) and [React Spring](https://react-spring.io/). It is also a good way to get the benefits of Unisynth without having to rewrite your React application.
+
+## Basic Usage
+
+The basic usage of Unisynth React is to take existing React components and wrap them in a `unisynthify$` function. This function will create a Unisynth component that can be used within Unisynth and which will turn the React component into an island allowing you the freedom to fine-tune when the React component should hydrate.
+
+Basic usage
+```tsx
+// This pragma is required so that React JSX is used instead of Unisynth JSX
+/** @jsxImportSource react */
+import { unisynthify$ } from '@khulnasoft.com/unisynth-react';
+
+// An existing React component
+function Greetings() {
+  return <div>Hello from React</div>;
+}
+
+// Unisynth component wrapping the React component
+export const QGreetings = unisynthify$(Greetings);
+```
+
+## 0. Installation
+
+Before you can use Unisynth React you need to configure the Unisynth project to use Unisynth React. The simplest way is to run the following command:
+
+> If you don't have a Unisynth app yet, then you need to [create one first](/docs/(unisynth)/getting-started/index.mdx), then, follow the instructions and run the command add React to your app.
+
+
+<PackageManagerTabs>
+<span q:slot="pnpm">
+```shell
+pnpm run unisynth add react
+```
+</span>
+<span q:slot="npm">
+```shell
+npm run unisynth add react
+```
+</span>
+<span q:slot="yarn">
+```shell
+yarn run unisynth add react
+```
+</span>
+<span q:slot="bun">
+```shell
+bun run unisynth add react
+```
+</span>
+</PackageManagerTabs>
+
+The above command will perform the following:
+
+1. Install the required dependencies in `package.json`:
+   ```json
+   {
+    ...,
+     "dependencies": {
+      ...,
+       "@khulnasoft.com/unisynth-react": "0.5.0",
+       "@types/react": "18.0.28",
+       "@types/react-dom": "18.0.11",
+       "react": "18.2.0",
+       "react-dom": "18.2.0",
+     }
+   }
+   ```
+   > **Note**: This is not an emulation of React. We are using the actual React library.
+2. configure Vite to use the `@khulnasoft.com/unisynth-react` plugin:
+   ```ts
+   // vite.config.ts
+   import { unisynthReact } from '@khulnasoft.com/unisynth-react/vite';
+
+   export default defineConfig(() => {
+      return {
+        ...,
+        plugins: [
+          ...,
+          // The important part
+          unisynthReact()
+        ],
+      };
+   });
+   ```
+
+> **Note**: The `unisynth add react` command will also configure a demo route showcasing the Unisynth React integration. These are:
+> - `package.json` `dependencies`:
+>   - `@emotion/react 11.10.6`
+>   - `@emotion/styled 11.10.6`
+>   - `@mui/material 5.11.9`
+>   - `@mui/x-data-grid 5.17.24`
+> - `src/route`:
+>   - `/src/routes/react`: New public route showcasing react integration
+>   - `/src/integrations/react`: Here's where the react component lives
+>
+> We will ignore these in this guide and instead take you through the process from the beginning.
+
+
+## 1. Hello World
+
+Let's start with a simple example. We will create a simple React component and then wrap it in a Unisynth component. We will then use the Unisynth component in a Unisynth route.
+
+<CodeSandbox src="/src/routes/demo/react/hello-world/" tabs={["react.tsx","index.tsx"]} style={{ height: '6em' }}>
+<div  q:slot="0">
+<CodeFile src="/src/routes/demo/react/hello-world/react.tsx">
+```tsx /unisynthify$/ /QGreetings/
+/** @jsxImportSource react */
+import { unisynthify$ } from '@khulnasoft.com/unisynth-react';
+
+// Create React component standard way
+function Greetings() {
+  return <p>Hello from React</p>;
+}
+
+// Convert React component to Unisynth component
+export const QGreetings = unisynthify$(Greetings);
+```
+</CodeFile>
+</div>
+<div q:slot="1">
+<CodeFile src="/src/routes/demo/react/hello-world/index.tsx">
+```tsx /QGreetings/
+import { component$ } from '@khulnasoft.com/unisynth';
+import { QGreetings } from './react';
+
+export default component$(() => {
+  return (
+    <main>
+      <p>Hello from Unisynth</p>
+      <QGreetings />
+    </main>
+  );
+});
+```
+</CodeFile>
+</div>
+</CodeSandbox>
+
+The `@khulnasoft.com/unisynth-react` package exports the `unisynthify$()` function that lets you convert React components into Unisynth components, that you can use across your application.
+
+> **Note:** You CAN NOT use React components in Unisynth without converting them first, using `unisynthify$()`. Even though [React and Unisynth components look similar](/docs/(unisynthcity)/guides/react-cheat-sheet/index.mdx), they are fundamentally very different.
+
+React and Unisynth components can not be mixed in the same file, if you check your project right after running the installation command, you will see a new folder `src/integrations/react/`, we recommend that you place your React components there.
+
+## 2. Hydrating react islands
+
+The above example shows how to SSR static React content on the server. The benefit is that that component will never re-render in the browser and therefore its code never downloads to the client. But what if the component needs to be interactive, and therefore we need to download its behavior in the browser? Let's start with building a simple counter example in React.
+
+<CodeSandbox src="/src/routes/demo/react/counter-simple/" tabs={["react.tsx","index.tsx"]} style={{ height: '6em' }}>
+<div  q:slot="0">
+<CodeFile src="/src/routes/demo/react/counter-simple/react.tsx">
+```tsx /unisynthify$/ /QGreetings/
+/** @jsxImportSource react */
+import { unisynthify$ } from '@khulnasoft.com/unisynth-react';
+import { useState } from 'react';
+
+// Create React component standard way
+function Counter() {
+  const [count, setCount] = useState(0);
+  return (
+    <button className="react" onClick={() => setCount(count + 1)}>
+      Count: {count}
+    </button>
+  );
+}
+
+// Convert React component to Unisynth component
+export const QCounter = unisynthify$(Counter);
+```
+</CodeFile>
+</div>
+<div q:slot="1">
+<CodeFile src="/src/routes/demo/react/counter-simple/index.tsx">
+```tsx
+import { component$ } from '@khulnasoft.com/unisynth';
+import { QCounter } from './react';
+
+export default component$(() => {
+  return (
+    <main>
+      <QCounter />
+    </main>
+  );
+});
+```
+</CodeFile>
+</div>
+</CodeSandbox>
+
+Notice that clicking on the `Count` button does nothing. This is because the React has not been downloaded and therefore the component was not hydrated. We need to tell Unisynth to download the React component and hydrate it, but we need to specify the condition under which we want to do that. Doing it eagerly would lose all of the benefits of turning the React application into islands. In this case, we want to download the component when the user hovers over the button, we do so by adding `{: eagerness: 'hover' }` to `unisynthify$()`.
+
+<CodeSandbox src="/src/routes/demo/react/counter-simple-hover/" console={true}
+             tabs={["react.tsx","index.tsx"]} style={{ height: '20em' }}>
+<div  q:slot="0">
+<CodeFile src="/src/routes/demo/react/counter-simple-hover/react.tsx">
+```tsx /unisynthify$/ /{: eagerness: 'hover' }/
+/** @jsxImportSource react */
+import { unisynthify$ } from '@khulnasoft.com/unisynth-react';
+import { useState } from 'react';
+
+// Create React component standard way
+function Counter() {
+  // Print to console to show when the component is rendered.
+  console.log('React <Counter/> Render');
+  const [count, setCount] = useState(0);
+  return (
+    <button className="react" onClick={() => setCount(count + 1)}>
+      Count: {count}
+    </button>
+  );
+}
+
+// Specify eagerness to hydrate component on hover event.
+export const QCounter = unisynthify$(Counter, { eagerness: 'hover' });
+```
+</CodeFile>
+</div>
+<div q:slot="1">
+<CodeFile src="/src/routes/demo/react/counter-simple-hover/index.tsx">
+```tsx
+import { component$ } from '@khulnasoft.com/unisynth';
+import { QCounter } from './react';
+
+export default component$(() => {
+  console.log('Unisynth Render');
+  return (
+    <main>
+      <QCounter />
+    </main>
+  );
+});
+```
+</CodeFile>
+</div>
+</CodeSandbox>
+
+In this example, we have brought up the console to show what is going on behind the scene. When you hover over the button, you will see that the React component is rendered. This is because we asked Unisynth to hydrate the component on `hover`. Now that the component is hydrated you can interact with it and it will correctly update the count.
+
+By giving the `eagerness` property to `unisynthify$()`, we are allowing you to fine-tune the conditions under which the component is hydrated which will impact the startup performance of your application.
+
+
+## 3. Inter-island communication
+
+In the previous example, we had a single island that we delay-hydrated. But once you have multiple islands, there will be a need to communicate between them. This example shows how to do inter-island communication with Unisynth.
+
+
+<CodeSandbox src="/src/routes/demo/react/counter-two-islands/" console={true}
+             tabs={["react.tsx","index.tsx"]} style={{ height: '20em' }}>
+<div  q:slot="0">
+<CodeFile src="/src/routes/demo/react/counter-two-islands/react.tsx">
+```tsx /unisynthify$/ /{: eagerness: 'hover' }/
+/** @jsxImportSource react */
+import { unisynthify$ } from '@khulnasoft.com/unisynth-react';
+
+function Button({ onClick }: { onClick: () => void }) {
+  console.log('React <Button/> Render');
+  return <button onClick={onClick}>+1</button>;
+}
+
+function Display({ count }: { count: number }) {
+  console.log('React <Display count=' + count + '/> Render');
+  return <p className="react">Count: {count}</p>;
+}
+
+export const QButton = unisynthify$(Button, { eagerness: 'hover' });
+export const QDisplay = unisynthify$(Display);
+```
+</CodeFile>
+</div>
+<div q:slot="1">
+<CodeFile src="/src/routes/demo/react/counter-two-islands/index.tsx">
+```tsx
+import { component$, useSignal } from '@khulnasoft.com/unisynth';
+import { QButton, QDisplay } from './react';
+
+export default component$(() => {
+  console.log('Unisynth Render');
+  const count = useSignal(0);
+  return (
+    <main>
+      <QButton
+        onClick$={() => {
+          console.log('click', count.value);
+          count.value++;
+        }}
+      />
+      <QDisplay count={count.value}></QDisplay>
+    </main>
+  );
+});
+```
+</CodeFile>
+</div>
+</CodeSandbox>
+
+In the above example, we have two islands, one for the button (`QButton`) and one for the display (`QDisplay`). The button island is hydrated on `hover` and the display island is not hydrated on any event.
+
+The `react.tsx` file has:
+- `QButton` - a button that increments the count when clicked. This island is hydrated on `hover`.
+- `QDisplay` - a display that shows the current count. This island is not hydrated on any event but will be hydrated by Unisynth when its props change.
+- Both of the React components have `console.log` to show when the component is hydrated or re-rendered.
+
+The `index.tsx` file has:
+- `count` - a signal that is used to track the current count.
+- Instantiates the `QButton` islands. The `onClick$` handler increments the `count` signal. Notice that Unisynth automatically converts the `onClick` to `onClick$` prop allowing lazy loading of the event handlers.
+- Instantiates the `QDisplay` islands. The `count` signal is passed as a prop to the island.
+
+When you hover over the button, you will see that the `QButton` island is hydrated. When you click the button, you will see that the `QDisplay` island is hydrated and the count is updated. (The double execution of `QDisplay` is due to initial hydration first, and then updating the count second.)
+
+Notice that Unisynth React only needs to eagerly hydrate components that have interactivity. Components that are dynamic, but don't have interactivity (such as `QDisplay` in this example) do not need to be eagerly hydrated instead they hydrate automatically when their props change.
+
+Also notice that `console.log('Unisynth Render');` never executes in the browser.
+
+## 4. `host:` Listeners
+
+In the previous example, we had two islands. The `QButton` had to be eagerly hydrated so that React can set up the `onClick` event handler. This is a bit wasteful because the `QButton` island will never need to be re-rendered as its output is static. Clicking on the `QButton` will not cause the `QButton` island to re-render. In such a case, we can ask Unisynth to register the `click` listener instead of hydrating the whole component in React just to attach a listener. This is done by using the `host:` prefix in the event name.
+
+<CodeSandbox src="/src/routes/demo/react/counter-two-islands-host/" console={true}
+             tabs={["index.tsx","react.tsx"]} style={{ height: '20em' }}>
+<div  q:slot="0">
+<CodeFile src="/src/routes/demo/react/counter-two-islands-host/index.tsx">
+```tsx /host:onClick$/
+import { component$, useSignal } from '@khulnasoft.com/unisynth';
+import { QButton, QDisplay } from './react';
+
+export default component$(() => {
+  console.log('Unisynth Render');
+  const count = useSignal(0);
+  return (
+    <main>
+      <QButton
+        host:onClick$={() => {
+          console.log('click', count.value);
+          count.value++;
+        }}
+      >
+        +1
+      </QButton>
+      <QDisplay count={count.value}></QDisplay>
+    </main>
+  );
+});
+```
+</CodeFile>
+</div>
+<div q:slot="1">
+<CodeFile src="/src/routes/demo/react/counter-two-islands-host/react.tsx">
+```tsx
+/** @jsxImportSource react */
+import { unisynthify$ } from '@khulnasoft.com/unisynth-react';
+import { type ReactNode } from 'react';
+
+function Button({ children }: { children?: ReactNode[] }) {
+  console.log('React <Button/> Render');
+  return <button>{children}</button>;
+}
+
+function Display({ count }: { count: number }) {
+  console.log('React <Display count=' + count + '/> Render');
+  return <div className="react">Count: {count}</div>;
+}
+
+export const QButton = unisynthify$(Button);
+export const QDisplay = unisynthify$(Display);
+```
+</CodeFile>
+</div>
+</CodeSandbox>
+
+Now hovering over the button will not do anything (no React hydration). Clicking on the button will cause Unisynth to handle the event and update the signal which will in turn cause the hydration of the `QDisplay` island. Notice that the `QButton` island is never hydrated. Therefore this change allowed us to have an island that renders server side only and never needs to be hydrated in the browser, saving our user time.
+
+
+## 5. Projecting `children`
+
+A common use case is to pass content children to components. This works with Unisynth React as well. In the React component just declare `children` in your props and use them as expected (See `react.tsx`).
+
+<CodeSandbox src="/src/routes/demo/react/children/" console={true}
+             tabs={["index.tsx","react.tsx"]} style={{ height: '20em' }}>
+<div  q:slot="0">
+<CodeFile src="/src/routes/demo/react/children/index.tsx">
+```tsx /host:onClick$/
+import { component$, useSignal } from '@khulnasoft.com/unisynth';
+import { QFrame } from './react';
+
+export default component$(() => {
+  console.log('Unisynth Render');
+  const count = useSignal(0);
+  return (
+    <QFrame>
+      <button
+        onClick$={() => {
+          console.log('click', count.value);
+          count.value++;
+        }}
+      >
+        +1
+      </button>
+      Count: {count}
+    </QFrame>
+  );
+});
+```
+</CodeFile>
+</div>
+<div q:slot="1">
+<CodeFile src="/src/routes/demo/react/children/react.tsx">
+```tsx
+/** @jsxImportSource react */
+import { type ReactNode } from 'react';
+import { unisynthify$ } from '@khulnasoft.com/unisynth-react';
+
+function Frame({ children }: { children?: ReactNode[] }) {
+  console.log('React <Zippy/> Render');
+  return (
+    <div
+      style={{
+        display: 'inline-block',
+        border: '1px solid black',
+        borderRadius: '10px',
+        padding: '5px',
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+export const QFrame = unisynthify$(Frame);
+```
+</CodeFile>
+</div>
+</CodeSandbox>
+
+Notice that the `QFrame` island is never hydrated because it has no `eagerness` or any props which would trigger hydration. But also notice that the children do re-render when the signal changes and are correctly projected into the React `QFrame` island without the island being hydrated. This allows even more of the page to be rendered server-side and never rendered on the client.
+
+## 6. Using React libraries
+
+Finally, it is possible to use React libraries in your Unisynth application. In this example [Material UI](https://mui.com/) and [Emotion](https://emotion.sh/docs/introduction) are used to render this React example.
+
+
+<CodeSandbox src="/src/routes/demo/react/mui/"
+             tabs={["react.tsx", "index.tsx"]} style={{ height: '8em' }}>
+<div  q:slot="0">
+<CodeFile src="/src/routes/demo/react/mui/react.tsx">
+```tsx /host:onClick$/
+/** @jsxImportSource react */
+import { unisynthify$ } from '@khulnasoft.com/unisynth-react';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
+import { type ReactNode } from 'react';
+
+export const Example = unisynthify$(
+  function Example({
+    selected,
+    onSelected,
+    children,
+  }: {
+    selected: number;
+    onSelected: (v: number) => any;
+    children?: ReactNode[];
+  }) {
+    console.log('React <Example/> Render');
+    return (
+      <>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs
+            value={selected}
+            onChange={(e, v) => onSelected(v)}
+            aria-label="basic tabs example"
+          >
+            <Tab label="Item One" />
+            <Tab label="Item Two" />
+            <Tab label="Item Three" />
+          </Tabs>
+          {children}
+        </Box>
+      </>
+    );
+  },
+  { eagerness: 'hover' }
+);
+```
+</CodeFile>
+</div>
+<div q:slot="1">
+<CodeFile src="/src/routes/demo/react/mui/index.tsx">
+```tsx
+import { component$, useSignal } from '@khulnasoft.com/unisynth';
+import { Example } from './react';
+
+export default component$(() => {
+  console.log('Unisynth Render');
+  const selected = useSignal(0);
+  return (
+    <Example
+      selected={selected.value}
+      onSelected$={(v) => (selected.value = v)}
+    >
+      Selected tab: {selected.value}
+    </Example>
+  );
+});
+```
+</CodeFile>
+</div>
+</CodeSandbox>
+
+The React example is hydrated on hover and works as you would expect.
+
+# Rules
+
+Let's look at this example to better understand the rules of Unisynth React.
+
+```tsx title="src/integrations/react/mui.tsx"
+/** @jsxImportSource react */
+
+import { unisynthify$ } from '@khulnasoft.com/unisynth-react';
+import { Alert, Button, Slider } from '@mui/material';
+import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+
+export const MUIButton = unisynthify$(Button);
+export const MUIAlert = unisynthify$(Alert);
+export const MUISlider = unisynthify$(Slider, { eagerness: 'hover' });
+```
+
+> **Important:** You need to import `/** @jsxImportSource react */` at the top of your file, this is an instruction to the compiler to use React as the JSX factory.
+
+In a nutshell, the rules are:
+
+1. Don't mix React and Unisynth components in the same file.
+2. We recommend that you place all your react code inside the `src/integrations/react` folder.
+3. Add `/** @jsxImportSource react */` at the top of the files containing React code.
+4. Use `unisynthify$()` to convert React components into Unisynth components, that you can then import from Unisynth modules.
+
+Now your Unisynth can import `MUIButton` and use it as any other Unisynth component:
+
+```tsx
+import { component$ } from '@khulnasoft.com/unisynth';
+import { MUIAlert, MUIButton } from '~/integrations/react/mui';
+
+export default component$(() => {
+  return (
+    <>
+      <MUIButton client:hover>Hello this is a button</MUIButton>
+
+      <MUIAlert severity="warning">This is a warning from Unisynth</MUIAlert>
+    </>
+  );
+});
+```
+
+## `unisynthify$()`
+
+The `unisynthify$(ReactCmp, options?): UnisynthCmp` allows to implement partial hydration of React components. It works by wrapping the SSR and hydration logic of React into a Unisynth component that can execute React's `renderToString()` during SSR and dynamically call `hydrateRoot()` when specified.
+
+Notice that by default no React code will run in the browser, meaning that React component will NOT be interactive by default, for example, in the following example, we _unisynthify_ the [Slider](https://mui.com/material-ui/react-slider/) component from MUI, but it will not be interactive (it is missing an `eagerness` property to tell Unisynth when the React component should be hydrated in the browser.)
+
+<CodeSandbox src="/src/routes/demo/react/slider/" console={true}
+             tabs={["react.tsx","index.tsx"]} style={{ height: '20em' }}>
+<div  q:slot="0">
+<CodeFile src="/src/routes/demo/react/slider/react.tsx">
+```tsx /host:onClick$/
+/** @jsxImportSource react */
+import { unisynthify$ } from '@khulnasoft.com/unisynth-react';
+import { Slider } from '@mui/material';
+export const MUISlider = unisynthify$<typeof Slider>(
+  Slider
+  //  Uncomment next line to make component interactive in browser
+  // { eagerness: 'hover' }
+);
+```
+</CodeFile>
+</div>
+<div q:slot="1">
+<CodeFile src="/src/routes/demo/react/children/index.tsx">
+```tsx
+import { component$, useSignal } from '@khulnasoft.com/unisynth';
+import { QFrame } from './react';
+
+export default component$(() => {
+  console.log('Unisynth Render');
+  const count = useSignal(0);
+  return (
+    <QFrame>
+      <button
+        onClick$={() => {
+          console.log('click', count.value);
+          count.value++;
+        }}
+      >
+        +1
+      </button>
+      Count: {count}
+    </QFrame>
+  );
+});
+```
+</CodeFile>
+</div>
+</CodeSandbox>
+
+## Limitations
+
+### Every unisynthified react component is isolated
+
+Each instance of a unisynthified react component becomes an independent React app. Fully isolated.
+
+```tsx
+export const MUISlider = unisynthify$(Slider);
+
+<MUISlider></MUISlider>
+<MUISlider></MUISlider>
+```
+
+- Each `MUISlider` is a fully isolated React application, with its own state, lifecycle, etc.
+- Styles will be duplicated
+- State will not be shared
+- [Context](https://react.dev/learn/passing-data-deeply-with-context) will not be inherited.
+- Islands will [hydrate](https://react.dev/reference/react-dom/client/hydrateRoot) independently
+
+### By default interactivity is disabled
+
+By default, unisynthified components will not be interactive, please look at the next section to learn how to enable interactivity.
+
+### Use `unisynthify$()` as a migration strategy
+
+Using React components in Unisynth is a great way to migrate your application to Unisynth, but it's not a silver bullet, you will need to rewrite your components to take advantage of Unisynth's features.
+
+It's also a great way to enjoy the React ecosystem, like [threejs](https://github.com/pmndrs/react-three-fiber) or [data-grid libs](https://mui.com/x/react-data-grid/).
+
+> Don't abuse `unisynthify$()` to build your application, as overusing will cause performance gains to be lost.
+
+### Build wide islands, not leaf nodes
+
+For example, if you need to use several MUI components, to build a list, don't unisynthify each individual MUI component, instead, build the whole list as a single unisynthified React component.
+
+#### GOOD: Wide island
+
+A single unisynthified component, with all the MUI components inside. Styles will not be duplicated, and context and theming will work as expected.
+
+```tsx
+import * as React from 'react';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import ImageIcon from '@mui/icons-material/Image';
+import WorkIcon from '@mui/icons-material/Work';
+import BeachAccessIcon from '@mui/icons-material/BeachAccess';
+
+// Unisynthify the whole list
+export const FolderList = unisynthify$(() => {
+  return (
+    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      <ListItem>
+        <ListItemAvatar>
+          <Avatar>
+            <ImageIcon />
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary="Photos" secondary="Jan 9, 2014" />
+      </ListItem>
+      <ListItem>
+        <ListItemAvatar>
+          <Avatar>
+            <WorkIcon />
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary="Work" secondary="Jan 7, 2014" />
+      </ListItem>
+      <ListItem>
+        <ListItemAvatar>
+          <Avatar>
+            <BeachAccessIcon />
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary="Vacation" secondary="July 20, 2014" />
+      </ListItem>
+    </List>
+  );
+});
+```
+
+#### BAD: Leaf nodes
+
+Leaf nodes are unisynthified independently, effectively rendering dozens of nested react applications, each fully isolated from the others, and styles being duplicated.
+
+```tsx
+import * as React from 'react';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import ImageIcon from '@mui/icons-material/Image';
+import WorkIcon from '@mui/icons-material/Work';
+import BeachAccessIcon from '@mui/icons-material/BeachAccess';
+
+export const MUIList = unisynthify$(List);
+export const MUIListItem = unisynthify$(ListItem);
+export const MUIListItemText = unisynthify$(ListItemText);
+export const MUIListItemAvatar = unisynthify$(ListItemAvatar);
+export const MUIAvatar = unisynthify$(Avatar);
+export const MUIImageIcon = unisynthify$(ImageIcon);
+export const MUIWorkIcon = unisynthify$(WorkIcon);
+export const MUIBeachAccessIcon = unisynthify$(BeachAccessIcon);
+```
+
+```tsx
+// Unisynth component using dozens of nested React islands
+// Each MUI-* it's an independent React application
+export const FolderList = component$(() => {
+  return (
+    <MUIList sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      <MUIListItem>
+        <MUIListItemAvatar>
+          <MUIAvatar>
+            <MUIImageIcon />
+          </MUIAvatar>
+        </MUIListItemAvatar>
+        <MUIListItemText primary="Photos" secondary="Jan 9, 2014" />
+      </MUIListItem>
+      <MUIListItem>
+        <MUIListItemAvatar>
+          <MUIAvatar>
+            <MUIWorkIcon />
+          </MUIAvatar>
+        </MUIListItemAvatar>
+        <MUIListItemText primary="Work" secondary="Jan 7, 2014" />
+      </MUIListItem>
+      <MUIListItem>
+        <MUIListItemAvatar>
+          <MUIAvatar>
+            <MUIBeachAccessIcon />
+          </MUIAvatar>
+        </MUIListItemAvatar>
+        <MUIListItemText primary="Vacation" secondary="July 20, 2014" />
+      </MUIListItem>
+    </MUIList>
+  );
+});
+```
+
+## Adding interactivity
+
+In order to add interactivity, in React terminology we need to [hydrate](https://react.dev/reference/react-dom/hydrate), usually in React applications this hydration task happens unconditionally at load time, [adding a massive overhead](https://www.builder.io/blog/hydration-is-pure-overhead) and making sites slow.
+
+Unisynth allows you decide when to hydrate your components, by using the `client:` JSX properties, this technique is commonly called partial hydration, popularized by [Astro](https://astro.build/).
+
+```diff
+export default component$(() => {
+  return (
+    <>
+-      <MUISlider></MUISlider>
++      <MUISlider client:visible></MUISlider>
+    </>
+  );
+});
+```
+
+Unisynth comes with different strategies out of the box:
+
+### `client:load`
+
+The component eagerly hydrates when the document loads.
+
+```tsx
+<MUISlider client:load></MUISlider>
+```
+
+**Use case:** Immediately-visible UI elements that need to be interactive as soon as possible.
+
+### `client:idle`
+
+The component eagerly hydrates when the browser first becomes idle, ie, when everything important has already run before.
+
+```tsx
+<MUISlider client:idle></MUISlider>
+```
+
+**Use case:** Lower-priority UI elements that don’t need to be immediately interactive.
+
+### `client:visible`
+
+The component eagerly hydrates when it becomes visible in the viewport.
+
+```tsx
+<MUISlider client:visible></MUISlider>
+```
+
+**Use case:** Low-priority UI elements that are either far down the page (“below the fold”) or so resource-intensive to load that you would prefer not to load them at all if the user never saw the element.
+
+### `client:hover`
+
+The component eagerly hydrates when the mouse is over the component.
+
+```tsx
+<MUISlider client:hover></MUISlider>
+```
+
+**Use case:** Lowest-priority UI elements which interactivity is not crucial, and only needs to run in desktop.
+
+### `client:signal`
+
+This is an advanced API that allows to hydrate the component whenever the passed signal becomes `true`.
+
+```tsx
+export default component$(() => {
+  const hydrateReact = useSignal(false);
+  return (
+    <>
+      <button onClick$={() => (hydrateReact.value = true)}>Hydrate Slider when click</button>
+
+      <MUISlider client:signal={hydrateReact}></MUISlider>
+    </>
+  );
+});
+```
+
+This effectively allows you to implement custom strategies for hydration.
+
+### `client:event`
+
+The component eagerly hydrates when specified DOM events are dispatched.
+
+```tsx
+<MUISlider client:event="click"></MUISlider>
+```
+
+### `client:only`
+
+When `true`, the component will not run in SSR, only in the browser.
+
+```tsx
+<MUISlider client:only></MUISlider>
+```
+
+## Listening to React events
+
+Events in React are handled by passing a function as a property to the component, for example:
+
+```tsx
+// React code (won't work in Unisynth)
+
+import { Slider } from '@mui/material';
+
+<Slider onChange={() => console.log('value changed')}></Slider>;
+```
+
+The `unisynthify()` function will convert this into a Unisynth component that will also expose the React events as Unisynth [QRLs](/docs/(unisynth)/advanced/qrl/index.mdx):
+
+```tsx
+import { Slider } from '@mui/material';
+import { unisynthify$ } from '@khulnasoft.com/unisynth-react';
+const MUISlider = unisynthify$(Slider);
+
+<MUISlider client:visible onChange$={() => console.log('value changed')} />;
+```
+
+> Notice that we use the `client:visible` property to eagerly hydrate the component, otherwise the component would not be interactive and the events would never be dispatched.
+
+## Host element
+
+When wrapping a React component with `unisynthify$()`, under the hood, a new DOM element is created, such as:
+
+```html
+<unisynth-react>
+  <button class="MUI-button"></button>
+</unisynth-react>
+```
+
+> Notice, that the tag name of the wrapper element is configurable via `tagName`: `unisynthify$(ReactCmp, { tagName: 'my-react' })`.
+
+### Listen to DOM events without hydration
+
+The host element is not part of React, meaning that hydration is not necessary to listen for events, in order to add custom attributes and events to the host element, you can use the `host:` prefix in the JSX properties, such as:
+
+```tsx
+<MUIButton
+  host:onClick$={() => {
+    console.log('click a react component without hydration!!');
+  }}
+/>
+```
+
+This will effectively allow you to respond to a click in a [MUI button](https://mui.com/material-ui/react-button/) without downloading a single byte of React code.
+
+🧑‍💻Happy hacking!

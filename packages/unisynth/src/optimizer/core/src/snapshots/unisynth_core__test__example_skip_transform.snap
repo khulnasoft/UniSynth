@@ -1,0 +1,33 @@
+---
+source: packages/unisynth/src/optimizer/core/src/test.rs
+assertion_line: 1259
+expression: output
+---
+==INPUT==
+
+
+import { component$ as Component, $ as onRender } from '@khulnasoft.com/unisynth';
+
+export const handler = $(()=>console.log('hola'));
+
+export const App = component$((props) => {
+    useStyles$('hola');
+    return $(() => (
+        <div>{state.thing}</div>
+    ));
+});
+
+============================= test.js ==
+
+import { _jsxQ } from "@khulnasoft.com/unisynth";
+export const handler = $(()=>console.log('hola'));
+export const App = component$((props)=>{
+    useStyles$('hola');
+    return $(()=>/*#__PURE__*/ _jsxQ("div", null, null, state.thing, 3, "u6_0"));
+});
+
+
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";AAGA,OAAO,MAAM,UAAU,EAAE,IAAI,QAAQ,GAAG,CAAC,SAAS;AAElD,OAAO,MAAM,MAAM,WAAW,CAAC;IAC3B,WAAW;IACX,OAAO,EAAE,kBACL,MAAC,mBAAK,MAAM,KAAK;AAEzB,GAAG\"}")
+== DIAGNOSTICS ==
+
+[]

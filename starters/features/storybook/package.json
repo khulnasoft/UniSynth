@@ -1,0 +1,25 @@
+{
+  "description": "Add Storybook",
+  "__unisynth__": {
+    "displayName": "Integration: Storybook",
+    "priority": -10,
+    "docs": [
+      "https://unisynth.dev/integrations/integration/storybook/",
+      "https://storybook.js.org/docs/unisynth/get-started/why-storybook"
+    ]
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.2.8",
+    "@storybook/addon-links": "^8.2.8",
+    "@storybook/blocks": "^8.2.8",
+    "@storybook/builder-vite": "^8.2.8",
+    "@storybook/html": "^8.2.8",
+    "@storybook/html-vite": "^8.2.8",
+    "storybook": "^8.2.8",
+    "storybook-framework-unisynth": "^0.4.0"
+  },
+  "scripts": {
+    "build-storybook": "storybook build",
+    "storybook": "storybook dev -p 6006"
+  }
+}

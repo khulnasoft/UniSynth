@@ -1,27 +1,46 @@
-coverage
-node_modules
-dist
-__snapshots__
-packages/fiddle/build/**
+**/api.md
+**/*.log
+**/.DS_Store
+*.
+.history
 .yarn
-e2e/**/output/src/**
-e2e/e2e-app-vue3-output/vue3/src/**
-e2e/e2e-angular/angular_src/app/lib/**
-e2e/e2e-qwik/server/**
-e2e/e2e-app-qwik-output/src/e2e-app/**
-e2e/e2e-app-qwik-output/lib/**
-**/test-results/
-**/playwright-report/
-**/playwright/.cache/
-# **/tsconfig.json
-
-examples/**/output/**/*
-e2e/e2e-app/output/**/src/**/*
-e2e/e2e-app/output/**/types/**/*
+.yarnrc.yml
+.pnpm-store
+pnpm-lock.yaml
+.mf
+dist
+dist-dev
+lib
+etc
+external
+node_modules
+unisynth-app
+target
+output
+rollup.config.js
+build
+!packages/unisynth/src/build
+.cache
+.rollup.cache
+tsconfig.tsbuildinfo
+packages/docs/api/**/*
+packages/docs/public/repl/repl-sw.js*
+packages/docs/src/routes/**/*.mdx
+**/server/**/*.js
+starters/**/*.js
+# explicit exclusion for tailwind prettier.config.js
+starters/features/tailwind/*
 packages/docs/server
+packages/docs/src/routes/api
+packages/docs/**/*.md
+packages/docs/**/*.mdx
+packages/insights/drizzle
+packages/insights/.netlify
+packages/insights/scripts
+packages/insights/**/*.gen.d.ts
+packages/unisynth-labs/lib-types
+packages/unisynth-labs/vite
 
-.angular
-.next
-
-# ignore the starter package, it is not part of the workspace
-# packages/starter/
+# TODO: Figure out why this doesn't pass in CI
+packages/unisynth/src/core/props/props.ts
+packages/docs/src/routes/docs/overview/index.mdx

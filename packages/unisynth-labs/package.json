@@ -1,0 +1,62 @@
+{
+  "name": "@khulnasoft.com/unisynth-labs",
+  "description": "Unisynth Labs - Where you can try the latest Unisynth ideas.",
+  "version": "0.0.1",
+  "devDependencies": {
+    "@khulnasoft.com/unisynth": "workspace:^",
+    "@types/eslint": "8.56.10",
+    "@types/node": "20.14.11",
+    "@typescript-eslint/eslint-plugin": "7.16.1",
+    "@typescript-eslint/parser": "7.16.1",
+    "eslint": "8.57.0",
+    "eslint-plugin-unisynth": "workspace:^",
+    "np": "10.0.1",
+    "prettier": "3.3.3",
+    "typescript": "5.4.5",
+    "undici": "*",
+    "vite": "5.3.5",
+    "zod": "3.22.4"
+  },
+  "engines": {
+    "node": ">=16.8.0 <18.0.0 || >=18.11"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.unisynth.mjs",
+      "require": "./lib/index.unisynth.cjs"
+    },
+    "./vite": {
+      "types": "./vite/index.d.ts",
+      "import": "./vite/index.js",
+      "require": "./vite/index.cjs"
+    }
+  },
+  "files": [
+    "lib",
+    "vite"
+  ],
+  "main": "./lib/index.unisynth.mjs",
+  "peerDependencies": {
+    "zod": "3.22.4",
+    "vite": "^5"
+  },
+  "private": true,
+  "unisynth": "./lib/index.unisynth.mjs",
+  "scripts": {
+    "build": "pnpm build.vite && unisynth build",
+    "build.lib": "vite build --mode lib",
+    "build.vite": "vite -c vite.config-src-vite.mts build",
+    "dev": "vite --mode ssr",
+    "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
+    "fmt": "prettier --write .",
+    "fmt.check": "prettier --check .",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "unisynth": "unisynth",
+    "release": "np",
+    "start": "vite --open --mode ssr",
+    "test.unit": "vitest"
+  },
+  "type": "module",
+  "types": "./lib/index.d.ts"
+}

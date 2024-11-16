@@ -1,34 +1,55 @@
-node_modules
-dist
-*.log
-.vscode/**
-!.vscode/extensions.json
-!.vscode/settings.json
-.idea
-coverage
-.DS_Store
-*.tsbuildinfo
-.cache
-fiddle/build/
-packages/core/unisynth-build
+# Keep "OS" and "IDE and local environment" ignores on your local machine in user home
+# git config --global core.excludesFile ~/.gitignore
+# https://git-scm.com/docs/gitignore
+
+# OS
+**/.DS_Store
+etc
+temp
 .history
-.pnp.*
+.lh
+*.
+**/*.log
+*.node
+
+# Application
+unisynth-app/
+/server/
+/starters/**/server/
+/packages/*/server/
+!/packages/unisynth/server/
+/packages/*/src/styled-system/
+todo-express/
+target
+!/packages/docs/src/routes/demo/events/target
+src/napi/package-*
+
+# Node
+node_modules
+
+# Artifacts
+tsc-out
+dist
+dist-dev
+external
+lib
+tsdoc-metadata.json
+packages/unisynth/bindings
+
+# IDE and local environment
+.idea
 .eslintcache
+test-results
+.direnv
 
-# ignore everything in .yarn folder, except the .yarn/patches and the .yarn/versions subfolders
+# Package Managers
 .yarn/*
-!/.yarn/patches
-!/.yarn/versions
-!/.yarn/releases
+!.yarn/releases
+.pnpm-store/*
 
-# sveltekit tmp files
-**/package/__package_types_tmp__/
+# Local Netlify folder
+.netlify
+sandbox
 
-**/test-results/
-**/playwright-report/
-
-packages/core/src/__tests__/__snapshots__/local.test.ts.snap
-
-.nx/cache
-.nx-cache
-.nx/workspace-data
+# We need to ignore this because "changesets" will try to replace it
+/CHANGELOG.md

@@ -1,0 +1,30 @@
+---
+source: packages/unisynth/src/optimizer/core/src/test.rs
+assertion_line: 2169
+expression: output
+---
+==INPUT==
+
+
+// don't transpile jsx with non-plain-object props
+import { jsx } from '@khulnasoft.com/unisynth';
+
+export const App = () => {
+    const props = {}
+    return jsx('div', props, 'Hello Unisynth');
+}
+
+============================= test.tsx ==
+
+// don't transpile jsx with non-plain-object props
+import { jsx } from '@khulnasoft.com/unisynth';
+export const App = ()=>{
+    const props = {};
+    return jsx('div', props, 'Hello Unisynth');
+};
+
+
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\"AACA,kDAAkD;AAClD,SAAS,GAAG,QAAQ,2BAA2B;AAE/C,OAAO,MAAM,MAAM;IACf,MAAM,QAAQ,CAAC;IACf,OAAO,IAAI,OAAO,OAAO;AAC7B,EAAC\"}")
+== DIAGNOSTICS ==
+
+[]

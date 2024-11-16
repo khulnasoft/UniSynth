@@ -1,184 +1,474 @@
-/**
- * Tailwind CSS imports
- * View the full documentation at https://tailwindcss.com
- */
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: optional;
+  src: url(./fonts/poppins-400.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
+    U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: optional;
+  src: url(./fonts/poppins-500.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
+    U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: optional;
+  src: url(./fonts/poppins-700.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
+    U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.docs article pre code[data-language='tsx'] {
+  font-family: Menlo, Monaco, 'Lucida Console', Consolas, 'Courier New', monospace;
+  font-weight: normal;
+  font-size: 14px;
+  font-feature-settings:
+    'liga' 0,
+    'calt' 0;
+  line-height: 1.7;
+  letter-spacing: 0px;
+  text-shadow: none;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --primary-dark: #221931;
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 
-/**
- * WHAT IS THIS FILE?
- *
- * Globally applied styles. No matter which components are in the page or matching route,
- * the styles in here will be applied to the Document, without any sort of CSS scoping.
- *
- */
-
-.monaco-editor {
-  --vscode-editor-background: var(--primary-dark) !important;
-  --vscode-editorGutter-background: var(--primary-dark) !important;
-  outline: none !important;
-}
-
-.monaco-editor .sticky-widget {
-  background-color: var(--primary-dark) !important;
-}
-
-body {
-  @apply bg-purple-990 text-white;
-}
-
-.prose pre {
-  background-color: #221931;
-  font-size: 14px;
-}
-
-.prose
-  pre
-  :is(
-    .token.attr-name,
-    .token.builtin,
-    .token.char,
-    .token.inserted,
-    .token.selector,
-    .token.string
-  ) {
-  color: #b3e4b3;
-}
-
-.prose pre :is(.token.atrule, .token.attr-value, .token.keyword) {
-  color: #ceb5f4;
-}
-
-.prose
-  pre
-  :is(.token.boolean, .token.constant, .token.number, .token.property, .token.symbol, .token.tag) {
-  color: #ebaa94;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-.mtk5 {
-  color: #ebaa94 !important;
-}
-
-.mtk8 {
-  color: #ceb5f4 !important;
-}
-
-.mtk22,
-.mtk11 {
-  color: #b3e4b3 !important;
-}
-
-.docsearch-btn-key {
-  display: none;
-}
-
-.docsearch-modal-footer {
-  display: none;
+:root body {
+  --docsearch-modal-width: 600px;
+  --docsearch-modal-height: 800px;
 }
 
 :root {
-  --docsearch-primary-color: #ac7ef4;
-  --docsearch-muted-color: #ac7ef4;
+  color-scheme: light;
+  --header-height: 80px;
+  --aside-width: 300px;
+  --container-max-width: 1400px;
+  --builder-bar-height: 56px;
+  --panel-toggle-height: 0px;
+  --scroll-margin-top: calc(var(--header-height) + var(--builder-bar-height) + 10px);
+
+  --unisynth-blue: #0093ee;
+  --unisynth-dark-blue: #006ce9;
+  --unisynth-light-blue: #daf0ff;
+  --unisynth-purple: #ac7ef4;
+  --unisynth-dark-purple: #6000ff;
+  --unisynth-dark-purple-bg: #151934;
+
+  --bg-color: #ffffff;
+  --bg-secondary-color: #f7f8fb;
+  --bg-header-color: #ffffff9e;
+  --text-color: #0e201a;
+  --secondary-text-color: #171a19;
+  --interactive-text-color: var(--unisynth-dark-blue);
+
+  --code-bg-color: #e0e0e0;
+  --code-border-color: #bfbfbf;
+  --blockquote-bg-color: #f1f5fe;
+
+  --repl-tab-button-hover-bg-color: #ffffff75;
+  --repl-tab-button-hover-border-color: #0084ff75;
+  --repl-tab-button-input-hover-border-color: #564ce175;
+  --repl-tab-button-input-active-border-color: var(--unisynth-purple);
+  --repl-tab-button-active-border-color: var(--unisynth-blue);
+  --repl-diagnostics-hover-border-color: #ff009075;
+  --repl-diagnostics-active-border-color: #ff0090;
+  --repl-commands-color: var(--unisynth-blue);
+  --repl-tab-height: 56px;
+  --repl-tab-bg-color: var(--unisynth-light-blue);
+  --repl-diagnostics-text-color: #c90674;
+  --repl-log-build: #f3f4cb;
+  --repl-log-ssr: #e3e400;
+  --repl-log-client: #78fa83;
+  --repl-log-network: #f4f4f4;
+  --repl-log-warning: #d9d900;
+  --repl-log-text: #0e201a;
+  --repl-border-color: #e3e3e3;
+
+  --tutorial-nav-button-bg-color: var(--unisynth-dark-blue);
+  --tutorial-nav-button-hover-bg-color: var(--bg-color);
+  --tutorial-nav-button-text-color: #ffffff;
+
+  --examples-header-text-color: #494949;
+  --examples-active-bg-color: #e2ebff;
+  --examples-hover-bg-color: #f7f7f7;
+  --examples-border-color: #e3e3e3;
+  --examples-main-border-color: #dfdede;
+
+  --content-nav-button-text-color: var(--interactive-text-color);
+  --content-nav-button-bg-color: var(--unisynth-dark-blue);
+  --content-nav-button-hover-bg-color: var(--bg-color);
+
+  --made-with-love-text-color: #333333;
+
+  --on-this-page-hover-bg-color: #0093ee17;
+
+  --media-separator-color: #dddddd;
+  --media-video-shadow-color: var(--unisynth-dark-blue);
+
+  --panel-toggle-background-color: var(--unisynth-light-blue);
 }
 
-.docsearch-btn {
-  @apply max-md:!shadow-none max-md:-mr-4 hover:!bg-primary-dark;
-  box-shadow: var(--docsearch-searchbox-shadow);
-  background-color: transparent !important;
-  color: var(--docsearch-primary-color) !important;
-}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --unisynth-blue: #009dfd;
 
-.docsearch-btn:hover {
-  box-shadow: var(--docsearch-searchbox-shadow);
-  color: #ac7ef4 !important;
-}
+  --bg-color: #101010;
+  --bg-secondary-color: #232323;
+  --bg-header-color: #00000006;
+  --text-color: #e3e2e9;
+  --secondary-text-color: #ffffffc3;
+  --interactive-text-color: var(--unisynth-blue);
 
-.docsearch-modal-search-hits-item--active * {
-  color: black !important;
-}
+  --code-bg-color: #1d1d1d;
+  --code-border-color: #525252;
+  --blockquote-bg-color: #353639;
 
-.docsearch-modal-btn-icon {
-  @apply max-md:!stroke-white max-md:!text-white;
-  width: 17px;
-  margin: 5px;
-  stroke: var(--docsearch-highlight-color);
-  stroke-width: 1px;
+  --repl-tab-button-hover-bg-color: #ffffff25;
+  --repl-tab-button-input-hover-border-color: #c3c1de75;
+  --repl-tab-button-input-active-border-color: #d8c2fa;
+  --repl-tab-button-active-border-color: var(--unisynth-light-blue);
+  --repl-diagnostics-hover-border-color: rgba(255, 0, 144, 0.46);
+  --repl-diagnostics-active-border-color: rgb(255, 0, 144);
+  --repl-commands-color: var(--unisynth-light-blue);
+  --repl-tab-bg-color: var(--bg-color);
+  --repl-border-color: rgba(255, 255, 255, 0.2);
+
+  --examples-header-text-color: var(--text-color);
+  --examples-active-bg-color: #1d1d1d;
+  --examples-hover-bg-color: #353639;
+  --examples-border-color: rgba(255, 255, 255, 0.2);
+  --examples-main-border-color: rgba(255, 255, 255, 0.1);
+
+  --made-with-love-text-color: #c6c5cb;
+
+  --media-separator-color: rgba(255, 255, 255, 0.1);
+  --media-video-shadow-color: var(--unisynth-blue);
+
+  --panel-toggle-background-color: var(--unisynth-dark-blue);
 }
 
 @media (max-width: 768px) {
-  footer .docsearch-modal-btn-icon {
-    width: 26px;
-    height: 29px;
-    margin-top: 0;
+  :root {
+    --panel-toggle-height: 56px;
+    --builder-bar-height: 40px;
+    --header-height: 60px;
   }
 }
 
-.docsearch-btn-placeholder {
-  @apply max-md:hidden;
+html {
+  font-family:
+    Poppins,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Helvetica Neue,
+    Arial,
+    Noto Sans,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    Segoe UI Symbol,
+    'Noto Color Emoji';
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow: auto;
 }
 
-.docsearch-btn-icon-container {
-  @apply max-md:mr-0;
+.uwu-logo {
+  display: none;
+}
+html.uwu .unisynth-logo {
+  display: none;
+}
+html.uwu .uwu-logo {
+  display: block !important;
 }
 
-.docsearch-modal-empty-query {
-  margin-bottom: 14px;
+a,
+button,
+textarea,
+input,
+select {
+  touch-action: manipulation;
 }
 
-.prose :is(h1, h2, h3, h4, h5, h6) {
-  @apply scroll-mt-32 relative cursor-pointer;
+body {
+  @apply antialiased h-screen overflow-auto;
 }
 
-.prose :is(h2, h3, h4, h5, h6):hover .icon-link:after {
-  @apply text-primary;
+@media (max-width: 1023px) {
+  .menu-open .sidebar {
+    @apply block fixed z-50 top-0 bottom-0 left-0 max-h-none w-full;
+  }
+
+  .menu-open .menu {
+    @apply block;
+
+    @apply top-0;
+    @apply p-3 pt-6 pr-16;
+    width: 360px;
+
+    background: var(--bg-color);
+  }
+
+  .menu-open .menu h5 {
+    @apply p-2;
+  }
+
+  .menu-open .menu li a,
+  .menu-open .menu li a.is-active {
+    @apply p-3;
+  }
+
+  .menu-close {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 300px;
+    width: 100%;
+    height: 100vh;
+    padding-left: 12px;
+    cursor: default;
+    color: var(--unisynth-dark-blue);
+    background: color-mix(in hsl, var(--bg-color), transparent 20%);
+    backdrop-filter: blur(3px);
+  }
+
+  .menu-close svg {
+    position: fixed;
+    top: calc(20px + var(--builder-bar-height));
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 540px) {
+  .menu-open .menu {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .menu-open .menu a:hover {
+    @apply bg-transparent;
+    color: rgb(241 245 249 / var(--tw-text-opacity)) !important;
+  }
+}
+@media (min-width: 1024px) {
+  #unisynth-sidebar.menu {
+    width: 17rem;
+  }
+}
+
+@media (min-width: 1300px) {
+  #unisynth-sidebar.menu {
+    width: 20rem;
+  }
+}
+/* Builder */
+:root[data-theme='dark'] .builder .dark-mode {
+  filter: invert(90%) hue-rotate(180deg);
+}
+
+:root[data-theme='dark'] .dark-mode-invert {
+  filter: invert(100%) hue-rotate(180deg);
+}
+
+:root[data-theme='dark'] .dark-mode-hide {
+  display: none !important;
+}
+
+:root[data-theme='light'] .light-mode-hide {
+  display: none !important;
+}
+
+:root[data-theme='dark'] .builder .dark-mode :is(img, iframe, video) {
+  filter: invert(100%) hue-rotate(180deg);
+}
+
+/* Temporary workaround */
+:root[data-theme='dark'] .builder .csoetdv,
+:root[data-theme='dark'] .builder .cvha93q {
+  filter: invert(90%) hue-rotate(180deg);
+}
+
+.purple-bg {
+  background-color: var(--unisynth-dark-purple-bg);
+  height: auto;
+}
+
+.purple-bg header.header-container {
+  background-color: var(--unisynth-dark-purple-bg);
+}
+
+code .line.line--highlighted {
+  background: rgba(200, 200, 255, 0.1);
+  border-left-color: #60a5fa;
+}
+
+code .word {
+  background: rgba(200, 200, 255, 0.15);
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.ai-button {
+  background: var(--docsearch-hit-background);
+  border-radius: 4px;
+  box-shadow: var(--docsearch-hit-shadow);
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  color: var(--docsearch-hit-color);
+}
+
+.ai-button > button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding-left: 12px;
+  padding: 15px;
+  color: inherit;
+}
+
+.ai-li[aria-selected='true'] button {
+  background-color: var(--docsearch-highlight-color);
+  color: white;
+}
+
+.unisynthgpt-box {
+  background: var(--docsearch-hit-background);
+  padding: 10px;
+  margin: 0;
+  font-weight: 100;
+  font-size: 14px;
+}
+
+.unisynthgpt-box p {
+  margin: 10px 0;
+}
+
+.unisynthgpt-box ol,
+.unisynthgpt-box ul {
+  margin: 10px 15px 0;
+  list-style: auto;
+}
+
+.unisynthgpt-box li {
+  font-weight: initial;
+}
+
+.unisynthgpt-box code:not(.language-tsx) {
+  background: #5468ff5c;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+
+.unisynthgpt-box a {
+  color: var(--interactive-text-color);
+  text-decoration: underline;
+}
+
+.unisynthgpt-box pre {
+  font-size: 12px !important;
+  border-radius: 12px;
+  margin: 10px 0;
+}
+
+.indeterminate-progress-bar {
+  /* Color */
+  background-color: #d1d5db;
+
+  /* Rounded border */
+  border-radius: 9999px;
+
+  /* Size */
+  height: 0.5rem;
+
+  position: relative;
+  overflow: hidden;
+
+  margin: 80px;
+}
+
+.indeterminate-progress-bar__progress {
+  /* Color */
+  background-color: #3b82f6;
+
+  /* Rounded border */
+  border-radius: 9999px;
+
+  /* Absolute position */
   position: absolute;
-  content: '#';
-  left: -1em;
+  bottom: 0;
+  top: 0;
+  width: 50%;
+
+  /* Move the bar infinitely */
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: indeterminate-progress-bar;
 }
 
-.prose h1 {
-  @apply leading-tight;
+@keyframes indeterminate-progress-bar {
+  from {
+    left: -50%;
+  }
+  to {
+    left: 100%;
+  }
 }
 
-.prose video {
-  @apply w-full h-auto;
+.ai-rate {
+  text-align: right;
+  margin-top: 20px;
+  border-top: 1px solid #cdcdcd;
+  padding: 10px 13px 0 0;
+  font-size: 12px;
 }
 
-/* Inter font */
-@font-face {
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 300;
-  font-display: optional;
-  src: url('https://rsms.me/inter/font-files/Inter-Light.woff2?v=4.0') format('woff2');
+.ai-rate button {
+  padding: 0px 18px;
+  font-size: 18px;
+  border-radius: 10px;
+  margin: 0 5px;
 }
-@font-face {
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 400;
-  font-display: optional;
-  src: url('https://rsms.me/inter/font-files/Inter-Regular.woff2?v=4.0') format('woff2');
+
+.ai-rate button.rate-good {
+  background: #c2ffc6;
+  border: 2px solid green;
 }
-@font-face {
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-display: optional;
-  src: url('https://rsms.me/inter/font-files/Inter-Medium.woff2?v=4.0') format('woff2');
+
+.ai-rate button.rate-bad {
+  background: #ffc2c2;
+  border: 2px solid red;
 }
-@font-face {
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 600;
-  font-display: optional;
-  src: url('https://rsms.me/inter/font-files/Inter-SemiBold.woff2?v=4.0') format('woff2');
+
+.unisynthsand {
+  cursor:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🏖️</text></svg>")
+      16 0,
+    auto;
 }

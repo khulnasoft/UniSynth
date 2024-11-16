@@ -1,0 +1,99 @@
+---
+source: packages/unisynth/src/optimizer/core/src/test.rs
+assertion_line: 964
+expression: output
+---
+==INPUT==
+
+
+import { component$ as Component, $ as onRender, useStore } from '@khulnasoft.com/unisynth';
+
+export const App = Component((props) => {
+    const state = useStore({thing: 0});
+
+    return onRender(() => (
+        <div>{state.thing}</div>
+    ));
+});
+
+============================= test.js ==
+
+import { componentQrl } from "@khulnasoft.com/unisynth";
+import { qrl } from "@khulnasoft.com/unisynth";
+export const App = /*#__PURE__*/ componentQrl(/*#__PURE__*/ qrl(()=>import("./test.tsx_App_Component_NuXFTHRjvXE"), "App_Component_NuXFTHRjvXE"));
+
+
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";;AAGA,OAAO,MAAM,oBAAM,iHAMhB\"}")
+============================= test.tsx_App_Component_1_A08tXHb9pEk.js (ENTRY POINT)==
+
+import { useLexicalScope } from "@khulnasoft.com/unisynth";
+import { _fnSignal } from "@khulnasoft.com/unisynth";
+import { _jsxQ } from "@khulnasoft.com/unisynth";
+export const App_Component_1_A08tXHb9pEk = ()=>{
+    const [state] = useLexicalScope();
+    return /*#__PURE__*/ _jsxQ("div", null, null, _fnSignal((p0)=>p0.thing, [
+        state
+    ], "p0.thing"), 3, "u6_0");
+};
+export { _hW } from "@khulnasoft.com/unisynth";
+
+
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";;;2CAMoB;;yBACZ,MAAC,mCAAK,GAAM,KAAK\"}")
+/*
+{
+  "origin": "test.tsx",
+  "name": "App_Component_1_A08tXHb9pEk",
+  "entry": null,
+  "displayName": "test.tsx_App_Component_1",
+  "hash": "A08tXHb9pEk",
+  "canonicalFilename": "test.tsx_App_Component_1_A08tXHb9pEk",
+  "path": "",
+  "extension": "js",
+  "parent": "App_Component_NuXFTHRjvXE",
+  "ctxKind": "function",
+  "ctxName": "$",
+  "captures": true,
+  "loc": [
+    199,
+    245
+  ]
+}
+*/
+============================= test.tsx_App_Component_NuXFTHRjvXE.js (ENTRY POINT)==
+
+import { qrl } from "@khulnasoft.com/unisynth";
+import { useStore } from "@khulnasoft.com/unisynth";
+export const App_Component_NuXFTHRjvXE = (props)=>{
+    const state = useStore({
+        thing: 0
+    });
+    return /*#__PURE__*/ qrl(()=>import("./test.tsx_App_Component_1_A08tXHb9pEk"), "App_Component_1_A08tXHb9pEk", [
+        state
+    ]);
+};
+
+
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";;yCAG6B,CAAC;IAC1B,MAAM,QAAQ,SAAS;QAAC,OAAO;IAAC;IAEhC;;;AAGJ\"}")
+/*
+{
+  "origin": "test.tsx",
+  "name": "App_Component_NuXFTHRjvXE",
+  "entry": null,
+  "displayName": "test.tsx_App_Component",
+  "hash": "NuXFTHRjvXE",
+  "canonicalFilename": "test.tsx_App_Component_NuXFTHRjvXE",
+  "path": "",
+  "extension": "js",
+  "parent": null,
+  "ctxKind": "function",
+  "ctxName": "component$",
+  "captures": false,
+  "loc": [
+    125,
+    249
+  ]
+}
+*/
+== DIAGNOSTICS ==
+
+[]

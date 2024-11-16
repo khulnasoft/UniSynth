@@ -1,11 +1,53 @@
-# Qwik City App ⚡️
+# Unisynth Docs Site ⚡️
+
+## Development Builds
+
+### Client only
+
+During development, the index.html is not a result of server-side rendering, but rather the Unisynth app is built using client-side JavaScript only. This is ideal for development with Vite and its ability to reload modules quickly and on-demand. However, this mode is only for development and does not showcase "how" Unisynth works since JavaScript is required to execute, and Vite imports many development modules for the app to work.
+
+```
+pnpm dev
+```
+
+### Server-side Rendering (SSR) and Client
+
+Server-side rendered index.html, with client-side modules prefetched and loaded by the browser. This can be used to test out server-side rendered content during development, but will be slower than the client-only development builds.
+
+```
+pnpm dev.ssr
+```
+
+## Production Builds
+
+A production build should generate the client and server modules by running both client and server build commands.
+
+```
+pnpm build
+```
+
+### Client Modules
+
+Production build that creates only the client-side modules that are dynamically imported by the browser.
+
+```
+pnpm build.client
+```
+
+### Server Modules
+
+Production build that creates the server-side render (SSR) module that is used by the server to render the HTML.
+
+```
+pnpm build.ssr
+```
 
 ## Cloudflare Pages
 
 Cloudflare's [wrangler](https://github.com/cloudflare/wrangler) CLI can be used to preview a production build locally. To start a local server, run:
 
 ```
-npm run serve
+pnpm serve
 ```
 
 Then visit [http://localhost:8787/](http://localhost:8787/)
@@ -16,7 +58,50 @@ Then visit [http://localhost:8787/](http://localhost:8787/)
 
 If you don't already have an account, then [create a Cloudflare account here](https://dash.cloudflare.com/sign-up/pages). Next go to your dashboard and follow the [Cloudflare Pages deployment guide](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/).
 
-Within the projects "Settings" for "Build and deployments", the "Build command" should be `npm run build`, and the "Build output directory" should be set to `dist`.
+Within the projects "Settings" for "Build and deployments", the "Build command" should be `pnpm build`, and the "Build output directory" should be set to `dist`.
+
+## Algolia search
+
+STILL WIP
+
+resource: https://docsearch.algolia.com/
+
+### Crawler
+
+Setup in https://crawler.algolia.com/
+
+### Debug local site with crawler settings
+
+To crawl localhost site for testing index settings for content hierarchy. use this docker command
+
+```shell
+# create apiKey via https://www.algolia.com/account/api-keys
+touch .env
+# APPLICATION_ID=APPLICATION_ID
+# API_KEY=API_KEY
+docker run -it --rm --env-file=.env -e "CONFIG=$(cat ./packages/docs/algolia.json | jq -r tostring)" algolia/docsearch-scraper
+```
+
+see guide of [DocSearch-legacy docker command](https://docsearch.algolia.com/docs/legacy/run-your-own#run-the-crawl-from-the-docker-image)
+
+> In mac machine, docker container can access host's network, workaround is to use `host.docker.internal`
+## Cloudflare Pages
+
+Cloudflare's [wrangler](https://github.com/cloudflare/wrangler) CLI can be used to preview a production build locally. To start a local server, run:
+
+```
+pnpm serve
+```
+
+Then visit [http://localhost:8787/](http://localhost:8787/)
+
+### Deployments
+
+[Cloudflare Pages](https://pages.cloudflare.com/) are deployable through their [Git provider integrations](https://developers.cloudflare.com/pages/platform/git-integration/).
+
+If you don't already have an account, then [create a Cloudflare account here](https://dash.cloudflare.com/sign-up/pages). Next go to your dashboard and follow the [Cloudflare Pages deployment guide](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/).
+
+Within the projects "Settings" for "Build and deployments", the "Build command" should be `pnpm build`, and the "Build output directory" should be set to `dist`.
 
 ### Function Invocation Routes
 

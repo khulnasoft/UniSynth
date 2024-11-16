@@ -1,5 +1,66 @@
 {
-  "compilerOptions": {},
-  "references": [{ "path": "./packages/core" }, { "path": "./packages/cli" }],
-  "files": []
+  "compilerOptions": {
+    "incremental": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["es2021", "DOM", "webworker", "DOM.Iterable"],
+    "resolveJsonModule": true,
+    "jsx": "react-jsx",
+    "allowArbitraryExtensions": true,
+    "jsxImportSource": "@khulnasoft.com/unisynth",
+    "declaration": true,
+    "outDir": "./dist-dev/tsc-out",
+    "declarationDir": "./dist-dev/dts-out",
+    "strict": true,
+    "verbatimModuleSyntax": true,
+    "moduleResolution": "Bundler",
+    "baseUrl": ".",
+    "assumeChangesOnlyAffectDirectDependencies": true,
+    "noUnusedLocals": true,
+    "paths": {
+      "@unisynth-client-manifest": ["packages/unisynth/dist/server-modules.d.ts"],
+      "@unisynth-city-plan": ["packages/unisynth-city/src/runtime/src/unisynth-city-plan.ts"],
+      "@unisynth-city-sw-register-build": [
+        "packages/unisynth-city/src/buildtime/runtime-generation/sw-register-build.ts"
+      ],
+      "@unisynth-city-sw-register": ["packages/unisynth-city/src/runtime/src/sw-register-runtime.ts"],
+      "@unisynth-city-not-found-paths": [
+        "packages/unisynth-city/src/middleware/request-handler/generated/not-found-paths.ts"
+      ],
+      "@unisynth-city-static-paths": [
+        "packages/unisynth-city/src/middleware/request-handler/generated/static-paths.ts"
+      ]
+    },
+    "types": ["node", "vite/client"],
+    "esModuleInterop": true,
+    "sourceRoot": ".",
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "rootDir": "."
+  },
+  "include": [
+    "packages/create-unisynth",
+    "packages/unisynth-auth",
+    "packages/unisynth-worker",
+    "packages/supabase-auth-helpers-unisynth",
+    "packages/unisynth-react/src",
+    "scripts",
+    "starters/apps/sandbox",
+    "starters/apps/todo-test",
+    "starters/apps/e2e",
+    "starters/apps/unisynthcity-test/**/*",
+    "starters/dev-server.ts",
+    "packages/unisynth-react/vite",
+    "@types/deno.d.ts",
+    "@types/bun.d.ts",
+    "types.d.ts"
+  ],
+  "exclude": [
+    "packages/create-unisynth/dist",
+    "packages/unisynth/src",
+    "packages/*/lib",
+    "scripts/eslint-docs.ts"
+  ]
 }

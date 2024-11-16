@@ -1,0 +1,169 @@
+---
+title: Component library | Advanced
+contributors:
+  - manucorporat
+  - mrhoodz
+  - thejackshelton
+updated_at: '2023-06-25T19:43:33Z'
+created_at: '2023-04-26T16:12:18Z'
+---
+
+import PackageManagerTabs from '~/components/package-manager-tabs/index.tsx';
+
+# Library
+
+Unisynth uses the [library mode of Vite](https://vitejs.dev/guide/build.html#library-mode) to create component libraries.
+
+In order to create a component library for Unisynth, you need to make sure of specific rules, this is because the Unisynth Optimizer needs to recognize your library as a Unisynth library.
+
+The easiest way to create a new component library is to use the build-in `library` starter:
+
+<PackageManagerTabs>
+<span q:slot="pnpm">
+```shell
+pnpm create unisynth library my-library
+```
+</span>
+<span q:slot="npm">
+```shell
+npm create unisynth library my-library
+```
+</span>
+<span q:slot="yarn">
+```shell
+yarn create unisynth library my-library
+```
+</span>
+<span q:slot="bun">
+```shell
+bun create unisynth library my-library
+```
+</span>
+</PackageManagerTabs>
+
+This will create a new folder called `my-library` with the following structure:
+
+```bash {2,11,14}
+├── README.md
+├── package.json
+├── src
+│   ├── components
+│   │   ├── counter
+│   │   │   └── counter.tsx
+│   │   └── logo
+│   │       └── logo.tsx
+│   ├── entry.dev.tsx
+│   ├── entry.ssr.tsx
+│   ├── index.ts
+│   └── root.tsx
+├── tsconfig.json
+└── vite.config.ts
+```
+
+The most important files of a library are a properly configured `package.json` and `vite.config.ts`.
+
+## package.json
+
+```json
+{
+  "name": "my-unisynth-library-name",
+  "version": "0.0.1",
+  "description": "Create a reusable Unisynth component library",
+  "main": "./lib/index.unisynth.mjs",
+  "unisynth": "./lib/index.unisynth.mjs",
+  "types": "./lib-types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.unisynth.mjs",
+      "require": "./lib/index.unisynth.cjs",
+      "types": "./lib-types/index.d.ts"
+    }
+  },
+  "files": [
+    "lib",
+    "lib-types"
+  ],
+  "type": "module",
+}
+```
+
+Notice the `unisynth` field, this is the entry point for the Unisynth Optimizer, it will use this file to generate the `index.unisynth.mjs` file.
+
+> The file must be called with the `.unisynth.mjs` extension, otherwise the Unisynth Optimizer will not recognize it.
+
+## vite.config.ts
+
+```ts {8-12}
+import { defineConfig } from 'vite';
+import { unisynthVite } from '@khulnasoft.com/unisynth/optimizer';
+
+export default defineConfig(() => {
+  return {
+    build: {
+      target: 'es2020',
+      lib: {
+        entry: './src/index.ts',
+        formats: ['es', 'cjs'],
+        fileName: (format) => `index.unisynth.${format === 'es' ? 'mjs' : 'cjs'}`,
+      },
+    },
+    plugins: [unisynthVite()],
+  };
+});
+```
+
+Compared to a normal Vite configuration, libraries will use [the `lib` mode of Vite](https://vitejs.dev/guide/build.html#library-mode), which requires you to properly configure `build.lib`.
+
+## `src/index.ts`
+
+This is the entry point of your library, it will export all the components, and functions that you want to expose to the world.
+
+```ts
+// As an example, we will export the Logo and Counter components
+export { Logo } from './components/logo/logo';
+export { Counter } from './components/counter/counter';
+```
+
+## Libraries are also Apps
+
+The library starter is also a standalone Unisynth app (without routing, nor Unisynth City), this is the reason why you will find `entry.dev.tsx`, `entry.ssr.tsx` and `root.tsx` files.
+
+Do not worry about them, they won't be part of the final library, but they are useful during development and testing, so you can test your components in a real Unisynth app.
+
+## Build and publish
+
+In order to publish your library, you have to first build it in `lib` mode and then publish to npm.
+
+<PackageManagerTabs>
+<span q:slot="pnpm">
+```shell
+pnpm run build
+```
+</span>
+<span q:slot="npm">
+```shell
+npm run build
+```
+</span>
+<span q:slot="yarn">
+```shell
+yarn run build
+```
+</span>
+<span q:slot="bun">
+```shell
+bun run build
+```
+</span>
+</PackageManagerTabs>
+
+
+This will create a `lib` folder with the following structure. Then you can publish it to npm.
+
+```shell
+npm publish
+```
+
+> Notice that before first publishing, you might want to update the `package.json` fields, like `name`, `version`, `description`, etc.
+
+> For any other subsequent publish, you will need to update the `version` field.

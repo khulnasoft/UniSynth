@@ -1,0 +1,70 @@
+---
+source: packages/unisynth/src/optimizer/core/src/test.rs
+assertion_line: 1169
+expression: output
+---
+==INPUT==
+
+
+import { $, component$ } from '@khulnasoft.com/unisynth';
+import thing from "../state";
+
+export function foo() {
+    return import("../foo/state2")
+}
+
+export const Header = component$(() => {
+    return (
+        <div>
+            {import("../folder/state3")}
+            {thing}
+        </div>
+    );
+});
+
+============================= project/folder/test.tsx_Header_component_RGgm7Ks9QWI.tsx ==
+
+import thing from "../state";
+export const Header_component_RGgm7Ks9QWI = ()=>{
+    return <div>
+            {import("../folder/state3")}
+            {thing}
+        </div>;
+};
+
+
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/project/folder/test.tsx\"],\"names\":[],\"mappings\":\";4CAQiC;IAC7B,QACK,IAAI;YACD,CAAC,MAAM,CAAC,oBAAoB;YAC5B,CAAC,MAAM;QACX,EAAE;AAEV\"}")
+/*
+{
+  "origin": "project/folder/test.tsx",
+  "name": "Header_component_RGgm7Ks9QWI",
+  "entry": "entry_segments",
+  "displayName": "test.tsx_Header_component",
+  "hash": "RGgm7Ks9QWI",
+  "canonicalFilename": "test.tsx_Header_component_RGgm7Ks9QWI",
+  "path": "project/folder",
+  "extension": "tsx",
+  "parent": null,
+  "ctxKind": "function",
+  "ctxName": "component$",
+  "captures": false,
+  "loc": [
+    178,
+    297
+  ]
+}
+*/
+============================= project/folder/test.tsx ==
+
+import { componentQrl } from "@khulnasoft.com/unisynth";
+import { qrl } from "@khulnasoft.com/unisynth";
+export function foo() {
+    return import("../foo/state2");
+}
+export const Header = /*#__PURE__*/ componentQrl(/*#__PURE__*/ qrl(()=>import("./test.tsx_Header_component_RGgm7Ks9QWI"), "Header_component_RGgm7Ks9QWI"));
+
+
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/project/folder/test.tsx\"],\"names\":[],\"mappings\":\";;AAIA,OAAO,SAAS;IACZ,OAAO,MAAM,CAAC;AAClB;AAEA,OAAO,MAAM,uBAAS,uHAOnB\"}")
+== DIAGNOSTICS ==
+
+[]

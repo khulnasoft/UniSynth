@@ -1,0 +1,58 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@khulnasoft.com/unisynth-city": ["packages/unisynth-city/src/runtime/src/index.ts"],
+      "@khulnasoft.com/unisynth-city/service-worker": [
+        "packages/unisynth-city/src/runtime/src/service-worker/index.ts"
+      ],
+      "@khulnasoft.com/unisynth-city/adapters/azure-swa/vite": [
+        "packages/unisynth-city/src/adapters/azure-swa/vite/index.ts"
+      ],
+      "@khulnasoft.com/unisynth-city/adapters/cloudflare-pages/vite": [
+        "packages/unisynth-city/src/adapters/cloudflare-pages/vite/index.ts"
+      ],
+      "@khulnasoft.com/unisynth-city/adapters/node-server/vite": [
+        "packages/unisynth-city/src/adapters/node-server/vite/index.ts"
+      ],
+      "@khulnasoft.com/unisynth-city/adapters/netlify-edge/vite": [
+        "packages/unisynth-city/src/adapters/netlify-edge/vite/index.ts"
+      ],
+      "@khulnasoft.com/unisynth-city/adapters/shared/vite": [
+        "packages/unisynth-city/src/adapters/shared/vite/index.ts"
+      ],
+      "@khulnasoft.com/unisynth-city/adapters/static/vite": [
+        "packages/unisynth-city/src/adapters/static/vite/index.ts"
+      ],
+      "@khulnasoft.com/unisynth-city/middleware/azure-swa": ["packages/unisynth-city/src/middleware/azure-swa"],
+      "@khulnasoft.com/unisynth-city/middleware/aws-lambda": [
+        "packages/unisynth-city/src/middleware/aws-lambda"
+      ],
+      "@khulnasoft.com/unisynth-city/middleware/cloudflare-pages": [
+        "packages/unisynth-city/src/middleware/cloudflare-pages"
+      ],
+      "@khulnasoft.com/unisynth-city/middleware/request-handler": [
+        "packages/unisynth-city/src/middleware/request-handler"
+      ],
+      "@khulnasoft.com/unisynth-city/middleware/node": ["packages/unisynth-city/src/middleware/node"],
+      "@khulnasoft.com/unisynth-city/middleware/netlify-edge": [
+        "packages/unisynth-city/src/middleware/netlify-edge"
+      ],
+      "@khulnasoft.com/unisynth-city/static": ["packages/unisynth-city/src/static"],
+      "@khulnasoft.com/unisynth-city/vite": ["packages/unisynth-city/src/buildtime/vite"],
+
+      "@unisynth-city-plan": ["packages/unisynth-city/src/runtime/src/unisynth-city-plan.ts"],
+      "@unisynth-city-sw-register-build": [
+        "packages/unisynth-city/src/buildtime/runtime-generation/sw-register-build.ts"
+      ],
+      "@unisynth-city-sw-register": ["packages/unisynth-city/src/runtime/src/sw-register-runtime.ts"],
+      "@unisynth-city-not-found-paths": [
+        "packages/unisynth-city/src/middleware/request-handler/generated/not-found-paths.ts"
+      ],
+      "@unisynth-city-static-paths": [
+        "packages/unisynth-city/src/middleware/request-handler/generated/static-paths.ts"
+      ]
+    }
+  },
+  "include": ["."]
+}

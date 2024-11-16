@@ -1,0 +1,7 @@
+{
+  "description": "Unisynth implementation of TodoMVC: https://todomvc.com/.",
+  "type": "module",
+  "__unisynth__": {
+    "priority": -2
+  }
+}

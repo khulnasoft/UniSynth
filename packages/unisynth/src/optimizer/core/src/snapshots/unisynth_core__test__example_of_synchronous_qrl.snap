@@ -1,0 +1,85 @@
+---
+source: packages/unisynth/src/optimizer/core/src/test.rs
+assertion_line: 3475
+expression: output
+---
+==INPUT==
+
+
+        import { sync$, component$ } from "@khulnasoft.com/unisynth";
+
+        export default component$(() => {
+        return (
+            <>
+                <input onClick$={sync$(function(event, target) {
+                    // comment should be removed
+                    event.preventDefault();
+                })}/>
+                <input onClick$={sync$((event, target) => {
+                    event.preventDefault();
+                })}/>
+                <input onClick$={sync$((event, target) => event.preventDefault())}/>
+            </>
+        );
+        });
+        
+============================= test.js ==
+
+import { componentQrl } from "@khulnasoft.com/unisynth";
+import { qrl } from "@khulnasoft.com/unisynth";
+export default /*#__PURE__*/ componentQrl(/*#__PURE__*/ qrl(()=>import("./test.tsx_test_component_LUXeXe0DQrg"), "test_component_LUXeXe0DQrg"));
+
+
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";;AAGQ,6BAAe,mHAaZ\"}")
+============================= test.tsx_test_component_LUXeXe0DQrg.js (ENTRY POINT)==
+
+import { Fragment as _Fragment } from "@khulnasoft.com/unisynth/jsx-runtime";
+import { _jsxC } from "@khulnasoft.com/unisynth";
+import { _jsxQ } from "@khulnasoft.com/unisynth";
+import { _qrlSync } from "@khulnasoft.com/unisynth";
+export const test_component_LUXeXe0DQrg = ()=>{
+    return /*#__PURE__*/ _jsxC(_Fragment, {
+        children: [
+            /*#__PURE__*/ _jsxQ("input", {
+                onClick$: _qrlSync(function(event, target) {
+                    // comment should be removed
+                    event.preventDefault();
+                }, "function(event,target){event.preventDefault();}")
+            }, null, null, 2, null),
+            /*#__PURE__*/ _jsxQ("input", {
+                onClick$: _qrlSync((event, target)=>{
+                    event.preventDefault();
+                }, "(event,target)=>{event.preventDefault();}")
+            }, null, null, 2, null),
+            /*#__PURE__*/ _jsxQ("input", {
+                onClick$: _qrlSync((event, target)=>event.preventDefault(), "(event,target)=>event.preventDefault()")
+            }, null, null, 2, null)
+        ]
+    }, 1, "u6_0");
+};
+
+
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";;;;0CAGkC;IAC1B,qBACI;;0BACI,MAAC;gBAAM,QAAQ,WAAQ,SAAS,KAAK,EAAE,MAAM;oBACzC,4BAA4B;oBAC5B,MAAM,cAAc;gBACxB;;0BACA,MAAC;gBAAM,QAAQ,WAAQ,CAAC,OAAO;oBAC3B,MAAM,cAAc;gBACxB;;0BACA,MAAC;gBAAM,QAAQ,WAAQ,CAAC,OAAO,SAAW,MAAM,cAAc;;;;AAGtE\"}")
+/*
+{
+  "origin": "test.tsx",
+  "name": "test_component_LUXeXe0DQrg",
+  "entry": null,
+  "displayName": "test.tsx_test_component",
+  "hash": "LUXeXe0DQrg",
+  "canonicalFilename": "test.tsx_test_component_LUXeXe0DQrg",
+  "path": "",
+  "extension": "js",
+  "parent": null,
+  "ctxKind": "function",
+  "ctxName": "component$",
+  "captures": false,
+  "loc": [
+    99,
+    566
+  ]
+}
+*/
+== DIAGNOSTICS ==
+
+[]

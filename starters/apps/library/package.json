@@ -1,0 +1,57 @@
+{
+  "name": "unisynth-library-name",
+  "description": "Create a Unisynth library",
+  "version": "0.0.1",
+  "private": false,
+  "main": "./lib/index.unisynth.mjs",
+  "unisynth": "./lib/index.unisynth.mjs",
+  "types": "./lib-types/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./lib/index.unisynth.mjs",
+      "require": "./lib/index.unisynth.cjs",
+      "types": "./lib-types/index.d.ts"
+    }
+  },
+  "files": [
+    "lib",
+    "lib-types"
+  ],
+  "scripts": {
+    "build": "unisynth build",
+    "build.lib": "vite build --mode lib",
+    "build.types": "tsc --emitDeclarationOnly",
+    "dev": "vite --mode ssr",
+    "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
+    "fmt": "prettier --write .",
+    "fmt.check": "prettier --check .",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "test": "echo \"No test specified\" && exit 0",
+    "start": "vite --open --mode ssr",
+    "unisynth": "unisynth",
+    "release": "np"
+  },
+  "devDependencies": {
+    "@khulnasoft.com/unisynth": "latest",
+    "@types/eslint": "latest",
+    "@types/node": "latest",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "eslint": "latest",
+    "eslint-plugin-unisynth": "latest",
+    "np": "^8.0.4",
+    "prettier": "latest",
+    "typescript": "latest",
+    "undici": "latest",
+    "vite": "^4.5.2",
+    "vite-tsconfig-paths": "^4.2.1"
+  },
+  "__unisynth__": {
+    "displayName": "Library (Unisynth)",
+    "priority": -1,
+    "docs": [
+      "https://unisynth.dev/docs/getting-started/"
+    ]
+  }
+}

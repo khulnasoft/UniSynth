@@ -1,0 +1,51 @@
+{
+  "name": "@khulnasoft.com/unisynth-auth",
+  "description": "Unisynth Auth is powered by Auth.js, a battle tested library for authentication with 3rd party providers",
+  "version": "0.2.2",
+  "bugs": "https://github.com/khulnasoft/unisynth/issues",
+  "dependencies": {
+    "@auth/core": "^0.30.0"
+  },
+  "devDependencies": {
+    "@auth/core": "0.30.0",
+    "@khulnasoft.com/unisynth": "workspace:^",
+    "@khulnasoft.com/unisynth-city": "workspace:^",
+    "@types/set-cookie-parser": "2.4.10",
+    "set-cookie-parser": "2.6.0"
+  },
+  "engines": {
+    "node": ">=16.8.0 <18.0.0 || >=18.11"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "import": "./lib/index.unisynth.mjs",
+      "require": "./lib/index.unisynth.cjs"
+    }
+  },
+  "files": [
+    "lib"
+  ],
+  "homepage": "https://unisynth.dev/",
+  "keywords": [
+    "auth.js",
+    "authentication",
+    "login",
+    "plugin",
+    "unisynth",
+    "ssr"
+  ],
+  "license": "MIT",
+  "main": "./lib/index.unisynth.mjs",
+  "unisynth": "./lib/index.unisynth.mjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/khulnasoft/unisynth.git",
+    "directory": "packages/unisynth-auth"
+  },
+  "scripts": {
+    "build": "vite build --mode lib"
+  },
+  "type": "module",
+  "types": "./lib/types/index.d.ts"
+}

@@ -1,0 +1,7 @@
+contact_links:
+  - name: ✨ Feature requests Ideas
+    url: https://github.com/khulnasoft/unisynth-evolution/discussions
+    about: Propose new features and improvements and help shape Unisynth
+  - name: 🤔 Support Question
+    url: https://unisynth.dev/chat
+    about: This issue tracker is not for support questions. Please post your question on the Discord chat.

@@ -1,0 +1,41 @@
+{
+  "name": "create-unisynth",
+  "description": "Interactive CLI for create Unisynth projects and adding features.",
+  "version": "1.10.0",
+  "author": "Builder.io Team",
+  "bin": "./create-unisynth.cjs",
+  "bugs": "https://github.com/khulnasoft/unisynth/issues",
+  "devDependencies": {
+    "@clack/prompts": "0.7.0",
+    "@types/yargs": "17.0.32",
+    "kleur": "4.1.5",
+    "yargs": "17.7.2"
+  },
+  "engines": {
+    "node": "^18.17.0 || ^20.3.0 || >=21.0.0",
+    "npm": ">=10.0.0",
+    "pnpm": ">=8.0.0",
+    "yarn": ">=3.0.0"
+  },
+  "engines-annotation": "Mostly required by sharp which needs a Node-API v9 compatible runtime",
+  "files": [
+    "README.md",
+    "create-unisynth.cjs",
+    "dist"
+  ],
+  "homepage": "https://unisynth.dev/",
+  "keywords": [
+    "builder.io",
+    "generator",
+    "unisynth",
+    "starters",
+    "template"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.cjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/khulnasoft/unisynth.git",
+    "directory": "packages/create-unisynth"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "name": "@khulnasoft.com/unisynth-react",
+  "description": "UnisynthReact allows adding React components into existing Unisynth application",
+  "version": "0.5.5",
+  "bugs": "https://github.com/khulnasoft/unisynth/issues",
+  "devDependencies": {
+    "@khulnasoft.com/unisynth": "workspace:^",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "typescript": "5.4.5",
+    "vite": "5.3.5"
+  },
+  "engines": {
+    "node": ">=16.8.0 <18.0.0 || >=18.11"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.unisynth.d.ts",
+      "import": "./lib/index.unisynth.mjs",
+      "require": "./lib/index.unisynth.cjs"
+    },
+    "./vite": {
+      "types": "./lib/types/vite.d.ts",
+      "import": "./lib/vite.mjs",
+      "require": "./lib/vite.cjs"
+    }
+  },
+  "files": [
+    "lib",
+    "vite"
+  ],
+  "homepage": "https://unisynth.dev/",
+  "license": "MIT",
+  "main": "./lib/index.unisynth.mjs",
+  "peerDependencies": {
+    "@khulnasoft.com/unisynth": "workspace:^",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "react": "^18",
+    "react-dom": "^18",
+    "vite": "^5"
+  },
+  "unisynth": "./lib/index.unisynth.mjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/khulnasoft/unisynth.git",
+    "directory": "packages/unisynth-react"
+  },
+  "scripts": {
+    "build": "npm run build.lib",
+    "build.client": "vite build",
+    "build.lib": "vite build --mode lib",
+    "build.ssr": "vite build --ssr src/entry.ssr.tsx",
+    "dev": "vite",
+    "dev.debug": "node --inspect-brk ../../node_modules/vite/bin/vite.js --mode ssr --force",
+    "dev.ssr": "vite --mode ssr",
+    "fmt": "prettier --write .",
+    "fmt.check": "prettier --check .",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "release": "pnpm run -w build.local && pnpm publish",
+    "start": "npm run dev",
+    "typecheck": "tsc --noEmit"
+  },
+  "type": "module",
+  "types": "./lib/types/index.unisynth.d.ts"
+}

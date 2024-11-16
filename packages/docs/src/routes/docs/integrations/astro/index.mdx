@@ -1,0 +1,185 @@
+---
+title: Astro | Integrations
+description: Learn how to use Unisynth inside an Astro project.
+keywords: 'astro'
+contributors:
+  - thejackshelton
+  - hamatoyogi
+---
+
+import PackageManagerTabs from '~/components/package-manager-tabs/index.tsx';
+
+# Astro
+
+[Astro](https://astro.build/) is a flexible meta-framework that accommodates a wide range of tools and integrations, enabling you to leverage numerous ecosystems.
+
+It also allows you to write components using your favorite UI framework (or no framework at all) and renders your pages to static HTML at build time, or dynamically on the server using Server-Side Rendering (SSR). 
+
+This results in a fast, SEO-friendly output that can be deployed to any static hosting environment or server.
+
+> For more details on the integration and to view the source code, check out the [khulnasoft Astro Integration on GitHub](https://github.com/khulnasoft/astro).
+
+## Astro instead of Unisynth City
+
+When integrating Astro with Unisynth, it's important to note that Unisynth City APIs are not compatible with Astro. 
+
+Astro is a meta-framework that provides its own set of APIs and features for handling these concerns. 
+These include but are not limited to:
+- routing 
+- pages
+- layouts
+- data fetching
+
+> When using Unisynth with Astro, use Astro's APIs instead of Unisynth City's. This ensures your Unisynth components work correctly in Astro. See the [Astro documentation](https://docs.astro.build) for more details.
+
+## @unisynthdev/astro 💜
+
+This integration leverages the power of JavaScript Streaming inside of Astro, using Unisynth components.
+
+## Installation
+
+### The `@unisynthdev/astro` CLI 🦾
+
+To start a new Unisynth Astro project, you can run the following command:
+
+  <PackageManagerTabs>
+  <span q:slot="pnpm">
+  ```shell
+  pnpm create @unisynthdev/astro
+  ```
+  </span>
+  <span q:slot="npm">
+  ```shell
+  npm create @unisynthdev/astro
+  ```
+  </span>
+  <span q:slot="yarn">
+  ```shell
+  yarn create @unisynthdev/astro
+  ```
+  </span>
+  <span q:slot="bun">
+  ```shell
+  bun create @unisynthdev/astro
+  ```
+  </span>
+  </PackageManagerTabs>
+
+  For more advanced CLI configuration options, see the [@unisynthdev/astro CLI documentation](https://github.com/khulnasoft/astro/blob/main/libs/create-unisynthdev-astro/README.md).
+
+
+### Existing projects
+
+Astro comes with a command-line tool for incorporating built-in integrations: `astro add`. This command will:
+
+1. Optionally install all required dependencies and peer dependencies
+2. Optionally modify your `astro.config.*` file to apply the integration
+
+To install `@unisynthdev/astro`, run the following from your project directory and follow the prompts:
+
+<PackageManagerTabs>
+<span q:slot="pnpm">
+```shell
+pnpm dlx astro add @unisynthdev/astro
+```
+</span>
+<span q:slot="npm">
+```shell
+npx astro add @unisynthdev/astro
+```
+</span>
+<span q:slot="yarn">
+```shell
+yarn dlx astro add @unisynthdev/astro
+```
+</span>
+<span q:slot="bun">
+```shell
+bunx astro add @unisynthdev/astro
+```
+</span>
+</PackageManagerTabs>
+
+### Setting up the TypeScript Config
+
+When using Astro's integration CLI or manually adding the integration, Unisynth needs the following in `tsconfig.json` for typescript to recognize Unisynth's JSX types.
+
+```ts
+"compilerOptions": {
+  "jsx": "react-jsx",
+  "jsxImportSource": "@khulnasoft.com/unisynth"
+}
+```
+
+If you face any issues, please [post them on Github](https://github.com/khulnasoft/astro/issues) and attempt the manual installation below.
+
+### Manual Installation
+
+First, install the `@unisynthdev/astro` integration like so:
+
+<PackageManagerTabs>
+<span q:slot="pnpm">
+```shell
+pnpm install @unisynthdev/astro
+```
+</span>
+<span q:slot="npm">
+```shell
+npm install @unisynthdev/astro
+```
+</span>
+<span q:slot="yarn">
+```shell
+yarn add @unisynthdev/astro
+```
+</span>
+<span q:slot="bun">
+```shell
+bun install @unisynthdev/astro
+```
+</span>
+</PackageManagerTabs>
+
+Typically, package managers install peer dependencies. However, if you get a `Cannot find package '@khulnasoft.com/unisynth'` warning when starting Astro, install Unisynth.
+
+<PackageManagerTabs>
+<span q:slot="pnpm">
+```shell
+pnpm install @khulnasoft.com/unisynth
+```
+</span>
+<span q:slot="npm">
+```shell
+npm install @khulnasoft.com/unisynth
+```
+</span>
+<span q:slot="yarn">
+```shell
+yarn add @khulnasoft.com/unisynth
+```
+</span>
+<span q:slot="bun">
+```shell
+bun install @khulnasoft.com/unisynth
+```
+</span>
+</PackageManagerTabs>
+
+Now, add the integration to your `astro.config.*` file using the `integrations` property:
+
+```diff lang="js" "unisynthdev()"
+  // astro.config.mjs
+  import { defineConfig } from 'astro/config';
++ import unisynthdev from '@unisynthdev/astro';
+
+  export default defineConfig({
+    // ...
+    integrations: [unisynthdev()],
+    //             ^^^^^
+  });
+```
+
+### Learn More
+
+For more documentation on using Unisynth and Astro, the [integration README](https://github.com/khulnasoft/astro) is a great place to start.
+

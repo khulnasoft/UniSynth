@@ -1,0 +1,7 @@
+{
+  "description": "UnisynthCity e2e app",
+  "type": "module",
+  "__unisynth__": {
+    "unisynthCity": true
+  }
+}

@@ -1,0 +1,46 @@
+---
+source: packages/unisynth/src/optimizer/core/src/test.rs
+assertion_line: 2726
+expression: output
+---
+==INPUT==
+
+
+import { component$, useSignal } from '@khulnasoft.com/unisynth';
+
+export const App = component$(() => {
+    const toggle = useSignal(false);
+    return (
+        <>
+            <div data-nu={toggle.value ? $localize`singular` : 'plural'}></div>
+            <div>{toggle.value ? $localize`singular` : $localize`plural`}</div>
+        </>
+    );
+});
+
+============================= test.js ==
+
+import { componentQrl } from "@khulnasoft.com/unisynth";
+import { _jsxQ } from "@khulnasoft.com/unisynth";
+import { _jsxC } from "@khulnasoft.com/unisynth";
+import { inlinedQrl } from "@khulnasoft.com/unisynth";
+import { Fragment as _Fragment } from "@khulnasoft.com/unisynth/jsx-runtime";
+import { useSignal } from '@khulnasoft.com/unisynth';
+const App_component_ckEPmXZlub0 = ()=>{
+    const toggle = useSignal(false);
+    return /*#__PURE__*/ _jsxC(_Fragment, {
+        children: [
+            /*#__PURE__*/ _jsxQ("div", {
+                "data-nu": toggle.value ? $localize`singular` : 'plural'
+            }, null, null, 3, null),
+            /*#__PURE__*/ _jsxQ("div", null, null, toggle.value ? $localize`singular` : $localize`plural`, 1, null)
+        ]
+    }, 1, "u6_0");
+};
+export const App = /*#__PURE__*/ componentQrl(/*#__PURE__*/ inlinedQrl(App_component_ckEPmXZlub0, "App_component_ckEPmXZlub0"));
+
+
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";;;;;AACA,SAAqB,SAAS,QAAQ,mBAAmB;kCAE3B;IAC1B,MAAM,SAAS,UAAU;IACzB,qBACI;;0BACI,MAAC;gBAAI,WAAS,OAAO,KAAK,GAAG,SAAS,CAAC,QAAQ,CAAC,GAAG;;0BACnD,MAAC,mBAAK,OAAO,KAAK,GAAG,SAAS,CAAC,QAAQ,CAAC,GAAG,SAAS,CAAC,MAAM,CAAC;;;AAGxE;AARA,OAAO,MAAM,oBAAM,+FAQhB\"}")
+== DIAGNOSTICS ==
+
+[]

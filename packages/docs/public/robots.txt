@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /demo/
+Allow: /
+Sitemap: https://unisynth.dev/sitemap.xml

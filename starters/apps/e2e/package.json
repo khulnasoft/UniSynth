@@ -1,0 +1,8 @@
+{
+  "description": "Unisynth E2E",
+  "__unisynth__": {
+    "priority": 0,
+    "featureOptions": []
+  },
+  "type": "module"
+}

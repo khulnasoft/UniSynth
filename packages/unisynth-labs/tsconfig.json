@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "noEmit": true,
+    "target": "ES2021",
+    "module": "ES2020",
+    "lib": ["es2021", "DOM"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "@khulnasoft.com/unisynth",
+    "strict": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "Bundler",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "types": ["vite/client"],
+    "paths": {
+      "@unisynth-client-manifest": ["../../unisynth/src/server/server-modules.d.ts"]
+    }
+  },
+  "include": ["src"]
+}

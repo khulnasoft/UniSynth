@@ -1,0 +1,64 @@
+---
+source: packages/unisynth/src/optimizer/core/src/test.rs
+assertion_line: 1322
+expression: output
+---
+==INPUT==
+
+
+/* @jsxImportSource react */
+
+import { unisynthify$ } from './unisynthfy';
+
+export const App = () => (
+    <div onClick$={()=>console.log('App')}></div>
+);
+
+export const App2 = unisynthify$(() => (
+    <div onClick$={()=>console.log('App2')}></div>
+));
+
+============================= test.js ==
+
+/* @jsxImportSource react */ import { unisynthifyQrl } from "./unisynthfy";
+import { qrl } from "@khulnasoft.com/unisynth";
+import { jsx as _jsx } from "react/jsx-runtime";
+export const App = ()=>/*#__PURE__*/ _jsx("div", {
+        onClick$: ()=>console.log('App')
+    });
+export const App2 = unisynthifyQrl(/*#__PURE__*/ qrl(()=>import("./test.tsx_App2_unisynthify_RKJW7oCMdS4.js"), "App2_unisynthify_RKJW7oCMdS4"));
+
+
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\"AACA,0BAA0B;;;AAI1B,OAAO,MAAM,MAAM,kBACf,KAAC;QAAI,UAAU,IAAI,QAAQ,GAAG,CAAC;OACjC;AAEF,OAAO,MAAM,OAAO,gHAEjB\"}")
+============================= test.tsx_App2_unisynthify_RKJW7oCMdS4.js (ENTRY POINT)==
+
+import { jsx as _jsx } from "react/jsx-runtime";
+export const App2_unisynthify_RKJW7oCMdS4 = ()=>/*#__PURE__*/ _jsx("div", {
+        onClick$: ()=>console.log('App2')
+    });
+
+
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";wCAS6B,kBACzB,KAAC;QAAI,UAAU,IAAI,QAAQ,GAAG,CAAC\"}")
+/*
+{
+  "origin": "test.tsx",
+  "name": "App2_unisynthify_RKJW7oCMdS4",
+  "entry": null,
+  "displayName": "test.tsx_App2_unisynthify",
+  "hash": "RKJW7oCMdS4",
+  "canonicalFilename": "test.tsx_App2_unisynthify_RKJW7oCMdS4",
+  "path": "",
+  "extension": "js",
+  "parent": null,
+  "ctxKind": "function",
+  "ctxName": "unisynthify$",
+  "captures": false,
+  "loc": [
+    180,
+    240
+  ]
+}
+*/
+== DIAGNOSTICS ==
+
+[]

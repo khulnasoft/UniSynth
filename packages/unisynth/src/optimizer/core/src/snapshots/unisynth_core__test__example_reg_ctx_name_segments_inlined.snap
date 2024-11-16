@@ -1,0 +1,34 @@
+---
+source: packages/unisynth/src/optimizer/core/src/test.rs
+assertion_line: 780
+expression: output
+---
+==INPUT==
+
+
+import { $, component$, server$ } from '@khulnasoft.com/unisynth';
+export const Works = component$((props) => {
+    const text = 'hola';
+    return (
+        <div onClick$={server$(() => console.log('in server', text))}></div>
+    );
+});
+
+============================= test.js ==
+
+import { componentQrl } from "@khulnasoft.com/unisynth";
+import { serverQrl } from "@khulnasoft.com/unisynth";
+import { _regSymbol } from "@khulnasoft.com/unisynth";
+import { inlinedQrl } from "@khulnasoft.com/unisynth";
+import { _jsxQ } from "@khulnasoft.com/unisynth";
+export const Works = /*#__PURE__*/ componentQrl(/*#__PURE__*/ inlinedQrl((props)=>{
+    return /*#__PURE__*/ _jsxQ("div", {
+        onClick$: serverQrl(/*#__PURE__*/ inlinedQrl(/*#__PURE__*/ _regSymbol(()=>console.log('in server', 'hola'), "OsNoEFc5SM4"), "Works_component_div_onClick_server_OsNoEFc5SM4"))
+    }, null, null, 2, "u6_0");
+}, "Works_component_t45qL4vNGv0"));
+
+
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/test.tsx\"],\"names\":[],\"mappings\":\";;;;;AAEA,OAAO,MAAM,sBAAQ,sCAAW,CAAC;IAE7B,qBACI,MAAC;QAAI,UAAU,4DAAQ,IAAM,QAAQ,GAAG,CAAC,aAFhC;;AAIjB,mCAAG\"}")
+== DIAGNOSTICS ==
+
+[]

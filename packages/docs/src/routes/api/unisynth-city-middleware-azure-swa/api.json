@@ -1,0 +1,48 @@
+{
+  "id": "unisynth-city-middleware-azure-swa",
+  "package": "@khulnasoft.com/unisynth-city/middleware/azure-swa",
+  "members": [
+    {
+      "name": "createUnisynthCity",
+      "id": "createunisynthcity",
+      "hierarchy": [
+        {
+          "name": "createUnisynthCity",
+          "id": "createunisynthcity"
+        }
+      ],
+      "kind": "Function",
+      "content": "```typescript\nexport declare function createUnisynthCity(opts: UnisynthCityAzureOptions): AzureFunction;\n```\n\n\n<table><thead><tr><th>\n\nParameter\n\n\n</th><th>\n\nType\n\n\n</th><th>\n\nDescription\n\n\n</th></tr></thead>\n<tbody><tr><td>\n\nopts\n\n\n</td><td>\n\n[UnisynthCityAzureOptions](#unisynthcityazureoptions)\n\n\n</td><td>\n\n\n</td></tr>\n</tbody></table>\n**Returns:**\n\nAzureFunction",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth-city/src/middleware/azure-swa/index.ts",
+      "mdFile": "unisynth-city.createunisynthcity.md"
+    },
+    {
+      "name": "PlatformAzure",
+      "id": "platformazure",
+      "hierarchy": [
+        {
+          "name": "PlatformAzure",
+          "id": "platformazure"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface PlatformAzure extends Partial<Context> \n```\n**Extends:** Partial&lt;Context&gt;",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth-city/src/middleware/azure-swa/index.ts",
+      "mdFile": "unisynth-city.platformazure.md"
+    },
+    {
+      "name": "UnisynthCityAzureOptions",
+      "id": "unisynthcityazureoptions",
+      "hierarchy": [
+        {
+          "name": "UnisynthCityAzureOptions",
+          "id": "unisynthcityazureoptions"
+        }
+      ],
+      "kind": "Interface",
+      "content": "```typescript\nexport interface UnisynthCityAzureOptions extends ServerRenderOptions \n```\n**Extends:** ServerRenderOptions",
+      "editUrl": "https://github.com/khulnasoft/unisynth/tree/main/packages/unisynth-city/src/middleware/azure-swa/index.ts",
+      "mdFile": "unisynth-city.unisynthcityazureoptions.md"
+    }
+  ]
+}

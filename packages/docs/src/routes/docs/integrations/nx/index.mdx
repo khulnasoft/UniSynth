@@ -1,0 +1,92 @@
+---
+title: Nx Monorepos | Integrations
+keywords: 'monorepo, nx, enterprise'
+contributors:
+  - shairez
+  - Benny-Nottonson
+  - mrhoodz
+  - meeroslav
+updated_at: '2023-07-18T17:48:46Z'
+created_at: '2023-04-29T15:28:06Z'
+---
+
+import PackageManagerTabs from '~/components/package-manager-tabs/index.tsx';
+
+# Nx and enterprise scale monorepos
+
+[Nx](https://nx.dev/) is a robust and extensible development platform designed to simplify the management 
+of large-scale monorepos containing multiple applications and libraries by offering powerful tools for code generation, 
+build orchestration, dependency management, and code sharing.
+
+Unisynth integrates with nx beautifully by using the [unisynth-nx](https://github.com/unisynthifiers/unisynth-nx) plugin.
+
+
+## Main features
+
+* Generate a new Nx workspace using a "Unisynth" preset
+* Generate Unisynth applications and libraries.
+* Generate Unisynth components and routes.
+* Generate Storybook, React Unisynthify, Cloudflare configuration and much more
+* Run executors that are built specifically for building Unisynth applications.
+
+
+## Usage
+
+You can generate a new workspace by running:
+
+<PackageManagerTabs>
+<span q:slot="pnpm">
+```shell
+pnpm dlx create-nx-workspace@latest org-workspace --preset=unisynth-nx
+```
+</span>
+<span q:slot="npm">
+```shell
+npx create-nx-workspace@latest org-workspace --preset=unisynth-nx
+```
+</span>
+<span q:slot="yarn">
+```shell
+yarn dlx create-nx-workspace@latest org-workspace --preset=unisynth-nx
+```
+</span>
+<span q:slot="bun">
+```shell
+bunx create-nx-workspace@latest org-workspace --preset=unisynth-nx
+```
+</span>
+</PackageManagerTabs>
+
+Or add a new Unisynth application to an existing workspace by running:
+
+
+<PackageManagerTabs>
+<span q:slot="pnpm">
+```shell
+pnpm install unisynth-nx
+```
+</span>
+<span q:slot="npm">
+```shell
+npm install unisynth-nx
+```
+</span>
+<span q:slot="yarn">
+```shell
+yarn add unisynth-nx
+```
+</span>
+<span q:slot="bun">
+```shell
+bun install unisynth-nx
+```
+</span>
+</PackageManagerTabs>
+
+and then
+
+```shell
+nx generate unisynth-nx:app
+```
+
+For further reference, please check the [unisynth-nx documentation](https://github.com/unisynthifiers/unisynth-nx).

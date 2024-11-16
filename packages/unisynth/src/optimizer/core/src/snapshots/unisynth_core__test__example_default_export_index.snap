@@ -1,0 +1,32 @@
+---
+source: packages/unisynth/src/optimizer/core/src/test.rs
+assertion_line: 1462
+expression: output
+---
+==INPUT==
+
+
+import { component$ } from '@khulnasoft.com/unisynth';
+
+export default component$(() => {
+    return (
+        <div onClick$={() => console.log(mongodb)}>
+        </div>
+    );
+});
+
+
+============================= src/components/mongo/index.tsx ==
+
+import { componentQrl } from "@khulnasoft.com/unisynth";
+import { inlinedQrl } from "@khulnasoft.com/unisynth";
+export default /*#__PURE__*/ componentQrl(/*#__PURE__*/ inlinedQrl(()=>{
+    return <div onClick$={/*#__PURE__*/ inlinedQrl(()=>console.log(mongodb), "mongo_component_div_onClick_2EK0wZbP8qw")}>
+        </div>;
+}, "mongo_component_ouWLj4jA2oI"));
+
+
+Some("{\"version\":3,\"sources\":[\"/user/unisynth/src/src/components/mongo/index.tsx\"],\"names\":[],\"mappings\":\";;AAGA,6BAAe,sCAAW;IACtB,QACK,IAAI,mCAAU,IAAM,QAAQ,GAAG,CAAC,sDAAU;QAC3C,EAAE;AAEV,mCAAG\"}")
+== DIAGNOSTICS ==
+
+[]

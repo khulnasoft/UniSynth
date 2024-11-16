@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@khulnasoft.com/unisynth": ["packages/unisynth/src/core"],
+      "@khulnasoft.com/unisynth/jsx-runtime": ["packages/unisynth/src/jsx-runtime"],
+      "@khulnasoft.com/unisynth/jsx-dev-runtime": ["packages/unisynth/src/jsx-runtime"],
+      "@khulnasoft.com/unisynth/build": ["packages/unisynth/src/build"],
+      "@khulnasoft.com/unisynth/optimizer": ["packages/unisynth/src/optimizer/src"],
+      "@khulnasoft.com/unisynth/server": ["packages/unisynth/src/server"],
+      "@khulnasoft.com/unisynth/testing": ["packages/unisynth/src/testing"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["dist"]
+}

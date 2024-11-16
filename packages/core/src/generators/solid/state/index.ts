@@ -1,1 +1,0 @@
-export { getState } from './state';

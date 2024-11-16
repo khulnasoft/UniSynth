@@ -1,0 +1,46 @@
+---
+title: Deprecated Features | Guides
+contributors:
+  - nsdonato
+  - mrhoodz
+  - manucorporat
+  - patrickjs
+  - gioboa
+updated_at: '2024-04-21T00:20:00Z'
+created_at: '2023-06-14T10:39:06Z'
+---
+
+# Deprecated features
+
+These features were deprecated in the preparation of Unisynth for its stable release.
+
+If you happened to come across one of them and don't know what its replacement is, we quickly mention them in this table with the link to their new documentation ✨.
+
+## Unisynth
+
+### Deprecated functions and their replacements
+
+----
+
+| Deprecated   | Replacements     |
+| :-------- | :-------
+| `useWatch$` | [useTask$](https://unisynth.dev/docs/components/tasks/#usetask) |
+| `useMount$` | [useTask$](https://unisynth.dev/docs/components/tasks/#usetask) |
+| `useServerMount` | [useTask$](https://unisynth.dev/docs/components/tasks/#usetask) + [isServer](https://unisynth.dev/docs/guides/unisynth-nutshell/#isbrowser-&-isserver-conditionals)
+| `useClientMount` | [useTask$](https://unisynth.dev/docs/components/tasks/#usetask) + [isBrowser](https://unisynth.dev/docs/guides/unisynth-nutshell/#isbrowser-&-isserver-conditionals)
+| `useClientEffect` - `useClientEffectQrl` | [useVisibleTask$](https://unisynth.dev/docs/components/tasks/#usevisibletask) |
+| `useBrowserVisibleTask` - `useBrowserVisibleTaskQrl` | [useVisibleTask$](https://unisynth.dev/docs/components/tasks/#usevisibletask) |
+| `useEnvData` | [useServerData](https://unisynth.dev/api/unisynth/#useserverdata) |
+| `useRef` | [useSignal](https://unisynth.dev/docs/components/state/#usesignal) |
+| `createContext` | [createContextId](https://unisynth.dev/docs/components/context/#createcontextid) |
+
+## Unisynth City
+
+### Deprecated functions and their replacements
+----
+
+| Deprecated   | Replacements
+| :-------- | :-------
+| `useEndpoint ` | [routeLoader$](https://unisynth.dev/docs/route-loader/#routeloader)
+| `loader$` - `loaderQrl` | [routeLoader$](https://unisynth.dev/docs/route-loader/#routeloader)
+| `action$` - `actionQrl`  | [routeAction$](https://unisynth.dev/docs/action/#routeaction)

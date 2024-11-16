@@ -1,87 +1,378 @@
-# Local Development
+# Contributing to Unisynth
 
-Welcome ⚡️!! If you've found a bug, or have an idea to add a feature we'd love to hear from you. It may save time to first ping the group on [Unisynth' Discord channel](https://discord.gg/yxjk5vn6pn) to talk through any ideas or any issues that may be a bug.
+Thank you for taking an interest in contributing to Unisynth! We appreciate you! 🫶🏽
 
-## Project Structure
+Below are the guidelines on how to help in the best possible way.
 
-Unisynth is structured as a mono-repo using Yarn (v3) Workspaces and Nx. The packages
-live under `packages/` and `examples/`:
+## Submitting an Issue
 
-- `core` (`unisynth`): contains the Unisynth engine
-- `cli` (`@khulnasoft.com/unisynth-cli`): contains the Unisynth CLI, and _depends_ on `core`
-- `site`: contains the Unisynth site hosted at unisynth.khulnasoft.com
-- `eslint-plugin` (`@khulnasoft.com/eslint-plugin-unisynth`): contains the Unisynth eslint rules to enforce valid Unisynth component syntax. Yet to be released.
+Before creating a new issue, please search through open issues using the [GitHub issue search bar](https://docs.github.com/en/issues/tracking-your-work-with-issues/filtering-and-searching-issues-and-pull-requests). You might find the solution to your problem, or can verify that it is an already known issue.
 
-## Installation
+We want a bug-free and best-performing project. That's why we take all reported issues to heart. But please be aware that if we can't reproduce the problem, we won't have a way of locating and adequately fixing it.
 
-First, you should run `yarn` in the root of the project to install all the dependencies.
+Therefore, to solve the problem in the best possible way, please create a minimal repository that reproduces the problem with the least possible code explaining and demonstrating the error.
 
-For all packages, the below steps to develop locally are the same:
+Without enough information to reproduce the issue, we will close it because we can't recreate and solve it.
+
+## Triaging Issues
+
+If you're interested in helping out with triaging issues, please follow the [Triaging Guide](./contributing/TRIAGE.md).
+
+## Submitting a Pull Request (PR)
+
+### Branch Organization
+
+We adopt [trunk-based development](https://trunkbaseddevelopment.com/) therefore all Pull Requests are made against the main branch because we do not use separate branches for development or for the versions we release.
+
+### Good first issue
+
+The issues marked with [_Good first issue_](https://github.com/khulnasoft/unisynth/issues?q=is%3Aissue+is%3Aopen+label%3A%22COMMUNITY%3A++good+first+issue%22) are a good starting point to familiarize yourself with the project.
+
+Before solving the problem, please check with the maintainers that the issue is still relevant. Feel free to leave a comment on the issue to show your intention to work on it and prevent other people from unintentionally duplicating your effort.
+
+### Sending a Pull Request
+
+Before submitting a pull request, consider the following guidelines:
+
+- Fork the repository into your own account.
+- In your forked repository, create a new branch: `git checkout -b my-branch main`
+- Make your changes/fixes.
+- Run `pnpm fmt` to lint the code.
+- Add a changeset with `pnpm change` if needed ([follow this tutorial](https://go.screenpal.com/watch/cZivIcVPJQV))
+- Push your branch to GitHub: `git push origin my-branch`
+- In GitHub, send a pull request to `khulnasoft:main`.
+
+> If you aren't sure your PR is ready, open it as a [draft](https://github.blog/2019-02-14-introducing-draft-pull-requests/) to make it clear to the maintainer.
+
+### ⚠ Troubleshooting PR build issues on CI
+
+Every PR is being automatically merged with `main` before the CI Github actions run.
+That's why if the CI checks aren't passing your PR branch is probably not up to date.
+
+**For non documentation PRs please do the following:**
+
+1. Merge `main` into your PR branch
+2. Run `pnpm api.update`
+3. Run `pnpm build.local` or `pnpm build.full` if you made a change to the Rust code
+4. Commit and push any changes as a result of the above steps
+
+## Local development
+
+This is the best approach because all required dependencies will be installed in the docker container for you and won't affect your personal configuration in any way.
+
+### Prerequisites
+
+You need to have these tools up and running in your local machine:
+
+- an editor. We recommend [VSCode](https://code.visualstudio.com/).
+- one of the following:
+  - [Nix](https://nixos.org)
+  - [Docker](https://www.docker.com/)
+  - Locally installed NodeJS v18+ and optionally Rust
+
+#### Nix
+
+[Nix](https://nixos.org/download.html) can be used on macOS and Linux. It keeps installation files in `/nix` and doesn't write anywhere else. It has a declarative configuration in the `flake.nix` file, which describes all the tools needed to build the project.
+
+- Install it on your machine and enable flakes. The [DetSys installer](https://github.com/DeterminateSystems/nix-installer) makes that easy.
+- run `nix develop` in the project root to open a shell with all the tools, or use `direnv` to have them automatically added into your current shell.
+
+##### Nix + Direnv (optional)
+
+You can additionally use [direnv](https://direnv.net/) to automatically load the dev environment when you enter the project directory.
+There is also a VSCode plugin for direnv that reloads the extensions so they get environment changes.
+When you install direnv, you'll need to allow it once with `direnv allow` in the project root. From then on, when you `cd` into the project, it will automatically have the correct tools installed.
+
+#### Docker
+
+- Install the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension in your VSCode.
+- Once installed you will be prompted to 'Reopen the folder to develop in a container [learn more](https://code.visualstudio.com/docs/devcontainers/containers) or Clone repository in Docker volume for [better I/O performance](https://code.visualstudio.com/docs/devcontainers/containers#_quick-start-open-a-git-repository-or-github-pr-in-an-isolated-container-volume)'. If you're not prompted, you can run the `Dev Containers: Open Folder in Container` command from the [VSCode Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).
+
+Alternatively you can use [devcontainers/cli](https://github.com/devcontainers/cli):
+
+- Install devcontainers following their documentation.
+- In your terminal navigate to the Unisynth's project root directory.
+- Then run `devcontainer up --workspace-folder .`. This command will start a Docker container with all required environment dependencies.
+
+##### Using development container without Dev Containers and VSCode
+
+If you would like to make use of the development container solution, but don't use VSCode or Dev Containers, you still can do so, by following steps:
+
+- Build development container locally: `cd .devcontainer; docker build -t unisynth-container .`
+- Run development container from Unisynth project root, binding the directory to container: `cd ..; docker run --rm -d --name unisynth-container -p 3300:3300 -p 9229:9299 -v $PWD:/home/circleci/project -t unisynth-container`
+
+Docker command does:
+
+- Create a new container that is removed once stopped,
+- In daemon mode,
+- With name `unisynth-container`,
+- That exposes the ports `3300` and `9229`, and
+- Binds `unisynth` project directory to container working directory.
+
+##### Podman extras
+
+> This section is highly influenced by SO answer: https://serverfault.com/a/1075838/352338
+> If you use [Podman](https://podman.io/) instead of Docker as your containers engine, then you need to know the following:
+
+- Container runs as user `circleci` with UID `1001` and GID `1002`.
+- As you are accustomed to using Podman, you will need to append `:Z` to `volumes | -v` parameter so the command becomes:
 
 ```bash
-# run local development server
-yarn start
-
-# run unit tests
-yarn test
+$ subuid_size=65536
+$ subgid_size=65536
+$ container_uid=1001
+$ container_gid=1002
+$ podman run --rm \
+    --user $container_uid:$container_gid \
+    --uidmap=0:1:$container_uid \
+    --uidmap=$((container_uid + 1)):$((container_uid + 1)):$((subuid_size - $container_uid)) \
+    --uidmap=$container_uid:0:1 \
+    --gidmap=0:1:$container_gid \
+    --gidmap=$((container_gid + 1)):$((container_gid + 1)):$((subgid_size - $container_gid)) \
+    --gidmap=$container_gid:0:1 \
+    -d --name unisynth-container \
+    -p 3300:3300 -p 9229:9299 \
+    -v .:/home/circleci/project:Z \
+    -t unisynth-container
 ```
 
-## Submitting Issues And Writing Tests
+#### Locally installed tools
 
-We need your help! If you found a bug, it's best to [create an issue](https://github.com/khulnasoft/unisynth/issues/new/choose) and follow the template we've created for you. Afterwards, create a [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) that replicates the issue using a test.
+If you're not able to use the dev container, make sure you have NodeJS v18+ installed, as well as `pnpm`.
 
-## Developing for Core & Testing
+Furthermore, to build the optimizer you optionally need Rust.
 
-In `core`, we use vitest snapshots & integeration tests for test coverage. If you are solving a problem that is reproducible by a fiddle in [unisynth.khulnasoft.com/playground](/playground), we highly recommend the following flow:
+1. Make sure [Rust](https://www.rust-lang.org/tools/install) is installed.
+2. Install [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/) with `cargo install wasm-pack` .
+3. Node version >= `18`.
+4. Make sure you have [pnpm](https://pnpm.io/installation) installed.
+5. run `pnpm install`
 
-### Snapshot test
+> On Windows, Rust requires [C++ build tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/). You can also select _Desktop development with C++_
+> while installing Visual Studio.
 
-- copy your fiddle component into a file in `packages/core/src/__tests__/data`. See [packages/core/src/**tests**/data/basic.raw.tsx](/packages/core/src/__tests__/data/basic.raw.tsx) as an example.
-- add that test to the [test generator](/packages/core/src/__tests__/test-generator.ts), most likely in `BASIC_TESTS`.
-- run `yarn g:nx test:watch` in the `packages/core` directory to run the snapshot tests in watch mode
+---
 
-PS: don't worry about failing imports in the raw test TSX files. These are not an issue, since the files are standalone and don't actually belong to a cohesive project.
+## Development
 
-### Integration test
+To build Unisynth for local development, install the dev dependencies using [pnpm](https://pnpm.io/) and then do an initial build.
 
-- copy your fiddle component into a `.lite.tsx` Unisynth component in the [e2e app](/e2e/e2e-app/src/components)
-- name your file the same as your component to resolve it for Angular
-- add your component to the [e2e-app component paths](/e2e/e2e-app/src/component-paths.ts)
-- add your component to the [homepage](/e2e/e2e-app/src/homepage.lite.tsx) with a `<Show when={state.pathToUse.startsWith('/your-component-path')}>`
-- add an integration test in [e2e/e2e-app/tests](/e2e/e2e-app/tests) that makes sure your component works as expected
-- this integration test will run against every server that exists in [e2e/](/e2e/).
-- run `yarn ci:build` to build all packages
-- run `yarn ci:e2e` to run the integration tests against all servers
-
-#### Create new e2e project for another target
-
-If you want to create a new project inside ``e2e``. You should name the folder `e2e-XXX` where `XXX` should be replaced with the target. 
-Make sure that you change the ``name`` inside `package.json` of this project to `@khulnasoft.com/e2e-XXX`. Additionally, you need to add `private: true` to `package.json` to avoid publishing the project.
-
-### Test your changes
-
-From there, you can keep iterating until the snapshots look as expected, and the integration tests pass!
-
-### Preparing your PR
-
-Before submitting your PR, please make sure to format the codebase and update all snapshots:
-
-- format the codebase: from the root, run `yarn fmt:prettier`.
-- update all snapshots (in core & CLI): from the root, run `yarn test:update`. This will run a Nx command that will update all the snapshots in the `core` and `cli` packages. while making sure all required dependencies are built beforehand. If there are some difference between the generated snapshots in your local environment and GitHub Action you are able to download the correct snapshots via 'Summary' in the pipeline run. Wait until the job `test-update` is done, scroll to the bottom and download `snapshots-updates`. You should be able to copy&past the snapshots to `packages/core/src/__tests__/__snapshots__`.
-- add Changeset entry: from the root, run `yarn g:changeset` and follow the CLI instructions.
-
-#### Changeset format
-
-Here's the changeset format we like to follow (this is mostly relvant for the core package):
-
-```
-[GENERATORS_IMPACTED] TYPE: DESCRIPTION
+```shell
+pnpm install && pnpm build.local
 ```
 
-Examples:
+If you want to work on the Rust code, use `build.full` instead of `build.local`.
 
+### Fast build
+
+This will build only Unisynth and Unisynth City and their types. This is not enough to run the docs.
+
+```shell
+pnpm build.core
 ```
-[React,Vue,Solid] Bug: Fix style bindings not applying.
-[Angular] Feature: Add support for ngFor bindings.
-[All] Feature: store state types.
+
+### Custom build
+
+Once you have done a full build, the types are built, and you can build just the code you're working on. For unisynth and unisynth-city, you can do very fast rebuilds with
+
+```shell
+pnpm build --dev --unisynth --unisynthcity
 ```
+
+The `--dev` flag skips type checking and generating.
+
+You can run `pnpm build` without parameters to see which flags are available. Notable:
+
+- `--tsc`: build types
+- `--api`: build API docs and type bundles. Requires `--tsc` to have run.
+- `--build`: Unisynth (you'll probably also need `--dev`)
+- `--unisynthcity`: Unisynth City (you'll probably also need `--dev`)
+- `--unisynthreact`: Unisynth React
+- `--unisynthlabs`: Unisynth Labs
+- `--eslint`: Eslint plugin
+
+E.g. to build only the React integration, you'd run `pnpm build --unisynthreact`.
+
+### Full build without Rust
+
+This builds everything except Rust prerequisites and the optimizer binaries. Instead, those binaries are copied from the latest Unisynth package on NPM.
+
+```shell
+pnpm build.local
+```
+
+### Full build with Rust
+
+It will build **everything**, including Rust packages and WASM.
+
+> First build might be very slow.
+
+- Builds each submodule
+- Generates bundled `.d.ts` files for each submodule with [API Extractor](https://api-extractor.com/)
+- Checks the public API hasn't changed
+- Builds a minified `core.min.mjs` file
+- Generates the publishing `package.json`
+
+```shell
+pnpm build.full
+```
+
+The build output will be written to `packages/unisynth/dist`, which will be the directory that is published to [@khulnasoft.com/unisynth](https://www.npmjs.com/package/@khulnasoft.com/unisynth).
+
+To update the Rust test snapshots after you've made changes to the Rust code, run `pnpm test.rust.update`.
+
+### Run in your own app
+
+Say you made changes to the repo and you want to try them out in your app. Once built, all the Unisynth packages are directly usable in your project by using the linking in your package manager.
+
+This is very easy to do with `pnpm`:
+Assuming unisynth is in `../unisynth`, run this inside the root of your app:
+
+```shell
+pnpm link ../unisynth/packages/unisynth
+pnpm link ../unisynth/packages/unisynth-city
+```
+
+Other package managers probably need to first be told about the packages. For example, with `bun` you need to `cd ../unisynth/packages/unisynth` and `bun link`, repeat for `unisynth-city`. Then in your app run `bun link @khulnasoft.com/unisynth @khulnasoft.com/unisynth-city`.
+
+If you can't use package linking, just copy the contents of `packages/unisynth` into your projects' `node_modules/@khulnasoft.com/unisynth` folder, and/or the contents of `packages/unisynth-city` into your projects' `node_modules/@khulnasoft.com/unisynth-city` folder.
+
+### Working on the docs site
+
+At the root of the Unisynth repo folder run:
+
+```shell
+pnpm docs.dev
+```
+
+### To open the test apps for debugging run
+
+```shell
+pnpm serve
+```
+
+### Unit Tests Only
+
+Unit tests use [vitest](https://vitest.dev)
+
+```shell
+pnpm test.unit
+```
+
+### E2E Tests Only
+
+E2E tests use [Playwright](https://playwright.dev/).
+
+To run the Playwright tests headless, from start to finish, run:
+
+```shell
+pnpm test.e2e.chromium
+```
+
+Finally, you can use `pnpm --filter` command to run packages' commands, for example:
+
+```shell
+pnpm --filter unisynth-docs start
+```
+
+More commands can be found in each package's package.json scripts section.
+
+### Updating dependencies
+
+To update all dependencies, run:
+
+```shell
+pnpm deps
+```
+
+This will show an interactive UI to update all dependencies. Be careful about performing major updates, especially for the docs site, since not all functionality has test coverage there. Be sure to test thoroughly.
+
+## Starter CLI `create-unisynth`
+
+- [Starter CLI](https://github.com/khulnasoft/unisynth/blob/main/starters/README.md)
+
+## Pull Requests
+
+- [Open Unisynth in StackBlitz Codeflow](https://pr.new/github.com/khulnasoft/unisynth/)
+- Review PR in StackBlitz
+  ![image](https://user-images.githubusercontent.com/4918140/195581745-8dfca1f9-2dcd-4f6a-b7aa-705f3627f8fa.png)
+
+### Coding conventions
+
+Write code that is clean, simple and easy to understand. Complicated one-liners are generally frowned upon, unless they are for performance reasons and are clearly marked as such with a comment and explanation.
+
+When code does something unexpected, add a comment explaining why.
+
+When a comment is longer, prefer using `/** */` JSDoc comments as that will be auto-formatted as Markdown.
+JSDoc comments will also become part of the API documentation when they apply to exports, so write them as such.
+
+`pnpm fmt` is your friend, and we recommend setting up Prettier and using format-on-save in your editor.
+
+### Commit conventions
+
+If you don't follow these commit conventions, your PR will be squashed. This means your local branch will not be part of the commit history of the target branch.
+For larger PRs, it would really help if you follow these guidelines.
+
+- Create a commit for each logical unit and make sure it passes linting.
+- Keep your commits focused and atomic. Each commit should represent a single, coherent change.
+- If you have commits like `wip lol` or `fixup`, squash them. Use `git rebase -i`.
+- Commits must follow the format: `type(scope): description`
+  For example: `feat(unisynth-city): confetti animations` or `chore: pnpm api.update`
+
+  Common types include:
+
+  - feat: A new feature
+  - fix: A bug fix
+  - docs: Documentation only changes
+  - lint: Changes that do not affect the meaning of the code (white-space, formatting, etc)
+  - refactor: A code change that neither fixes a bug nor adds a feature
+  - perf: A code change that improves performance
+  - test: Adding missing tests or correcting existing tests
+  - chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
+
+  The `scope` is optional and should be a short identifier for the changed part of the code.
+
+- Use the imperative mood in the description. For example, use "add" instead of "added" or "adds".
+- For consistency, there should not be a period at the end of the commit message's summary line (the first line of the commit message).
+
+### Writing good commit messages
+
+In addition to writing properly formatted commit messages, it's important to include relevant information so other developers can later understand _why_ a change was made. While this information usually can be found by digging into the code, pull request discussions or upstream changes, it may require a lot of work.
+
+- Be clear and concise in your commit messages.
+- Explain the reason for the change, not just what was changed.
+- If the commit fixes a specific issue, reference it in the commit message (e.g., "Fixes #123").
+
+### Adding a changeset
+
+Whenever you make a change that requires mentioning in the changelog, you should add a changeset. This will automatically generate meaningful release notes and changelog files.
+
+You can add multiple changesets in a PR, for example because you implement different features for different packages, or because you have multiple noteworthy commits.
+
+You create a new changeset file by running:
+
+```shell
+pnpm change
+```
+
+This will ask you which packages should be included in the changeset, and if the changes require a new version bump. Generally you should not select `major`, and you should only select `minor` if there are new features or significant improvements. If you don't select either it will become `patch`.
+
+For your convenience, we prepared a video tutorial that covers the process of adding a changeset:
+
+[📽 TUTORIAL: Adding a changeset](https://go.screenpal.com/watch/cZivIcVPJQV)
+
+## PR merging (maintainers)
+
+Make sure the PR follows all the guidelines in this document. Once you think the PR is good to merge, if the commits are "nice", you can merge the PR. If not, squash the PR.
+
+In case the PR is stuck waiting for the original author to apply a trivial
+change (a typo, capitalisation change, etc.) and the author allowed the members
+to modify the PR, consider applying it yourself (or commit the existing review
+suggestion). You should pay extra attention to make sure the addition doesn't go
+against the idea of the original PR and would not be opposed by the author.
+
+## Releasing (maintainers)
+
+Merge the "version" PR, that is automatically created when a PR with a changeset is merged. You can first edit the files it created to get a nicer changelog.
+
+Once CI passes, the GitHub Action will publish the new version to NPM.

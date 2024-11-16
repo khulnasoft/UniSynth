@@ -1,0 +1,20 @@
+# For all PRs
+* @khulnasoft/core-veterans
+
+# For docs PRs
+packages/docs @khulnasoft/docs-team @khulnasoft/unisynth-team
+contributing @khulnasoft/docs-team @khulnasoft/unisynth-team
+README.md @khulnasoft/docs-team @khulnasoft/unisynth-team
+CONTRIBUTING.md @khulnasoft/docs-team @khulnasoft/unisynth-team
+CODE_OF_CONDUCT.md @khulnasoft/docs-team @khulnasoft/unisynth-team
+
+# For API changes
+api.json @khulnasoft/api-guards
+
+# For releases
+CHANGELOG.md @khulnasoft/api-guards
+
+# Protect the code owners file
+.github/CODEOWNERS @mhevery @shairez
+
+

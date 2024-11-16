@@ -1,33 +1,97 @@
-import { component$ } from '@builder.io/qwik';
-import { QwikCityProvider, RouterOutlet, ServiceWorkerRegister } from '@builder.io/qwik-city';
-import { QwikPartytown } from './components/partytown/partytown';
-import { RouterHead } from './components/router-head';
-
+import { component$, useContextProvider, useStore } from '@khulnasoft.com/unisynth';
+import { UnisynthCityProvider, RouterOutlet } from '@khulnasoft.com/unisynth-city';
+import RealMetricsOptimization from './components/real-metrics-optimization/real-metrics-optimization';
+import { RouterHead } from './components/router-head/router-head';
+import { GlobalStore, type SiteStore } from './context';
 import './global.css';
+import { BUILDER_PUBLIC_API_KEY } from './constants';
+import { Insights } from '@khulnasoft.com/unisynth-labs';
 
-import { Insights } from '@builder.io/qwik-labs-canary';
+export const uwu = /*javascript*/ `
+;(function () {
+  try {
+    var preferredUwu;
+    try {
+      preferredUwu = localStorage.getItem('uwu');
+    } catch (err) { }
+
+    const isUwuValue = window.location
+      && window.location.search
+      && window.location.search.match(/uwu=(true|false)/);
+
+    if (isUwuValue) {
+      const isUwu = isUwuValue[1] === 'true';
+      if (isUwu) {
+        try {
+          localStorage.setItem('uwu', true);
+        } catch (err) { }
+        document.documentElement.classList.add('uwu');
+        console.log('uwu mode enabled. turn off with ?uwu=false')
+        console.log('logo credit to @sawaratsuki1004 via https://github.com/SAWARATSUKI/ServiceLogos');
+      } else {
+        try {
+          localStorage.removeItem('uwu', false);
+        } catch (err) { }
+      }
+    } else if (preferredUwu) {
+      document.documentElement.classList.add('uwu');
+    }
+  } catch (err) { }
+})();
+`;
+
+const unregisterPrefetchServiceWorkers = /*javascript*/ `
+;(function () {
+  navigator.serviceWorker?.getRegistrations().then((regs) => {
+    for (const reg of regs) {
+      if (
+        reg.active?.scriptURL.includes('service-worker.js') ||
+        reg.active?.scriptURL.includes('unisynth-prefetch-service-worker.js')
+      ) {
+        reg.unregister();
+      }
+    }
+  });
+})();
+`;
 
 export default component$(() => {
-  /**
-   * The root of a QwikCity site always start with the <QwikCityProvider> component,
-   * immediately followed by the document's <head> and <body>.
-   *
-   * Don't remove the `<head>` and `<body>` elements.
-   */
+  const store = useStore<SiteStore>({
+    headerMenuOpen: false,
+    sideMenuOpen: false,
+    theme: 'auto',
+  });
+
+  useContextProvider(GlobalStore, store);
 
   return (
-    <QwikCityProvider>
+    <UnisynthCityProvider>
       <head>
-        <meta charSet="utf-8" />
-        <link rel="manifest" href="/manifest.json" />
-        <Insights publicApiKey="22gsbhtjcyv" />
+        <meta charset="utf-8" />
+        <script dangerouslySetInnerHTML={uwu} />
+        <script dangerouslySetInnerHTML={unregisterPrefetchServiceWorkers} />
         <RouterHead />
-        <ServiceWorkerRegister />
-        <QwikPartytown forward={['dataLayer.push']} />
+        {/* Core Web Vitals experiment until November 8: Do not bring back any SW until then! Reach out to @maiieul first if you believe you have a good reason to change this. */}
+        {/* <ServiceWorkerRegister /> */}
+
+        {/* <script dangerouslySetInnerHTML={`(${collectSymbols})()`} /> */}
+        <Insights publicApiKey={import.meta.env.PUBLIC_UNISYNTH_INSIGHTS_KEY} />
       </head>
-      <body lang="en">
+      <body
+        class={{
+          'header-open': store.headerMenuOpen,
+          'menu-open': store.sideMenuOpen,
+        }}
+      >
         <RouterOutlet />
+        <RealMetricsOptimization builderApiKey={BUILDER_PUBLIC_API_KEY} />
+        {/* Core Web Vitals experiment until November 8: Do not bring back any SW until then! Reach out to @maiieul first if you believe you have a good reason to change this. */}
       </body>
-    </QwikCityProvider>
+    </UnisynthCityProvider>
   );
 });
+
+export function collectSymbols() {
+  (window as any).symbols = [];
+  document.addEventListener('qsymbol', (e) => (window as any).symbols.push((e as any).detail));
+}
