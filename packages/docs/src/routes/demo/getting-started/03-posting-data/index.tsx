@@ -1,5 +1,9 @@
 import { component$ } from '@khulnasoft.com/unisynth';
-import { routeLoader$, Form, routeAction$ } from '@khulnasoft.com/unisynth-city';
+import {
+  routeLoader$,
+  Form,
+  routeAction$,
+} from '@khulnasoft.com/unisynth-city';
 
 export const useDadJoke = routeLoader$(async () => {
   const response = await fetch('https://icanhazdadjoke.com/', {

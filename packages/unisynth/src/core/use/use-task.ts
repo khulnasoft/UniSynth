@@ -50,8 +50,8 @@ export const TaskFlagsIsCleanup = 1 << 5;
  * Used to signal to Unisynth which state should be watched for changes.
  *
  * The `Tracker` is passed into the `taskFn` of `useTask`. It is intended to be used to wrap state
- * objects in a read proxy which signals to Unisynth which properties should be watched for changes. A
- * change to any of the properties causes the `taskFn` to rerun.
+ * objects in a read proxy which signals to Unisynth which properties should be watched for changes.
+ * A change to any of the properties causes the `taskFn` to rerun.
  *
  * ### Example
  *

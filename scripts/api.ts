@@ -108,7 +108,15 @@ export async function apiExtractorUnisynthCity(config: BuildConfig) {
   createTypesApi(
     config,
     join(config.packagesDir, 'unisynth-city', 'src', 'adapters', 'deno-server', 'vite'),
-    join(config.packagesDir, 'unisynth-city', 'lib', 'adapters', 'deno-server', 'vite', 'index.d.ts')
+    join(
+      config.packagesDir,
+      'unisynth-city',
+      'lib',
+      'adapters',
+      'deno-server',
+      'vite',
+      'index.d.ts'
+    )
   );
   createTypesApi(
     config,
@@ -118,12 +126,28 @@ export async function apiExtractorUnisynthCity(config: BuildConfig) {
   createTypesApi(
     config,
     join(config.packagesDir, 'unisynth-city', 'src', 'adapters', 'node-server', 'vite'),
-    join(config.packagesDir, 'unisynth-city', 'lib', 'adapters', 'node-server', 'vite', 'index.d.ts')
+    join(
+      config.packagesDir,
+      'unisynth-city',
+      'lib',
+      'adapters',
+      'node-server',
+      'vite',
+      'index.d.ts'
+    )
   );
   createTypesApi(
     config,
     join(config.packagesDir, 'unisynth-city', 'src', 'adapters', 'netlify-edge', 'vite'),
-    join(config.packagesDir, 'unisynth-city', 'lib', 'adapters', 'netlify-edge', 'vite', 'index.d.ts')
+    join(
+      config.packagesDir,
+      'unisynth-city',
+      'lib',
+      'adapters',
+      'netlify-edge',
+      'vite',
+      'index.d.ts'
+    )
   );
   createTypesApi(
     config,
@@ -138,7 +162,15 @@ export async function apiExtractorUnisynthCity(config: BuildConfig) {
   createTypesApi(
     config,
     join(config.packagesDir, 'unisynth-city', 'src', 'adapters', 'vercel-edge', 'vite'),
-    join(config.packagesDir, 'unisynth-city', 'lib', 'adapters', 'vercel-edge', 'vite', 'index.d.ts')
+    join(
+      config.packagesDir,
+      'unisynth-city',
+      'lib',
+      'adapters',
+      'vercel-edge',
+      'vite',
+      'index.d.ts'
+    )
   );
   createTypesApi(
     config,

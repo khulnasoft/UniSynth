@@ -1,4 +1,11 @@
-import { $, component$, Slot, useContextProvider, useStore, useTask$ } from '@khulnasoft.com/unisynth';
+import {
+  $,
+  component$,
+  Slot,
+  useContextProvider,
+  useStore,
+  useTask$,
+} from '@khulnasoft.com/unisynth';
 import { Header } from '../../components/header/header';
 import { Footer } from '../../components/footer/footer';
 import { routeLoader$, type RequestHandler } from '@khulnasoft.com/unisynth-city';

@@ -42,7 +42,6 @@
     "react-dom": "^18",
     "vite": "^5"
   },
-  "unisynth": "./lib/index.unisynth.mjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/khulnasoft/unisynth.git",
@@ -64,5 +63,6 @@
     "typecheck": "tsc --noEmit"
   },
   "type": "module",
-  "types": "./lib/types/index.unisynth.d.ts"
+  "types": "./lib/types/index.unisynth.d.ts",
+  "unisynth": "./lib/index.unisynth.mjs"
 }

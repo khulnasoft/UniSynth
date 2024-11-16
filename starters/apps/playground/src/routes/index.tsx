@@ -83,7 +83,10 @@ export default component$(() => {
               </li>
               <li>
                 <span>Open issues and contribute on </span>
-                <a href="https://github.com/khulnasoft/unisynth" target="_blank">
+                <a
+                  href="https://github.com/khulnasoft/unisynth"
+                  target="_blank"
+                >
                   GitHub
                 </a>
               </li>

@@ -1,4 +1,8 @@
-import { component$, useSignal, useVisibleTask$ } from "@khulnasoft.com/unisynth";
+import {
+  component$,
+  useSignal,
+  useVisibleTask$,
+} from "@khulnasoft.com/unisynth";
 import { server$ } from "@khulnasoft.com/unisynth-city";
 import { delay } from "../../actions/login";
 

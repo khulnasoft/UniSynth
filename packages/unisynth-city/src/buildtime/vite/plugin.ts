@@ -68,11 +68,21 @@ function unisynthCityPlugin(userOpts?: UnisynthCityVitePluginOptions): any {
       const updatedViteConfig: UserConfig = {
         appType: 'custom',
         optimizeDeps: {
-          exclude: [UNISYNTH_CITY, UNISYNTH_CITY_PLAN_ID, UNISYNTH_CITY_ENTRIES_ID, UNISYNTH_CITY_SW_REGISTER],
+          exclude: [
+            UNISYNTH_CITY,
+            UNISYNTH_CITY_PLAN_ID,
+            UNISYNTH_CITY_ENTRIES_ID,
+            UNISYNTH_CITY_SW_REGISTER,
+          ],
         },
         ssr: {
           external: ['node:async_hooks'],
-          noExternal: [UNISYNTH_CITY, UNISYNTH_CITY_PLAN_ID, UNISYNTH_CITY_ENTRIES_ID, UNISYNTH_CITY_SW_REGISTER],
+          noExternal: [
+            UNISYNTH_CITY,
+            UNISYNTH_CITY_PLAN_ID,
+            UNISYNTH_CITY_ENTRIES_ID,
+            UNISYNTH_CITY_SW_REGISTER,
+          ],
         },
       };
       return updatedViteConfig;
@@ -93,7 +103,9 @@ function unisynthCityPlugin(userOpts?: UnisynthCityVitePluginOptions): any {
 
       mdxTransform = await createMdxTransformer(ctx);
 
-      unisynthPlugin = config.plugins.find((p) => p.name === 'vite-plugin-unisynth') as UnisynthVitePlugin;
+      unisynthPlugin = config.plugins.find(
+        (p) => p.name === 'vite-plugin-unisynth'
+      ) as UnisynthVitePlugin;
       if (!unisynthPlugin) {
         throw new Error('Missing vite-plugin-unisynth');
       }

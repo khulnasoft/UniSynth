@@ -1,4 +1,7 @@
-import { routeLoader$, type RequestHandler } from "@khulnasoft.com/unisynth-city";
+import {
+  routeLoader$,
+  type RequestHandler,
+} from "@khulnasoft.com/unisynth-city";
 
 export const useRootLoader = routeLoader$(() => {
   return {

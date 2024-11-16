@@ -1,4 +1,7 @@
-import { UnisynthCityProvider, RouterOutlet } from "@khulnasoft.com/unisynth-city";
+import {
+  UnisynthCityProvider,
+  RouterOutlet,
+} from "@khulnasoft.com/unisynth-city";
 import { SomeProvider } from "./components/provider/provider";
 import { RouterHead } from "./components/router-head/router-head";
 import "./global.css";

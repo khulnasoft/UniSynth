@@ -1,4 +1,7 @@
-import type { UnisynthSymbolEvent, UnisynthVisibleEvent } from './core/render/jsx/types/jsx-unisynth-events';
+import type {
+  UnisynthSymbolEvent,
+  UnisynthVisibleEvent,
+} from './core/render/jsx/types/jsx-unisynth-events';
 import type { QContainerElement } from './core/container/container';
 import type { QContext } from './core/state/context';
 

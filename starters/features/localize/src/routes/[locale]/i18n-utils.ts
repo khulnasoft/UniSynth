@@ -1,6 +1,11 @@
 import "@angular/localize/init";
 import { loadTranslations } from "@angular/localize";
-import { $, getLocale, useOnDocument, withLocale } from "@khulnasoft.com/unisynth";
+import {
+  $,
+  getLocale,
+  useOnDocument,
+  withLocale,
+} from "@khulnasoft.com/unisynth";
 import type { RenderOptions } from "@khulnasoft.com/unisynth/server";
 
 // You must declare all your locales here

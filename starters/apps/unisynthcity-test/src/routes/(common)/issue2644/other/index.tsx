@@ -1,5 +1,9 @@
 import { component$ } from "@khulnasoft.com/unisynth";
-import { Form, routeLoader$, routeAction$ } from "@khulnasoft.com/unisynth-city";
+import {
+  Form,
+  routeLoader$,
+  routeAction$,
+} from "@khulnasoft.com/unisynth-city";
 import { data } from "../data";
 
 export const useGetData = routeLoader$(() => {

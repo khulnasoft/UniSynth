@@ -1,4 +1,7 @@
-import { UNISYNTH_REPL_DEPS_CACHE, UNISYNTH_REPL_RESULT_CACHE } from '../../../repl/worker/repl-constants';
+import {
+  UNISYNTH_REPL_DEPS_CACHE,
+  UNISYNTH_REPL_RESULT_CACHE,
+} from '../../../repl/worker/repl-constants';
 import { receiveMessageFromMain } from '../../../repl/worker/repl-messenger';
 import { requestHandler } from '../../../repl/worker/repl-request-handler';
 

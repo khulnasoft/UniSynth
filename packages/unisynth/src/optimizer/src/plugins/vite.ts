@@ -51,8 +51,8 @@ type P<T> = VitePlugin<T> & { api: T; config: Extract<VitePlugin<T>['config'], F
 
 /**
  * The types for Vite/Rollup don't allow us to be too specific about the return type. The correct
- * return type is `[UnisynthVitePlugin, VitePlugin<never>]`, and if you search the plugin by name you'll
- * get the `UnisynthVitePlugin`.
+ * return type is `[UnisynthVitePlugin, VitePlugin<never>]`, and if you search the plugin by name
+ * you'll get the `UnisynthVitePlugin`.
  *
  * @public
  */
@@ -602,7 +602,9 @@ export function unisynthVite(unisynthViteOpts: UnisynthVitePluginOptions = {}): 
             source: JSON.stringify(convertManifestToBundleGraph(manifest)),
           });
           const fs: typeof import('fs') = await sys.dynamicImport('node:fs');
-          const workerScriptPath = (await this.resolve('@khulnasoft.com/unisynth/unisynth-prefetch.js'))!.id;
+          const workerScriptPath = (await this.resolve(
+            '@khulnasoft.com/unisynth/unisynth-prefetch.js'
+          ))!.id;
           const workerScript = await fs.promises.readFile(workerScriptPath, 'utf-8');
           const unisynthPrefetchServiceWorkerFile = 'unisynth-prefetch-service-worker.js';
           this.emitFile({
@@ -685,7 +687,8 @@ export function unisynthVite(unisynthViteOpts: UnisynthVitePluginOptions = {}): 
 
     configureServer(server: ViteDevServer) {
       unisynthPlugin.configureServer(server);
-      const devSsrServer = 'devSsrServer' in unisynthViteOpts ? !!unisynthViteOpts.devSsrServer : true;
+      const devSsrServer =
+        'devSsrServer' in unisynthViteOpts ? !!unisynthViteOpts.devSsrServer : true;
       const imageDevTools =
         unisynthViteOpts.devTools && 'imageDevTools' in unisynthViteOpts.devTools
           ? unisynthViteOpts.devTools.imageDevTools
@@ -922,15 +925,15 @@ interface UnisynthVitePluginCommonOptions {
    */
   debug?: boolean;
   /**
-   * The Unisynth entry strategy to use while building for production. During development the type is
-   * always `segment`.
+   * The Unisynth entry strategy to use while building for production. During development the type
+   * is always `segment`.
    *
    * Default `{ type: "smart" }`)
    */
   entryStrategy?: EntryStrategy;
   /**
-   * The source directory to find all the Unisynth components. Since Unisynth does not have a single input,
-   * the `srcDir` is used to recursively find Unisynth files.
+   * The source directory to find all the Unisynth components. Since Unisynth does not have a single
+   * input, the `srcDir` is used to recursively find Unisynth files.
    *
    * Default `src`
    */
@@ -946,7 +949,8 @@ interface UnisynthVitePluginCommonOptions {
    *
    * Default `[]`
    *
-   * @deprecated No longer used. Instead, any imported file with `.unisynth.` in the name is processed.
+   * @deprecated No longer used. Instead, any imported file with `.unisynth.` in the name is
+   *   processed.
    */
   vendorRoots?: string[];
   /**
@@ -977,8 +981,8 @@ interface UnisynthVitePluginCommonOptions {
     imageDevTools?: boolean | true;
     /**
      * Press-hold the defined keys to enable unisynth dev inspector. By default the behavior is
-     * activated by pressing the left or right `Alt` key. If set to `false`, unisynth dev inspector will
-     * be disabled.
+     * activated by pressing the left or right `Alt` key. If set to `false`, unisynth dev inspector
+     * will be disabled.
      *
      * Valid values are `KeyboardEvent.code` values. Please note that the 'Left' and 'Right'
      * suffixes are ignored.
@@ -1044,8 +1048,9 @@ interface UnisynthVitePluginSSROptions extends UnisynthVitePluginCommonOptions {
   };
 
   /**
-   * Unisynth is SSR first framework. This means that Unisynth requires either SSR or SSG. In dev mode the
-   * dev SSR server is responsible for rendering and pausing the application on the server.
+   * Unisynth is SSR first framework. This means that Unisynth requires either SSR or SSG. In dev
+   * mode the dev SSR server is responsible for rendering and pausing the application on the
+   * server.
    *
    * Under normal circumstances this should be on, unless you have your own SSR server which you
    * would like to use instead and wish to disable this one.
@@ -1103,8 +1108,8 @@ export interface UnisynthVitePluginApi {
 }
 
 /**
- * This is the type of the "pre" Unisynth Vite plugin. `unisynthVite` actually returns a tuple of two
- * plugins, but after Vite flattens them, you can find the plugin by name.
+ * This is the type of the "pre" Unisynth Vite plugin. `unisynthVite` actually returns a tuple of
+ * two plugins, but after Vite flattens them, you can find the plugin by name.
  *
  * @public
  */

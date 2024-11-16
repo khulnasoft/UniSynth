@@ -9,9 +9,9 @@ import type {
 } from './jsx-unisynth-events';
 
 /**
- * Capitalized multi-word names of some known events so we have nicer unisynth attributes. For example,
- * instead of `oncompositionEnd$` we can use `onCompositionEnd$`. Note that any capitalization
- * works, so `oncompositionend$` is also valid. This is just for DX.
+ * Capitalized multi-word names of some known events so we have nicer unisynth attributes. For
+ * example, instead of `oncompositionEnd$` we can use `onCompositionEnd$`. Note that any
+ * capitalization works, so `oncompositionend$` is also valid. This is just for DX.
  *
  * Add any multi-word event names to this list. Single word events are automatically converted.
  */
@@ -267,7 +267,9 @@ interface DOMAttributesBase<EL extends Element>
 }
 
 /** The Unisynth-specific attributes that DOM elements accept @public */
-export interface DOMAttributes<EL extends Element> extends DOMAttributesBase<EL>, UnisynthEvents<EL> {
+export interface DOMAttributes<EL extends Element>
+  extends DOMAttributesBase<EL>,
+    UnisynthEvents<EL> {
   class?: ClassList | Signal<ClassList> | undefined;
 }
 

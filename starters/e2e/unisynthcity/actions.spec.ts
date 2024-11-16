@@ -152,7 +152,9 @@ test.describe("actions", () => {
 
         await page.locator("#issue2644-input").fill("BBB");
         await page.locator("#issue2644-submit").click();
-        expect(page).toHaveURL(new RegExp("/unisynthcity-test/issue2644/other/"));
+        expect(page).toHaveURL(
+          new RegExp("/unisynthcity-test/issue2644/other/"),
+        );
 
         await expect(page.locator("#issue2644-list > li")).toHaveText([
           "AAA",

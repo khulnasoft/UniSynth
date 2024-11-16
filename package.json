@@ -74,35 +74,18 @@
       ]
     }
   },
-  "contributors": [
-    {
-      "name": "Miško Hevery",
-      "email": "misko@hevery.com",
-      "url": "https://twitter.com/mhevery"
-    },
-    {
-      "name": "Adam Bradley",
-      "email": "adam@builder.io",
-      "url": "https://twitter.com/adamdbradley"
-    },
-    {
-      "name": "Manu Mtz.-Almeida",
-      "email": "manu@builder.io",
-      "url": "https://twitter.com/manucorporat"
-    }
-  ],
   "dependencies": {
     "esbuild-plugin-raw": "^0.1.8"
   },
   "devDependencies": {
     "@builder.io/partytown": "0.10.2",
-    "@khulnasoft.com/unisynth": "workspace:^",
-    "@khulnasoft.com/unisynth-city": "workspace:^",
     "@changesets/cli": "2.27.7",
     "@changesets/get-github-info": "0.6.0",
     "@changesets/types": "6.0.0",
     "@clack/prompts": "0.7.0",
     "@eslint/eslintrc": "3.1.0",
+    "@khulnasoft.com/unisynth": "workspace:^",
+    "@khulnasoft.com/unisynth-city": "workspace:^",
     "@mdx-js/mdx": "3.0.1",
     "@microsoft/api-documenter": "7.24.2",
     "@microsoft/api-extractor": "7.43.1",
@@ -231,7 +214,6 @@
     "preinstall": "npx only-allow pnpm",
     "prepare": "simple-git-hooks",
     "prettier.fix": "prettier --cache --write .",
-    "unisynth-push-build-repos": "tsx --require ./scripts/runBefore.ts ./scripts/unisynth-push-build-repos.ts",
     "release": "changeset publish",
     "release.fixup-package-json": "syncpack fix-mismatches --config syncpack-release-conf.json",
     "release.pkg-pr-new": "pnpm dlx pkg-pr-new@^0.0.9 publish --compact --pnpm ./packages/unisynth ./packages/unisynth-city ./packages/eslint-plugin-unisynth ./packages/create-unisynth",
@@ -255,6 +237,7 @@
     "tsc.check": "tsc --noEmit",
     "tsc.trace": "tsc -p tsconfig.json --traceResolution > tsc.log",
     "tsc.watch": "tsc --noEmit --watch --preserveWatchOutput",
+    "unisynth-push-build-repos": "tsx --require ./scripts/runBefore.ts ./scripts/unisynth-push-build-repos.ts",
     "update.unisynth.builds": "tsx --require ./scripts/runBefore.ts scripts/update-unisynth-builds.ts packages/docs && tsx scripts/update-unisynth-builds.ts packages/insights; pnpm install",
     "vitest": "vitest"
   },

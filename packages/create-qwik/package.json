@@ -27,9 +27,9 @@
   "keywords": [
     "builder.io",
     "generator",
-    "unisynth",
     "starters",
-    "template"
+    "template",
+    "unisynth"
   ],
   "license": "MIT",
   "main": "./dist/index.cjs",

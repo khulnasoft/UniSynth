@@ -1,5 +1,11 @@
 import type { SnapshotResult } from '@khulnasoft.com/unisynth';
-import { _pauseFromContexts, _renderSSR, Fragment, jsx, type JSXNode } from '@khulnasoft.com/unisynth';
+import {
+  _pauseFromContexts,
+  _renderSSR,
+  Fragment,
+  jsx,
+  type JSXNode,
+} from '@khulnasoft.com/unisynth';
 import { isDev } from '@khulnasoft.com/unisynth/build';
 import type { QContext } from '../core/state/context';
 import { QInstance } from '../core/util/markers';

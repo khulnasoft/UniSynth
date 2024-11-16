@@ -7,8 +7,8 @@ import type { ValueOrPromise } from '../util/types';
  * Low-level API for platform abstraction.
  *
  * Different platforms (browser, node, service workers) may have different ways of handling things
- * such as `requestAnimationFrame` and imports. To make Unisynth platform-independent Unisynth uses the
- * `CorePlatform` API to access the platform API.
+ * such as `requestAnimationFrame` and imports. To make Unisynth platform-independent Unisynth uses
+ * the `CorePlatform` API to access the platform API.
  *
  * `CorePlatform` also is responsible for importing symbols. The import map is different on the
  * client (browser) then on the server. For this reason, the server has a manifest that is used to
@@ -38,9 +38,9 @@ export interface CorePlatform {
   /**
    * Retrieve a symbol value from QRL.
    *
-   * Unisynth needs to lazy load data and closures. For this Unisynth uses QRLs that are serializable
-   * references of resources that are needed. The QRLs contain all the information necessary to
-   * retrieve the reference using `importSymbol`.
+   * Unisynth needs to lazy load data and closures. For this Unisynth uses QRLs that are
+   * serializable references of resources that are needed. The QRLs contain all the information
+   * necessary to retrieve the reference using `importSymbol`.
    *
    * Why not use `import()`? Because `import()` is relative to the current file, and the current
    * file is always the Unisynth framework. So QRLs have additional information that allows them to

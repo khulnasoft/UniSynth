@@ -1,5 +1,12 @@
 import { useContent, useLocation } from '@khulnasoft.com/unisynth-city';
-import { component$, useContext, $, useStyles$, useOnDocument, useSignal } from '@khulnasoft.com/unisynth';
+import {
+  component$,
+  useContext,
+  $,
+  useStyles$,
+  useOnDocument,
+  useSignal,
+} from '@khulnasoft.com/unisynth';
 import { ChatIcon } from '../svgs/chat-icon';
 import { GithubLogo } from '../svgs/github-logo';
 import { TwitterLogo } from '../svgs/twitter-logo';

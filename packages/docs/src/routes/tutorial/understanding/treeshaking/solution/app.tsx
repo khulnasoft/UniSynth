@@ -14,8 +14,8 @@ export default component$(() => {
       the client. This means that it will also never load an the client. The component is
       tree-shaken on the client.
       <br />
-      Click <button onClick$={() => store.count++}>+1</button> to observe what code Unisynth loads as a
-      result of modifying the application state.
+      Click <button onClick$={() => store.count++}>+1</button> to observe what code Unisynth loads
+      as a result of modifying the application state.
       <Child store={store} />
     </>
   );

@@ -7,16 +7,17 @@ import type { JSXOutput } from '../render/jsx/types/jsx-node';
 /**
  * Install a service worker which will prefetch the bundles.
  *
- * There can only be one service worker per page. Because there can be many separate Unisynth Containers
- * on the page each container needs to load its prefetch graph using `PrefetchGraph` component.
+ * There can only be one service worker per page. Because there can be many separate Unisynth
+ * Containers on the page each container needs to load its prefetch graph using `PrefetchGraph`
+ * component.
  *
  * @param opts - Options for the prefetch service worker.
  *
  *   - `base` - Base URL for the service worker `import.meta.env.BASE_URL` or `/`. Default is
  *       `import.meta.env.BASE_URL`
  *   - `scope` - Base URL for when the service-worker will activate. Default is `/`
- *   - `path` - Path to the service worker. Default is `unisynth-prefetch-service-worker.js` unless you pass
- *       a path that starts with a `/` then the base is ignored. Default is
+ *   - `path` - Path to the service worker. Default is `unisynth-prefetch-service-worker.js` unless you
+ *       pass a path that starts with a `/` then the base is ignored. Default is
  *       `unisynth-prefetch-service-worker.js`
  *   - `verbose` - Verbose logging for the service worker installation. Default is `false`
  *   - `nonce` - Optional nonce value for security purposes, defaults to `undefined`.

@@ -6,7 +6,10 @@ type RequestEventInternal =
 type AsyncStore = import('node:async_hooks').AsyncLocalStorage<RequestEventInternal>;
 
 /** @deprecated Remove this in v2 */
-declare var UNISYNTH_MANIFEST: import('@khulnasoft.com/unisynth/optimizer').UnisynthManifest | undefined | null;
+declare var UNISYNTH_MANIFEST:
+  | import('@khulnasoft.com/unisynth/optimizer').UnisynthManifest
+  | undefined
+  | null;
 
 declare var qcAsyncRequestStore: AsyncStore | undefined;
 declare var _unisynthActionsMap: Map<string, ActionInternal> | undefined;

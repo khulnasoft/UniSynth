@@ -32,12 +32,11 @@
     "authentication",
     "login",
     "plugin",
-    "unisynth",
-    "ssr"
+    "ssr",
+    "unisynth"
   ],
   "license": "MIT",
   "main": "./lib/index.unisynth.mjs",
-  "unisynth": "./lib/index.unisynth.mjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/khulnasoft/unisynth.git",
@@ -47,5 +46,6 @@
     "build": "vite build --mode lib"
   },
   "type": "module",
-  "types": "./lib/types/index.d.ts"
+  "types": "./lib/types/index.d.ts",
+  "unisynth": "./lib/index.unisynth.mjs"
 }

@@ -196,7 +196,9 @@ export const pauseContainer = async (
   // Emit Unisynth JSON
   const unisynthJson = doc.createElement('script');
   directSetAttribute(unisynthJson, 'type', 'unisynth/json');
-  unisynthJson.textContent = escapeText(JSON.stringify(data.state, undefined, qDev ? '  ' : undefined));
+  unisynthJson.textContent = escapeText(
+    JSON.stringify(data.state, undefined, qDev ? '  ' : undefined)
+  );
   parentJSON.appendChild(unisynthJson);
 
   // Emit event registration
@@ -806,7 +808,11 @@ const getPromiseValue = (promise: Promise<any>): PromiseValue | undefined => {
   return (promise as any)[PROMISE_VALUE];
 };
 
-export const collectValue = (obj: unknown, collector: Collector, leaks: boolean | UnisynthElement) => {
+export const collectValue = (
+  obj: unknown,
+  collector: Collector,
+  leaks: boolean | UnisynthElement
+) => {
   if (obj != null) {
     const objType = typeof obj;
     switch (objType) {

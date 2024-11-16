@@ -19,7 +19,8 @@ export async function workerThread(sys: System) {
   const opts: StaticGenerateHandlerOptions = {
     ...ssgOpts,
     render: (await import(pathToFileURL(ssgOpts.renderModulePath).href)).default,
-    unisynthCityPlan: (await import(pathToFileURL(ssgOpts.unisynthCityPlanModulePath).href)).default,
+    unisynthCityPlan: (await import(pathToFileURL(ssgOpts.unisynthCityPlanModulePath).href))
+      .default,
   };
 
   sys.createWorkerProcess(async (msg) => {
@@ -46,7 +47,8 @@ export async function createSingleThreadWorker(sys: System) {
   const opts: StaticGenerateHandlerOptions = {
     ...ssgOpts,
     render: (await import(pathToFileURL(ssgOpts.renderModulePath).href)).default,
-    unisynthCityPlan: (await import(pathToFileURL(ssgOpts.unisynthCityPlanModulePath).href)).default,
+    unisynthCityPlan: (await import(pathToFileURL(ssgOpts.unisynthCityPlanModulePath).href))
+      .default,
   };
 
   return (staticRoute: StaticRoute) => {

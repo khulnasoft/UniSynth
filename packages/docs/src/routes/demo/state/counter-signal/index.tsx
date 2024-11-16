@@ -1,4 +1,7 @@
-import { component$, useSignal } from '@khulnasoft.com/unisynth';
+import {
+  component$,
+  useSignal,
+} from '@khulnasoft.com/unisynth';
 
 export default component$(() => {
   const count = useSignal(0);

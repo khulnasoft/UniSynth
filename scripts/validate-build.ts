@@ -105,7 +105,12 @@ export async function validateBuild(config: BuildConfig) {
     await validateModuleTreeshake(
       config,
       join(config.packagesDir, 'unisynth-city', 'lib', 'index.unisynth.mjs'),
-      ['@unisynth-city-plan', '@unisynth-city-sw-register', 'zod', '@khulnasoft.com/unisynth/jsx-runtime']
+      [
+        '@unisynth-city-plan',
+        '@unisynth-city-sw-register',
+        'zod',
+        '@khulnasoft.com/unisynth/jsx-runtime',
+      ]
     );
   }
 

@@ -78,7 +78,9 @@ test.describe("Unisynth City API", () => {
   test("endpoint with a dot in the pathname, with a trailing slash", async ({
     page,
   }) => {
-    const rsp = (await page.goto("/unisynthcity-test/issue2441/abc.endpoint/"))!;
+    const rsp = (await page.goto(
+      "/unisynthcity-test/issue2441/abc.endpoint/",
+    ))!;
     expect(rsp.status()).toBe(200);
     const clientData = await rsp.json();
     expect(clientData.issue).toBe(2441);

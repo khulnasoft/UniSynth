@@ -67,7 +67,9 @@ export interface PrefetchImplementation {
  *
  * @public
  */
-export type SymbolsToPrefetch = 'auto' | ((opts: { manifest: UnisynthManifest }) => PrefetchResource[]);
+export type SymbolsToPrefetch =
+  | 'auto'
+  | ((opts: { manifest: UnisynthManifest }) => PrefetchResource[]);
 
 /** @public */
 export interface PrefetchResource {
@@ -114,21 +116,21 @@ export interface UnisynthLoaderOptions {
 /**
  * Options which determine how the Unisynth Prefetch Service Worker is added to the document.
  *
- * Unisynth Prefetch Service Worker is used to prefetch resources so that the UnisynthLoader will always
- * have a cache hit. This will ensure that there will not be any delays for the end user while
- * interacting with the application.
+ * Unisynth Prefetch Service Worker is used to prefetch resources so that the UnisynthLoader will
+ * always have a cache hit. This will ensure that there will not be any delays for the end user
+ * while interacting with the application.
  *
  * @public
  */
 export interface UnisynthPrefetchServiceWorkerOptions {
   /**
-   * Should the Unisynth Prefetch Service Worker be added to the container. Defaults to `false` until
-   * the UnisynthCity Service Worker is deprecated.
+   * Should the Unisynth Prefetch Service Worker be added to the container. Defaults to `false`
+   * until the UnisynthCity Service Worker is deprecated.
    */
   include?: boolean;
   /**
-   * Where should the Unisynth Prefetch Service Worker be added to the container. Defaults to `top` to
-   * get prefetching going as fast as possible.
+   * Where should the Unisynth Prefetch Service Worker be added to the container. Defaults to `top`
+   * to get prefetching going as fast as possible.
    */
   position?: 'top' | 'bottom';
 }

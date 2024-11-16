@@ -68,7 +68,11 @@ export type {
   QRLEventHandlerMulti,
 } from './render/jsx/types/jsx-unisynth-attributes';
 export type { JSXOutput, FunctionComponent, JSXNode, DevJSX } from './render/jsx/types/jsx-node';
-export type { UnisynthDOMAttributes, UnisynthJSX, UnisynthJSX as JSX } from './render/jsx/types/jsx-unisynth';
+export type {
+  UnisynthDOMAttributes,
+  UnisynthJSX,
+  UnisynthJSX as JSX,
+} from './render/jsx/types/jsx-unisynth';
 
 export type { UnisynthIntrinsicElements } from './render/jsx/types/jsx-unisynth-elements';
 export type { UnisynthHTMLElements, UnisynthSVGElements } from './render/jsx/types/jsx-generated';

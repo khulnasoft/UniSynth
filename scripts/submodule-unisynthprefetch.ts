@@ -14,7 +14,7 @@ import { writePackageJson } from './package-json';
 
 /**
  * Builds the unisynthprefetch javascript files. These files can be used by other tooling, and are
- * provided in the package so CDNs could point to them. The @builder.io/optimizer submodule also
+ * provided in the package so CDNs could point to them. The @khulnasoft.com/optimizer submodule also
  * provides a utility function.
  */
 export async function submoduleUnisynthPrefetch(config: BuildConfig) {
@@ -136,7 +136,10 @@ export async function inlineUnisynthScriptsEsBuild(config: BuildConfig) {
 async function generatePrefetchSubmodule(config: BuildConfig) {
   const prefetchDistDir = join(config.distUnisynthPkgDir, 'prefetch');
 
-  const prefetchCode = await readFile(join(config.distUnisynthPkgDir, 'unisynth-prefetch.js'), 'utf-8');
+  const prefetchCode = await readFile(
+    join(config.distUnisynthPkgDir, 'unisynth-prefetch.js'),
+    'utf-8'
+  );
   const prefetchDebugCode = await readFile(
     join(config.distUnisynthPkgDir, 'unisynth-prefetch.debug.js'),
     'utf-8'

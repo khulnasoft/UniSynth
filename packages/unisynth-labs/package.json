@@ -38,11 +38,10 @@
   ],
   "main": "./lib/index.unisynth.mjs",
   "peerDependencies": {
-    "zod": "3.22.4",
-    "vite": "^5"
+    "vite": "^5",
+    "zod": "3.22.4"
   },
   "private": true,
-  "unisynth": "./lib/index.unisynth.mjs",
   "scripts": {
     "build": "pnpm build.vite && unisynth build",
     "build.lib": "vite build --mode lib",
@@ -52,11 +51,12 @@
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
     "lint": "eslint \"src/**/*.ts*\"",
-    "unisynth": "unisynth",
     "release": "np",
     "start": "vite --open --mode ssr",
-    "test.unit": "vitest"
+    "test.unit": "vitest",
+    "unisynth": "unisynth"
   },
   "type": "module",
-  "types": "./lib/index.d.ts"
+  "types": "./lib/index.d.ts",
+  "unisynth": "./lib/index.unisynth.mjs"
 }

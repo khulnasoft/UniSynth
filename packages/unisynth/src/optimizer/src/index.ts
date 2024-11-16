@@ -38,7 +38,11 @@ export type {
   TranspileOption,
 } from './types';
 
-export type { UnisynthBuildMode, UnisynthBuildTarget, ExperimentalFeatures } from './plugins/plugin';
+export type {
+  UnisynthBuildMode,
+  UnisynthBuildTarget,
+  ExperimentalFeatures,
+} from './plugins/plugin';
 export type { UnisynthRollupPluginOptions } from './plugins/rollup';
 export type {
   UnisynthViteDevResponse,

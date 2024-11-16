@@ -257,7 +257,8 @@ export const UnisynthCityProvider = component$<UnisynthCityProps>((props) => {
         }
 
         // Always scroll on same-page popstates, #hash clicks, or links.
-        const scroller = document.getElementById(UNISYNTH_CITY_SCROLLER) ?? document.documentElement;
+        const scroller =
+          document.getElementById(UNISYNTH_CITY_SCROLLER) ?? document.documentElement;
         restoreScroll(type, dest, new URL(location.href), scroller, getScrollHistory());
 
         if (type === 'popstate') {
@@ -407,7 +408,8 @@ export const UnisynthCityProvider = component$<UnisynthCityProps>((props) => {
           if (navType === 'popstate') {
             scrollState = getScrollHistory();
           }
-          const scroller = document.getElementById(UNISYNTH_CITY_SCROLLER) ?? document.documentElement;
+          const scroller =
+            document.getElementById(UNISYNTH_CITY_SCROLLER) ?? document.documentElement;
 
           if (
             (navigation.scroll &&

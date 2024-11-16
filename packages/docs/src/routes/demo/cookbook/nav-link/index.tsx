@@ -1,5 +1,9 @@
 import { Slot, component$ } from '@khulnasoft.com/unisynth';
-import { Link, useLocation, type LinkProps } from '@khulnasoft.com/unisynth-city';
+import {
+  Link,
+  useLocation,
+  type LinkProps,
+} from '@khulnasoft.com/unisynth-city';
 
 type NavLinkProps = LinkProps & { activeClass?: string };
 

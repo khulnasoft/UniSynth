@@ -20,7 +20,11 @@ export async function unisynthInsights(unisynthInsightsOpts: {
   baseUrl?: string;
   outDir?: string;
 }): Promise<PluginOption> {
-  const { publicApiKey, baseUrl = 'https://insights.unisynth.dev', outDir = '' } = unisynthInsightsOpts;
+  const {
+    publicApiKey,
+    baseUrl = 'https://insights.unisynth.dev',
+    outDir = '',
+  } = unisynthInsightsOpts;
   let isProd = false;
   const vitePlugin: PluginOption = {
     name: 'vite-plugin-unisynth-insights',

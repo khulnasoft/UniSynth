@@ -105,7 +105,9 @@ test.describe("actions", () => {
 
         await scrollDetector1;
         await expect(page.locator("h1")).toHaveText("Page Short");
-        expect(page).toHaveURL("/unisynthcity-test/scroll-restoration/page-short/");
+        expect(page).toHaveURL(
+          "/unisynthcity-test/scroll-restoration/page-short/",
+        );
         expect(await getWindowScrollXY(page)).toStrictEqual([0, 0]);
 
         const scrollHeightShort = await getScrollHeight(page);
@@ -122,7 +124,9 @@ test.describe("actions", () => {
 
         await scrollDetector2;
         await expect(page.locator("h1")).toHaveText("Page Long");
-        expect(page).toHaveURL("/unisynthcity-test/scroll-restoration/page-long/");
+        expect(page).toHaveURL(
+          "/unisynthcity-test/scroll-restoration/page-long/",
+        );
         expect(await getWindowScrollXY(page)).toStrictEqual([
           0,
           scrollHeightLong,
@@ -133,7 +137,9 @@ test.describe("actions", () => {
 
         await scrollDetector3;
         await expect(page.locator("h1")).toHaveText("Page Short");
-        expect(page).toHaveURL("/unisynthcity-test/scroll-restoration/page-short/");
+        expect(page).toHaveURL(
+          "/unisynthcity-test/scroll-restoration/page-short/",
+        );
         expect(await getWindowScrollXY(page)).toStrictEqual([
           0,
           scrollHeightShort,
@@ -271,7 +277,9 @@ test.describe("actions", () => {
         await link.click();
 
         await expect(page.locator("h1")).toHaveText("Query");
-        await expect(toPath(page.url())).toEqual("/unisynthcity-test/issue2890/b/");
+        await expect(toPath(page.url())).toEqual(
+          "/unisynthcity-test/issue2890/b/",
+        );
         await expect(page.locator("#loader")).toHaveText(
           'LOADER: {"query":"NONE","hash":"NONE"}',
         );
@@ -422,7 +430,9 @@ test.describe("actions", () => {
     test("issue4531", async ({ page }) => {
       const res = await page.goto("/unisynthcity-test/issue4531/");
       await expect(page.locator("#route")).toHaveText("should render");
-      expect(await res?.headerValue("X-Unisynthcity-Test")).toEqual("issue4531");
+      expect(await res?.headerValue("X-Unisynthcity-Test")).toEqual(
+        "issue4531",
+      );
     });
 
     test("issue4792", async ({ page }) => {

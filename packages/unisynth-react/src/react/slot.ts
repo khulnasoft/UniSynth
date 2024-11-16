@@ -71,7 +71,11 @@ export class SlotElement extends Component {
 export const getReactProps = (props: Record<string, any>): Record<string, any> => {
   const obj: Record<string, any> = {};
   Object.keys(props).forEach((key) => {
-    if (!key.startsWith('client:') && !key.startsWith('unisynth:') && !key.startsWith(HOST_PREFIX)) {
+    if (
+      !key.startsWith('client:') &&
+      !key.startsWith('unisynth:') &&
+      !key.startsWith(HOST_PREFIX)
+    ) {
       const normalizedKey = key.endsWith('$') ? key.slice(0, -1) : key;
       obj[normalizedKey] = props[key];
     }
@@ -105,7 +109,8 @@ export const useWakeupSignal = (props: UnisynthifyProps<{}>, opts: UnisynthifyOp
   const clientLoad =
     props['client:load'] || props['unisynth:load'] || clientOnly || opts?.eagerness === 'load';
 
-  const clientHover = props['client:hover'] || props['unisynth:hover'] || opts?.eagerness === 'hover';
+  const clientHover =
+    props['client:hover'] || props['unisynth:hover'] || opts?.eagerness === 'hover';
 
   const clientEvent = props['client:event'] || props['unisynth:event'];
 

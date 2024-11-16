@@ -14,7 +14,9 @@ test.describe("Todo", () => {
 
   test("todo title", async ({ page }) => {
     const title = page.locator("title");
-    await expect(title).toHaveText("Unisynth Demo: Todo", { useInnerText: true });
+    await expect(title).toHaveText("Unisynth Demo: Todo", {
+      useInnerText: true,
+    });
   });
 
   test("should start with 3 items", async ({ page }) => {

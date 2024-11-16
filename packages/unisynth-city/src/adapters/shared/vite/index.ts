@@ -123,7 +123,12 @@ export function viteAdapter(opts: ViteAdapterPluginOptions) {
           const assetsDir = unisynthVitePlugin.api.getAssetsDir();
 
           const rootDir = unisynthVitePlugin.api.getRootDir() ?? undefined;
-          if (renderModulePath && unisynthCityPlanModulePath && clientOutDir && clientPublicOutDir) {
+          if (
+            renderModulePath &&
+            unisynthCityPlanModulePath &&
+            clientOutDir &&
+            clientPublicOutDir
+          ) {
             let ssgOrigin = opts.ssg?.origin ?? opts.origin;
             if (!ssgOrigin) {
               ssgOrigin = `https://yoursite.unisynth.dev`;
@@ -265,8 +270,8 @@ export interface AdapterSSGOptions extends Omit<StaticGenerateRenderOptions, 'ou
 
   /**
    * The URL `origin`, which is a combination of the scheme (protocol) and hostname (domain). For
-   * example, `https://unisynth.dev` has the protocol `https://` and domain `unisynth.dev`. However, the
-   * `origin` does not include a `pathname`.
+   * example, `https://unisynth.dev` has the protocol `https://` and domain `unisynth.dev`. However,
+   * the `origin` does not include a `pathname`.
    *
    * The `origin` is used to provide a full URL during Static Site Generation (SSG), and to simulate
    * a complete URL rather than just the `pathname`. For example, in order to render a correct

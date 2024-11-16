@@ -1,4 +1,10 @@
-import { component$, useVisibleTask$, useContext, type Signal, type QRL } from '@khulnasoft.com/unisynth';
+import {
+  component$,
+  useVisibleTask$,
+  useContext,
+  type Signal,
+  type QRL,
+} from '@khulnasoft.com/unisynth';
 
 import { MAX_QUERY_SIZE } from './constants';
 import { SearchContext } from './context';

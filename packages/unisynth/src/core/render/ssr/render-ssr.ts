@@ -578,7 +578,10 @@ const renderNode = (
         return;
       }
       if (rawProp.startsWith(PREVENT_DEFAULT)) {
-        registerUnisynthEvent(rawProp.slice(PREVENT_DEFAULT.length), rCtx.$static$.$containerState$);
+        registerUnisynthEvent(
+          rawProp.slice(PREVENT_DEFAULT.length),
+          rCtx.$static$.$containerState$
+        );
       }
       let attrValue;
       const prop = rawProp === 'htmlFor' ? 'for' : rawProp;

@@ -1,4 +1,11 @@
-import { Slot, component$, useContext, useSignal, useStore, useTask$ } from '@khulnasoft.com/unisynth';
+import {
+  Slot,
+  component$,
+  useContext,
+  useSignal,
+  useStore,
+  useTask$,
+} from '@khulnasoft.com/unisynth';
 // import { UnisynthGPT } from '../unisynth-gpt';
 import { SearchContext } from './context';
 import { AiResultOpenContext, type DocSearchState } from './doc-search';
@@ -51,7 +58,9 @@ export const Result = component$(
           .join(' ')}
       >
         <Link
-          href={item.url.replace('https://unisynth.dev/', '/').replace('https://unisynth.builder.io/', '/')}
+          href={item.url
+            .replace('https://unisynth.dev/', '/')
+            .replace('https://unisynth.builder.io/', '/')}
         >
           <div class="DocSearch-Hit-Container">
             <Slot name="start-action"></Slot>

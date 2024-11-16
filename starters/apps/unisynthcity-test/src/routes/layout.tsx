@@ -1,5 +1,8 @@
 import { component$, Slot } from "@khulnasoft.com/unisynth";
-import { routeLoader$, type RequestHandler } from "@khulnasoft.com/unisynth-city";
+import {
+  routeLoader$,
+  type RequestHandler,
+} from "@khulnasoft.com/unisynth-city";
 import { isUserAuthenticated } from "../auth/auth";
 
 export const useUserLoader = routeLoader$(async ({ cookie }) => {

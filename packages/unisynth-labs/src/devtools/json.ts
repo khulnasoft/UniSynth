@@ -1,8 +1,14 @@
 // IMPORTANT: This file should have no external imports!!!
 
-export function runUnisynthJsonDebug(window: Window, document: Document, debug: typeof unisynthJsonDebug) {
+export function runUnisynthJsonDebug(
+  window: Window,
+  document: Document,
+  debug: typeof unisynthJsonDebug
+) {
   const parseUnisynthJSON = () => {
-    const rawData = JSON.parse(document.querySelector('script[type="unisynth/json"]')!.textContent!);
+    const rawData = JSON.parse(
+      document.querySelector('script[type="unisynth/json"]')!.textContent!
+    );
     const derivedFns =
       (
         document.querySelector('script[q\\:func="unisynth/json"]') as any as {

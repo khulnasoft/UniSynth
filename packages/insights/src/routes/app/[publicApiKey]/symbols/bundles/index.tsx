@@ -1,4 +1,9 @@
-import { component$, useStore, type ReadonlySignal, type JSXOutput } from '@khulnasoft.com/unisynth';
+import {
+  component$,
+  useStore,
+  type ReadonlySignal,
+  type JSXOutput,
+} from '@khulnasoft.com/unisynth';
 import { routeLoader$ } from '@khulnasoft.com/unisynth-city';
 import { BundleCmp } from '~/components/bundle';
 import { BundleIcon } from '~/components/icons/bundle';

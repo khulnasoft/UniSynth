@@ -5,7 +5,13 @@ import { magenta } from 'kleur/colors';
 
 import type { Connect, ViteDevServer } from 'vite';
 import { SYNC_QRL } from '../../../core/qrl/qrl-class';
-import type { OptimizerSystem, Path, UnisynthManifest, SymbolMapper, SymbolMapperFn } from '../types';
+import type {
+  OptimizerSystem,
+  Path,
+  UnisynthManifest,
+  SymbolMapper,
+  SymbolMapperFn,
+} from '../types';
 import clickToComponent from './click-to-component.html?raw';
 import errorHost from './error-host.html?raw';
 import imageDevTools from './image-size-runtime.html?raw';
@@ -378,7 +384,10 @@ function relativeURL(url: string, base: string) {
   return url;
 }
 
-const DEV_UNISYNTH_INSPECTOR = (opts: NormalizedUnisynthPluginOptions['devTools'], srcDir: string) => {
+const DEV_UNISYNTH_INSPECTOR = (
+  opts: NormalizedUnisynthPluginOptions['devTools'],
+  srcDir: string
+) => {
   const unisynthdevtools = {
     hotKeys: opts.clickToSource ?? [],
     srcDir: new URL(srcDir + '/', 'http://local.local').href,

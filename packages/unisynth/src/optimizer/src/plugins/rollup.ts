@@ -281,15 +281,15 @@ export interface UnisynthRollupPluginOptions {
    */
   debug?: boolean;
   /**
-   * The Unisynth entry strategy to use while building for production. During development the type is
-   * always `segment`.
+   * The Unisynth entry strategy to use while building for production. During development the type
+   * is always `segment`.
    *
    * Default `{ type: "smart" }`)
    */
   entryStrategy?: EntryStrategy;
   /**
-   * The source directory to find all the Unisynth components. Since Unisynth does not have a single input,
-   * the `srcDir` is used to recursively find Unisynth files.
+   * The source directory to find all the Unisynth components. Since Unisynth does not have a single
+   * input, the `srcDir` is used to recursively find Unisynth files.
    *
    * Default `src`
    */

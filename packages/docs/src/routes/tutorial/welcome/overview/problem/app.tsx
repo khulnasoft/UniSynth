@@ -17,8 +17,8 @@ export const Counter = component$(() => {
   const store = useStore({ count: 0 });
   return (
     <>
-      I am a dynamic component. Unisynth will download me only when it is time to re-render me after the
-      user clicks on the <code>+1</code> button.
+      I am a dynamic component. Unisynth will download me only when it is time to re-render me after
+      the user clicks on the <code>+1</code> button.
       <br />
       Current count: {store.count}
       <br />

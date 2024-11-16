@@ -180,7 +180,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "unisynth": "./lib/index.unisynth.mjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/khulnasoft/unisynth.git",
@@ -190,5 +189,6 @@
     "build": "cd src/runtime && vite build --mode lib"
   },
   "type": "module",
-  "types": "./lib/index.d.ts"
+  "types": "./lib/index.d.ts",
+  "unisynth": "./lib/index.unisynth.mjs"
 }

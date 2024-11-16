@@ -1,4 +1,10 @@
-import { component$, useSignal, noSerialize, useContextProvider, useTask$ } from '@khulnasoft.com/unisynth';
+import {
+  component$,
+  useSignal,
+  noSerialize,
+  useContextProvider,
+  useTask$,
+} from '@khulnasoft.com/unisynth';
 import { MAX_QUERY_SIZE } from './constants';
 import { SearchContext } from './context';
 import type { DocSearchProps, DocSearchState } from './doc-search';

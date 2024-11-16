@@ -1,5 +1,10 @@
 import { component$, sync$, useContext, useOnDocument, useStyles$ } from '@khulnasoft.com/unisynth';
-import { type ContentMenu, useContent, useLocation, routeLoader$ } from '@khulnasoft.com/unisynth-city';
+import {
+  type ContentMenu,
+  useContent,
+  useLocation,
+  routeLoader$,
+} from '@khulnasoft.com/unisynth-city';
 import { GlobalStore } from '../../context';
 import { CloseIcon } from '../svgs/close-icon';
 import styles from './sidebar.css?inline';

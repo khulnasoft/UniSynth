@@ -3,7 +3,11 @@ import type { AllEventKeys } from './jsx-unisynth-attributes';
 /** Emitted by unisynth-loader when an element becomes visible. Used by `useVisibleTask$` @public */
 export type UnisynthVisibleEvent = CustomEvent<IntersectionObserverEntry>;
 /** Emitted by unisynth-loader when a module was lazily loaded @public */
-export type UnisynthSymbolEvent = CustomEvent<{ symbol: string; element: Element; reqTime: number }>;
+export type UnisynthSymbolEvent = CustomEvent<{
+  symbol: string;
+  element: Element;
+  reqTime: number;
+}>;
 /** Emitted by unisynth-loader on document when the document first becomes interactive @public */
 export type UnisynthInitEvent = CustomEvent<{}>;
 /** Emitted by unisynth-loader on document when the document first becomes idle @public */
@@ -43,8 +47,8 @@ export type LiteralUnion<LiteralType, BaseType extends Primitive> =
   | (BaseType & Record<never, never>);
 
 /**
- * The names of events that Unisynth knows about. They are all lowercase, but on the JSX side, they are
- * PascalCase for nicer DX. (`onAuxClick$` vs `onauxclick$`)
+ * The names of events that Unisynth knows about. They are all lowercase, but on the JSX side, they
+ * are PascalCase for nicer DX. (`onAuxClick$` vs `onauxclick$`)
  *
  * @public
  */

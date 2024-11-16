@@ -1,4 +1,8 @@
-import { component$, implicit$FirstArg, type QRL } from "@khulnasoft.com/unisynth";
+import {
+  component$,
+  implicit$FirstArg,
+  type QRL,
+} from "@khulnasoft.com/unisynth";
 
 export function factoryQrl<P extends Record<string, any>>(
   componentQRL: QRL<(props: P) => any>,
